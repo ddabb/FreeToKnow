@@ -5,6 +5,7 @@
       "version": "v2.0.12",
       "date": "2022/1/9",
       "desc": [
+        "代码开源地址：git@github.com:ddabb/FreeToKnow.git",
         "新增诗词大全的检索功能"
       ]
     },
