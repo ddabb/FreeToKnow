@@ -1,0 +1,24 @@
+<navBar background='#299DFF' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='{{articaleTitle}}' />
+<view>
+  <loading wx:if="{{showLoading}}">加载中</loading>
+</view>
+
+<view class="articaltitle" wx:if="{{showArea}}">
+  <view class="padding">{{articaleTitle}}</view>
+</view>
+<!-- 
+作者 -->
+<scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
+  <view class="artical-author">
+    <view class="cu-item">
+      <view class="content">
+        <view class="cu-avatar lg round margin-left">
+          <text>刘</text>
+        </view>
+        <text class="text-grey"> 刘石丰</text>
+      </view>
+    </view>
+  </view>
+
+  <towxml nodes="{{article}}" />
+</scroll-view>

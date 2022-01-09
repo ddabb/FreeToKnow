@@ -1,0 +1,2 @@
+<navBar background='#299DFF' color='#fff' title='授权信息' />
+<button style='margin:15px;font-size:16px' type='primary' size="mini" bindtap='getUserProfile'>授权微信头像和昵称</button>

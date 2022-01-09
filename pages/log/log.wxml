@@ -1,0 +1,14 @@
+<navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='更新日志' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" />
+<view class="cu-timeline" wx:for="{{logs}}">
+  <view class="cu-item text-green">
+    <view class="bg-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">{{item.version}}</view>
+        <view class="cu-tag line-white">{{item.date}}</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view wx:for="{{item.desc}}" wx:for-item="desc">{{desc}}</view>
+      </view>
+    </view>
+  </view>
+</view>

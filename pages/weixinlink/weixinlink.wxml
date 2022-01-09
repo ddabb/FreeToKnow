@@ -1,0 +1,4 @@
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick"
+    color='#fff' title='公众号文章' />
+
+<web-view src="{{articleSrc}}"></web-view>

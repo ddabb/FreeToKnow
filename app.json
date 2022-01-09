@@ -1,0 +1,85 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/find/find",
+    "pages/user/user",
+    "pages/detail/detail",
+    "pages/classify/classify",
+    "pages/note/note",
+    "pages/procedureknowledge/procedureknowledge",
+    "pages/reflectiveknowledge/reflectiveknowledge",
+    "pages/rewritePluginPage/rewritePluginPage",
+    "pages/knowledge/knowledge",
+    "pages/suggest/suggest",
+    "pages/addsuggest/addsuggest",
+    "pages/knowledgelist/knowledgelist",
+    "pages/idiomdetail/idiomdetail",
+    "pages/postlist/postlist",
+    "pages/postdetail/postdetail",
+    "pages/coupletlist/coupletlist",
+    "pages/coupletdetail/coupletdetail",
+    "pages/auth/auth",
+    "pages/idiomlist/idiomlist",
+    "pages/pdfpreview/pdfpreview",
+    "pages/pdflist/pdflist",
+    "pages/hexotags/hexotags",
+    "pages/hexoacticle/hexoacticle",
+    "pages/log/log",
+    "pages/poemlist/poemlist",
+    "pages/poemdetail/poemdetail",
+    "pages/poetlist/poetlist"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#299DFF",
+    "navigationBarTitleText": "Free Knowledge",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#299DFF",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/nav/index.png",
+        "selectedIconPath": "/images/nav/index-active.png",
+        "text": "推荐"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "iconPath": "/images/nav/find.png",
+        "selectedIconPath": "/images/nav/find-active.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/note/note",
+        "iconPath": "/images/nav/menu.png",
+        "selectedIconPath": "/images/nav/menu-active.png",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "/images/nav/user.png",
+        "selectedIconPath": "/images/nav/user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "plugins": {
+    "myPlugin": {
+      "version": "1.1.15",
+      "provider": "wx8c631f7e9f2465e1"
+    },
+    "WechatSI": {
+      "version": "0.3.3",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar"
+  }  ,
+  "navigationBarTitleText": "更新日志"
+}

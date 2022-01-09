@@ -1,0 +1,65 @@
+@import "../../app.wxss";
+
+.page-section-spacing {
+  margin-top: 0rpx;
+}
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.scroll-view-item {
+  height: 100rpx;
+  width: 25%;
+}
+
+.scroll-view-item_H {
+  display: inline-block;
+  width: 100%;
+  height: 300rpx;
+}
+
+.show-info {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0rpx 0;
+  box-sizing: border-box;
+}
+
+.left {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  background-color: #DCDCDC;
+  flex-direction: column;
+  margin: 1px 0px 1px 1px;
+}
+
+
+.left .item {
+  padding: 8rpx 29rpx;
+  height: 80rpx;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #DCDCDC
+}
+
+.left .selectedClass {
+  padding: 8px 0px 8px 8px;
+  height: 80rpx;
+  text-align: left;
+  font-weight: bold;
+  color: blue;
+  background-color: white
+}
+
+.right {
+  width: 75%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+}

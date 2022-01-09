@@ -1,0 +1,39 @@
+<navBar background='#299DFF' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+  <view class='lxy-nav-bar-search' slot="center">
+    <view class='lxy-nav-bar-search__icon' />
+    <view class='lxy-nav-bar-search__input'>
+      <input bindconfirm="confirmSearch" data-type="学习资料" bindinput="search" class="srch-ipt" confirmType="search" placeholder="搜索学习资料" placeholderClass="ipt-placeholder" type="text" value=""></input>
+    </view>
+  </view>
+</navBar>
+<view class="on" style="float: right;margin-top: 10px; " wx:if='{{showArea}}'>
+  <a bindtap='resort' class="js_category">浏览次数
+    <i class="angle_top" bindtap='resort' style="border-color:transparent transparent {{color}};"></i>
+    <i class="angle_bottom" bindtap='resort' style="border-color:transparent transparent {{othercolor}};"></i>
+  </a>
+</view>
+
+<view class="margin-left" wx:if='{{inputValue&&showArea}}'>
+  <text class="cu-btn round margin-left-xs margin-right-xs margin-top-xs bg-green">{{inputValue}}</text>
+</view>
+<scroll-view scroll-y="true" style='height:{{scrollHeight}}px;' lower-threshold="50" bindscrolltolower="lower">
+  <view class="idiom">
+    <view class='box'>
+
+      <view class='item ' wx:for='{{list}}' wx:key='index' data-id='{{item._id}}' data-db="pdffiles" data-title="{{item.title}}" data-from='{{item.from}}' data-to='{{item.to}}' data-end='{{item.end}}' data-before='{{item.before}}' data-fileurl='{{item.fileurl}}' bindtap='goDetail'>
+        <view class='item-inner bg-cyan shadow light'>
+          <view>{{item.title}}</view>
+          <view class="like">
+            <text class="like">{{item.opened==null?0:item.opened}} 次浏览</text>
+          </view>
+        </view>
+      </view>
+      <view class='item loading' wx:if="{{loading}}" style='text-align:center;'>
+        <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+      </view>
+      <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+        <text style='color:#666;'>--- 如果没找到相应的学习资料，请联系作者进行收录 ---</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

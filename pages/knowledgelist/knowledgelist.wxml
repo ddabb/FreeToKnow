@@ -1,0 +1,37 @@
+<navBar background='#299DFF' wx:if="{{showArea}}" back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+  <view class='lxy-nav-bar-search' slot="center">
+    <view class='lxy-nav-bar-search__icon' />
+    <view class='lxy-nav-bar-search__input'>
+      <input bindconfirm="confirmSearch" data-type="信息技术" bindinput="search" class="srch-ipt" confirmType="search" placeholder="项目管理知识" placeholderClass="ipt-placeholder" type="text" value=""></input>
+    </view>
+  </view>
+</navBar>
+<view class="on" wx:if="{{showArea}}" style="float: right;margin-top: 10px; ">
+  <a bindtap='resort' class="js_category">浏览次数
+    <i class="angle_top" bindtap='resort' style="border-color:transparent transparent {{color}};"></i>
+    <i class="angle_bottom" bindtap='resort' style="border-color:transparent transparent {{othercolor}};"></i>
+  </a>
+</view>
+<view class="margin-left" wx:if='{{tags&&showArea}}'>
+  标签：<text class="cu-btn round margin-left-xs margin-right-xs margin-top-xs bg-green">{{tags}}</text>
+</view>
+<scroll-view scroll-y="true" style='height:{{scrollHeight}}px;' lower-threshold="50" bindscrolltolower="lower">
+  <view class="choiceness">
+    <view class='box  bg-cyan shadow light' wx:for='{{list}}' wx:key='index' data-id='{{item._id}}' data-classify='{{item.classify}}' data-subject='{{item.subject}}' bindtap='goDetail'>
+      <text class="title">{{item.subject}}</text>
+      <text class="poet">{{item.content[0]}}{{item.content[1]}}</text>
+      <view class="name-like">
+        <text class="name">{{item.dynasty}} {{item.poet}}</text>
+        <view class="like">
+          <text>{{item.opened==null?0:item.opened}} 次浏览</text>
+        </view>
+      </view>
+    </view>
+    <view class='box loading' wx:if="{{loading}}" style='text-align:center;'>
+      <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>
+    </view>
+    <view class='bottom' wx:if="{{isOver}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+      <text style='color:#666;'>--- 更多内容正在整理，敬请期待 ---</text>
+    </view>
+  </view>
+</scroll-view>

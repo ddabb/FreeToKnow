@@ -1,0 +1,32 @@
+@import "../../app.wxss";
+.top {
+  background: #299DFF;
+  position: relative;
+  padding: 30rpx 20rpx;
+}
+
+.top .search {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  border-radius: 30rpx;
+  height: 60rpx;
+  padding: 0 20rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 28rpx;
+
+}
+
+.top .search image {
+  height: 36rpx;
+  width: 36rpx;
+  margin-right: 20rpx;
+}
+
+.top input {
+  border: none;
+  flex: 1;
+}
+

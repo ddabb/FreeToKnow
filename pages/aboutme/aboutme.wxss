@@ -1,0 +1,36 @@
+.about {
+  height: 85%;
+  padding: 0 30rpx;
+  position: relative;
+  font-size: 24rpx;
+}
+
+.item {
+  text-align: center;
+  font-size: 32rpx;
+  padding-top: 10%;
+}
+
+.OfficialAccount {
+  height: 240rpx;
+  width: 480rpx;
+  /*border-radius: 50%;*/
+}
+
+.logo {
+  height: 180rpx;
+  width: 180rpx;
+  /*border-radius: 50%;*/
+}
+
+.item view {
+  padding-top: 30rpx;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}

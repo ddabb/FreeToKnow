@@ -1,0 +1,16 @@
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
+    bindhome="handlerGohomeClick" color='#fff' title='建议反馈' />
+<view class="section">
+
+
+  <form bindsubmit="bindFormSubmit">
+    <view class='space20'></view>
+    <view class='line'></view>
+    <textarea placeholder="请提交意见或建议~" name="textarea" />
+    <view class='line'></view>
+    <button  style="display:block;margin:30rpx auto" type="primary" form-type="submit" disabled="{{disabled}}"> <text style="color: white;fontWeight:bold">提交 </text></button>
+  </form>
+</view>
+
+
+

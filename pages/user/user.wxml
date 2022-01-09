@@ -1,0 +1,109 @@
+<!-- pages/user/user.wxml -->
+<navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='个人信息' />
+<view class='user'>
+  <view class='name'>
+    <image src='{{avatarUrl}}'></image>
+    <button id="userinfo-nickname" wx:if="{{!logged}}" bindtap="onGetUserInfo" size="mini">
+      点此登录
+    </button>
+    <text>{{username}}</text>
+    <button id="userinfo-nickname" wx:if="{{logged}}" bindtap="ResetImg" size="mini">
+      更新昵称和头像
+    </button>
+  </view>
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='goLog'>
+      <view class='item-inner'>
+        <view>更新日志</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='item' bindtap='goChatWithAi'>
+      <view class='item-inner'>
+        <view>智能对话聊天助手</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='gohexotag'>
+      <view class='item-inner'>
+        <view>文章标签</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='gohexocategories'>
+      <view class='item-inner'>
+        <view>文章分类</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='goSuggestList'>
+      <view class='item-inner'>
+        <view>我的反馈</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='goAddSuggest'>
+      <view class='item-inner'>
+        <view>建议反馈</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+  <view id='contact-me'>
+    <button id='contact-me-button' open-type="contact" bindcontact="handleContact">
+      <view>联系开发者</view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </button>
+
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+
+  <view class='box'>
+    <view class='item' data-openid='{{openid}}' bindtap='goAbout'>
+      <view class='item-inner'>
+        <view>关于</view>
+      </view>
+      <i class="wx-icon-custom-gengduo"></i>
+    </view>
+    <view class='addApp' wx:if="{{showImg}}" bindtap='hideImg'>
+      <image src='/images/add3.png'></image>
+    </view>
+  </view>
+
+
+
+
+
+
+</view>

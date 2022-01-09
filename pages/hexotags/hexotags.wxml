@@ -1,0 +1,9 @@
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick"  title='文章标签'> </navBar>
+<!-- <text>{{result}}</text> -->
+
+<view class='box' wx:for='{{result}}' wx:key='index' data-id='{{item.name}}' data-path='{{item.path}}' data-count='{{item.count}}' bindtap='goDetail' style="display: inline-block;">
+  <view class="cu-capsule radius">
+    <view class="cu-tag bg-green text-white">{{item.name}}</view>
+    <view class="cu-tag bg-white text-green">{{item.count}}</view>
+  </view>
+</view>

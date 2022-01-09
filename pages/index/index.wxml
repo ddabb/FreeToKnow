@@ -1,0 +1,35 @@
+<view class="stonecontainer">
+  <navBar background='#299DFF' color='#fff' title='知识导航' />
+  <view class="page-body">
+    <view class="page-section">
+      <view class="show-info">
+        <scroll-view class='left' scroll-y="true" style="height: 1400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" enable-flex="true">
+          <view class="demo-text-1" wx:for='{{list}}' wx:key="key" data-db="knowledge" wx:for-index="groupindex" data-classify="cold">
+            <view wx:for="{{list[groupindex]}}" wx:key="key" wx:for-item="cell" wx:for-index="cellindex">
+              <view class='{{cell.id==selectedid ? "selectedClass" : "item"}}' data-cellid="{{cell.id}}" bindtap='SwitchMain'>
+                {{cell.main}}
+                <text class='{{cell.id==selectedid ? " cuIcon-right" : ""}}'> </text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <scroll-view class='right' scroll-y="true" style="height: 1400rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" enable-flex="true">
+          <view class="demo-text-1" wx:for='{{list}}' wx:key="key" data-db="knowledge" wx:for-index="groupindex" data-classify="cold">
+            <view wx:for="{{list[groupindex]}}" wx:key="key" wx:for-item="cell" wx:for-index="cellindex">
+              <view wx:for="{{cell.classifies}}" wx:key="key" wx:for-item="classify" wx:for-index="classifiesIndex">
+                <view wx:if="{{cell.id==selectedid}}" style="margin-left: 20rpx;margin-top: 20rpx;">
+                  <text class='text-lg text-shadow text-bold text-gray'>{{classify.name}}</text>
+                  <view>
+                    <view class="margin-tb-sm margin-right-xs margin-top-xs">
+                      <button class="cu-btn margin-left-xs margin-right-xs margin-top-xs bg-green" wx:for='{{classify.tags}}' wx:key='index' data-parenttags='标签' data-classifyname='{{classify.name}}' data-tags='{{item}}' bindtap='{{cell.action}}'>{{item}}</button>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</view>

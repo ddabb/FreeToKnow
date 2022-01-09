@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar",
+    "towxml": "/towxml/towxml"
+  },
+  "navigationBarTitleText": "网站标签"
+}

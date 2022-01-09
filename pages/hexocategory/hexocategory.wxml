@@ -1,0 +1,11 @@
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" title='{{name}}'> </navBar>
+<view>
+  <loading wx:if="{{showLoading}}">加载中</loading>
+</view>
+
+
+<view class='box' wx:for='{{postlist}}' wx:key='index' data-tags='{{name}}' data-slug='{{item.slug}}' data-path='{{item.path}}' bindtap='godetail'>
+  <view class="cu-capsule radius">
+    <view class="cu-tag bg-orange text-black">{{item.slug}}</view>
+  </view>
+</view>

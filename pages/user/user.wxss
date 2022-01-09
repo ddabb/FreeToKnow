@@ -1,0 +1,111 @@
+/* pages/user/user.wxss */
+@import "../../app.wxss";
+.user {
+  font-size: 28rpx;
+  height: 100%;
+}
+
+.user .name {
+  /* background: linear-gradient(#f79642, #f5798d); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx;
+}
+
+.name image {
+  height: 140rpx;
+  width: 140rpx;
+  border-radius: 50%;
+  animation: avator linear 16s infinite normal;
+}
+
+#userinfo-nickname {
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  background: #f38787;
+  color: #fff;
+  border: 0;
+  outline: none;
+  padding: 1rpx 40rpx;
+}
+.user .name text {
+  padding-top: 20rpx;
+  color: #333;
+}
+
+.box {
+  padding: 8rpx 20rpx;
+}
+.box .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background: #fff;
+  height: 120rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.box .item-inner {
+  width: 80%;
+  font-size: 24rpx;
+  color: #555;
+  display: flex;
+}
+
+.box .item-inner view {
+  background: #fff;
+  font-size: 30rpx;
+  color: #333;
+  padding-left: 20rpx;
+  line-height: 1.7;
+  text-align: left;
+}
+
+
+.addApp {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8)
+}
+.addApp image {
+  width: 80%;
+}
+.addApp text {
+  font-size: 44rpx;
+  color: #fff;
+  border: 1px dashed #fff;
+  border-radius: 30rpx;
+  display: inline-block;
+  padding: 20rpx 80rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+#contact-me {
+  padding: 8rpx 20rpx;
+}
+#contact-me-button {
+  margin: 0;
+  width: 100%;
+  padding: 8rpx 0rpx;
+  justify-content: space-between;
+  background: #fff;
+  font-size: 30rpx;
+  height: 120rpx;
+  color: #333;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.contact-me button::after {
+  border: none;
+}
+

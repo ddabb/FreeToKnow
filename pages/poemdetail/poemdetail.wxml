@@ -1,0 +1,39 @@
+<!-- pages/detail/detail.wxml -->
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='诗词：{{detail.name}}' />
+<canvas style="width: {{canvaswidth}}px; height:  {{canvasheight}}px; background-color:#ddd;position:absolute;left:-1000px;" canvas-id="myCanvas"></canvas>
+<view class='detail' wx:if='{{isExist && isDown}}'>
+  <view wx:for="{{detail.contents}}" wx:key='index'>
+    <view class='space20'></view>
+    <text class="left15rpx scroll-view-item_H">{{item}}</text>
+  </view>
+  <view>
+    <text class="cu-btn round margin-left-xs margin-right-xs margin-top-xs bg-green" wx:for='{{detail.tags}}' wx:key='index' data-parenttags='标签' data-tags='{{item}}' bindtap='goList'>{{item}}</text>
+  </view>
+  <view wx:if="{{loadPoetInfo}}">
+    <view> 作者 ： {{poet.name}} </view>
+    <view></view>
+    <view> 出生日期:{{poet.birth}} </view>
+    <view> </view>
+    <view> 死亡日期: {{poet.death}}</view>
+    <view> </view>
+    <view> 朝代: {{poet.dynasty}} </view>
+    <view> </view>
+    <view> 简介: </view>
+    <view> {{poet.description}} </view>
+  </view>
+
+  <view style="text-align:center">
+    <button class="btnCopyData" bindtap="onShowAuthor" data-poetid='{{detail.poetId}}' style="background:SteelBlue;" size="mini">
+      作者简介
+    </button>
+    <button class="btnCopyData" bindtap="onCopyData" style="background:SteelBlue;" size="mini">
+      复制内容
+    </button>
+  </view>
+  <view class='bottom' style='text-align:center;font-size:24rpx;padding:30rpx;'>
+    <text style='color:#666;'>--- 页面内容到此结束啦~ ---</text>
+  </view>
+</view>
+<view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
+  <text style='color:#666;'>--- 未找到 ---</text>
+</view>
