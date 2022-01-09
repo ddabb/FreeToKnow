@@ -37,7 +37,7 @@
 
 ####  成语大全
 
-<img src="https://ddabb.github.io/photos/images/程序大全.jpg" width="225" height="400"  />
+<img src="https://ddabb.github.io/photos/images/成语大全.jpg" width="225" height="400"  />
 
 
 
