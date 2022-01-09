@@ -10,7 +10,7 @@
 
 ## 2. 小程序地址
 
-[https://github.com/ddabb/FreeKnowledge](https://github.com/ddabb/FreeKnowledge)
+[https://github.com/ddabb/FreeToKnow](https://github.com/ddabb/FreeToKnow)
 
 ## 3. 小程序预览：
 
