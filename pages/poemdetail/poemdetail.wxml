@@ -1,5 +1,5 @@
 <!-- pages/detail/detail.wxml -->
-<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='诗词：{{detail.name}}' />
+<navBar background='#299DFF' back="{{true}}" home="{{true}}"  wx:if="{{showArea}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='诗词：{{detail.name}}' />
 <canvas style="width: {{canvaswidth}}px; height:  {{canvasheight}}px; background-color:#ddd;position:absolute;left:-1000px;" canvas-id="myCanvas"></canvas>
 <view class='detail' wx:if='{{isExist && isDown}}'>
   <view wx:for="{{detail.contents}}" wx:key='index'>

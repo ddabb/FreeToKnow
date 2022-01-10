@@ -23,6 +23,7 @@ Page({
         qrcodesize: 100,
         canvaswidth: 376,
         canvasheight: 530,
+        showArea: true,
         linespace: 30,
         poet: null,
         loadPoetInfo: false,
@@ -212,7 +213,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.setData({
+            showArea: true
+        });
     },
 
     /**
@@ -502,6 +505,9 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
+        this.setData({
+            showArea: false
+        });
         return {
             title: '一起来欣赏《' + this.data.detail.name + '》吧', //此处为标题,
             path: `/pages/poemdetail/poemdetail?id=${this.data.id}`, //此处为路径,

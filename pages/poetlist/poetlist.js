@@ -200,8 +200,8 @@ Page({
         let jsonObj = this.data.options;
         var input = encodeURIComponent(JSON.stringify(jsonObj))
         return {
-            title: '与“' + this.data.tags + '”有关的成语有这些~~~', //此处为标题,
-            path: `/pages/idiomlist/idiomlist?obj=${input}`, //此处为路径,
+            title: '与“' + this.data.tags + '”有关的诗词有这些~~~', //此处为标题,
+            path: `/pages/poetlist/poetlist?obj=${input}`, //此处为路径,
 
             success: function (res) {
                 //这里为分享成功后的回调函数,
