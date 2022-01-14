@@ -12,6 +12,12 @@
     </button>
   </view>
   <view class="cu-list menu" :class="[menuBorder?'sm-border':'',menuCard?'card-menu margin-top':'']">
+    <view class="cu-item arrow" bindtap='go2048'>
+      <view class="content">
+        <text class="cuIcon-hotfill text-grey"></text>
+        <text class="text-grey">2048小游戏</text>
+      </view>
+    </view>
     <view class="cu-item arrow" bindtap='goLog'>
       <view class="content">
         <text class="cuIcon-circlefill text-grey"></text>

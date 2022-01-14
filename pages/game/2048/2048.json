@@ -1,0 +1,8 @@
+{
+  "disableScroll": true,
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar"
+  }  ,
+  "navigationBarTitleText": "个人主页",
+  "navigationBarBackgroundColor": "#faf8ee"
+}

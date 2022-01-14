@@ -97,6 +97,11 @@ Page({
     },
 
 
+    go2048() {
+        wx.navigateTo({
+            url: `/pages/game/index/index`
+        })
+    },
     goLog() {
         wx.navigateTo({
             url: `/pages/log/log`
