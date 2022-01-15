@@ -215,8 +215,8 @@ Page({
             showArea: false
         })
         return {
-            title: '这个学习小程序有点意思~', //此处为标题,
-            path: `/pages/user/user`, //此处为路径,
+            title: '让知识触手可及~', //此处为标题,
+            path: `/pages/index/index`, //此处为路径,
             // imageUrl: randomImg, //此处就是写的随机分享图片,
         }
 
