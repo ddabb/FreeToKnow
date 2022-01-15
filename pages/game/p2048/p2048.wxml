@@ -14,6 +14,9 @@
       <text>score <text class='score'>{{score}}</text></text>
     </view>
   </view>
+  <!-- https://www.jb51.net/article/149632.htm 
+  https://blog.csdn.net/jiaodamanong/article/details/109751829
+  参考补充动画效果 -->
   <view class="game" style="position: absolute; left: 27rpx; top: {{showArea?320:0}}rpx ">
     <!-- 矩阵 -->
     <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">

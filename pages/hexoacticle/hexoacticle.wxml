@@ -19,6 +19,5 @@
       </view>
     </view>
   </view>
-
   <towxml nodes="{{article}}" />
 </scroll-view>
