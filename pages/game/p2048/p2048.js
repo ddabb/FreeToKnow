@@ -1,6 +1,8 @@
 var Board = require("./grid.js");
 var Main = require("./main.js");
-
+//获取应用实例
+const app = getApp()
+var util = require('../../../util.js')
 Page({
   data: {
     hidden: false,
@@ -14,11 +16,16 @@ Page({
   },
   // 页面渲染完成
   onReady: function () {
-    if (!wx.getStorageSync("highScore"))
-      wx.setStorageSync('highScore', 0);
+    if (app.globalData.userInfo && app.globalData.userInfo.p2028score) {
+      this.setData({
+        bestScore: app.globalData.userInfo.p2028score
+      });
+    }
+
     this.gameStart();
   },
   gameStart: function () { // 游戏开始
+    this.updateDbScore();
     var main = new Main(4);
     this.setData({
       endMsg: '',
@@ -65,6 +72,25 @@ Page({
     this.touchStartX = touch.clientX;
     this.touchStartY = touch.clientY;
 
+  },
+  updateDbScore: function (e) {
+    if (app.globalData.userInfo) {
+      let historyScore = app.globalData.userInfo.p2028score; //历史最高的2048的分数
+      if (this.data.bestScore != 0 && (typeof historyScore == "undefined" || this.data.bestScore > historyScore)) {
+        let bestScore = this.data.bestScore;
+        app.globalData.userInfo.p2028score = this.data.bestScore;
+        wx.cloud.callFunction({
+          name: 'collection_update',
+          data: {
+            database: "user",
+            id: app.globalData.userInfo._id,
+            values: {
+              p2028score: bestScore
+            }
+          }
+        })
+      }
+    }
   },
   touchMove: function (ev) { // 触摸最后移动时的坐标
     var touch = ev.touches[0];
@@ -137,11 +163,13 @@ Page({
     util.ShareTimeline()
   },
   handlerGobackClick() {
+    this.updateDbScore();
     util.handlerGobackClick(function (e) {
       util.goSearch(e)
     }, 1000)
   },
   handlerGohomeClick() {
+    this.updateDbScore();
     util.handlerGohomeClick(function (e) {
       util.goSearch(e)
     }, 1000)

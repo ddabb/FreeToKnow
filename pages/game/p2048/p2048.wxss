@@ -9,7 +9,7 @@
 .head {
   text-align: center;
   position: absolute;
-  top: 7vh;
+  top: 2vh;
 }
 
 .lside {
@@ -68,6 +68,7 @@
 
 /* =========================== game ====================  */
 .game {
+  margin-top: -10rpx;
   padding-top: 5vw;
   padding-left: 1vw;
   background: #bbada0;
@@ -225,6 +226,7 @@
 
 .nowScore {
   font-size: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 

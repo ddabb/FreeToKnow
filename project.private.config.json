@@ -32,7 +32,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/game/2048/2048",
+          "pathName": "pages/game/p2048/p2048",
           "query": "",
           "scene": null
         }
