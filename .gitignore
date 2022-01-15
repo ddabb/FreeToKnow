@@ -20,3 +20,5 @@ node_modules/
 .vs/VSWorkspaceState.json
 /.vs/slnx.sqlite-journal
 /.vs
+obj/
+bin/

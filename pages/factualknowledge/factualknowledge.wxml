@@ -22,7 +22,6 @@
             </view>
           </view>
         </view>
-
       </view>
       <view class='item loading' wx:if="{{loading}}" style='text-align:center;'>
           <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>

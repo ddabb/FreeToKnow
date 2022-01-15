@@ -21,9 +21,7 @@
               <text class="like">{{item.opened==null?0:item.opened}} 次浏览</text>
             </view>
           </view>
-
         </view>
-
       </view>
       <view class='item loading' wx:if="{{loading}}" style='text-align:center;'>
           <image class='' src='/images/loading/loading-bars.svg' style='height: 60px;'></image>

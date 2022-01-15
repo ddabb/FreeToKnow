@@ -1,12 +1,10 @@
 // pages/aboutme/aboutme.js
 var util = require('../../util.js')
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
-
     },
 
     /**
@@ -18,57 +16,50 @@ Page({
         })
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
     /**
      * 保存文件
-     * @param {*} e 
+     * @param {*} e
      */
     baocun: function (e) {
         let url = '../../images/' + e.currentTarget.dataset.pic;

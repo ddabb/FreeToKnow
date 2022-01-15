@@ -1,4 +1,3 @@
-
 @import "../../app.wxss";
 .top {
   background: #299DFF;

@@ -1,13 +1,5 @@
 /* pages/artical/artical.wxss */
-
-/**index.wxss**/
-@import '/towxml/style/main.wxss';
-
-/**主题配色（浅色样式）**/
-@import '/towxml/style/theme/light.wxss';
-
-/**主题配色（深色样式）**/
-@import '/towxml/style/theme/dark.wxss';
+@import "../../app.wxss";
 
 .container {
   line-height: 64rpx;
@@ -21,14 +13,14 @@
   padding: 0;
 }
 
-.artical-author{
+.artical-author {
   background-color: white;
   padding-top: 24rpx;
 }
 
-.articaltitle{
+.articaltitle {
   font-size: 60rpx;
   font-weight: bold;
   color: #41cd52;
-  background-color:white;
+  background-color: white;
 }

@@ -20,9 +20,9 @@ Component({
             let url = e.currentTarget.dataset.url;
             wx.navigateTo({
                 url: "/pages/webviewPage/webviewPage?url=" + url,
-                success: function (res) {},
-                fail: function (res) {},
-                complete: function (res) {},
+                success: function (res) { },
+                fail: function (res) { },
+                complete: function (res) { },
             });
         },
     },

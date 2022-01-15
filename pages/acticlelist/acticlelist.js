@@ -2,7 +2,6 @@
 var util = require('../../util.js')
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -47,17 +46,15 @@ Page({
         this.loadList(options.tags)
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     lower() {
         this.loadList(this.data.tags)
     },
-
 
     resort: function () {
         if (!this.data.loading) {
@@ -93,59 +90,58 @@ Page({
             })
             let that = this
             wx.cloud.callFunction({
-                    name: 'collection_get_orderby',
-                    data: {
-                        database: 'article',
-                        page,
-                        num,
-                        field,
-                        order,
-                        condition
-                    }
-                }).then(res => {
-                    if (!res.result.data.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.data
-                        let over = res.result.data.length < num
-                        list.push(...res_data)
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-                            isOver: over
-                        })
-                    }
-                })
+                name: 'collection_get_orderby',
+                data: {
+                    database: 'article',
+                    page,
+                    num,
+                    field,
+                    order,
+                    condition
+                }
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.data
+                    let over = res.result.data.length < num
+                    list.push(...res_data)
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                        isOver: over
+                    })
+                }
+            })
                 .catch(console.error)
         }
-
     },
 
     goDetail(e) {
         let _id = e.currentTarget.dataset.id
         wx.cloud.callFunction({
-                name: 'collection_count_opened',
-                data: {
-                    database: 'article',
-                    id: _id
-                },
-            }).then(res => {
-                var obj = {
-                    articleurl: e.currentTarget.dataset.articleurl,
-                    articletitle: e.currentTarget.dataset.articletitle,
-                    imageurl: e.currentTarget.dataset.imageurl,
-                    useimage: e.currentTarget.dataset.useimage
-                };
-                var input = encodeURIComponent(JSON.stringify(obj))
-                wx.navigateTo({
-                    url: `/pages/weixinlink/weixinlink?obj=${input}`
-                    //  url: '../logs/logs'
-                })
+            name: 'collection_count_opened',
+            data: {
+                database: 'article',
+                id: _id
+            },
+        }).then(res => {
+            var obj = {
+                articleurl: e.currentTarget.dataset.articleurl,
+                articletitle: e.currentTarget.dataset.articletitle,
+                imageurl: e.currentTarget.dataset.imageurl,
+                useimage: e.currentTarget.dataset.useimage
+            };
+            var input = encodeURIComponent(JSON.stringify(obj))
+            wx.navigateTo({
+                url: `/pages/weixinlink/weixinlink?obj=${input}`
+                //  url: '../logs/logs'
             })
+        })
             .catch(console.error)
     },
 
@@ -156,7 +152,6 @@ Page({
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     confirmSearch(e) {
@@ -167,7 +162,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
@@ -183,21 +177,18 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**

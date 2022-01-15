@@ -55,7 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 .input-btn-inputView {
   /* position: absolute;
@@ -81,7 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 }
 .voice-img {
   /* margin-top: 20px;
@@ -154,5 +154,5 @@
   text-overflow: ellipsis;
   word-break: break-all;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:3; 
+  -webkit-line-clamp:3;
 }

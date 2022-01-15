@@ -2,7 +2,6 @@
 var util = require('../../util.js')
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -27,7 +26,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
         let isLogin = app.globalData.isLogin
 
         console.log('用户是否授权：', app.globalData.isLogin)
@@ -59,19 +57,16 @@ Page({
             wx.setStorageSync('shareId', options.id)
             this.loadDetail(options.id, options.name)
         }
-
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
 
     formatResult() {
-
     },
 
     onCopyData() {
@@ -118,39 +113,36 @@ Page({
         })
 
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'couplet',
-                    page,
-                    num,
-                    condition: {
-                        _id: id
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    wx.showToast({
-                        icon: 'warn',
-                        title: '加载失败',
-                    })
-                } else {
-
-
-                    this.setData({
-                        detail: res.result.data[0]
-                    })
-
-                    this.setData({
-                        title: this.data.detail.left.length > 8 ? "对联信息" : "上联:" + this.data.detail.left
-                    })
-
-
-                    wx.hideLoading()
+            name: 'collection_get',
+            data: {
+                database: 'couplet',
+                page,
+                num,
+                condition: {
+                    _id: id
                 }
-                that.setData({
-                    isDown: true
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                wx.showToast({
+                    icon: 'warn',
+                    title: '加载失败',
                 })
+            } else {
+                this.setData({
+                    detail: res.result.data[0]
+                })
+
+                this.setData({
+                    title: this.data.detail.left.length > 8 ? "对联信息" : "上联:" + this.data.detail.left
+                })
+
+                wx.hideLoading()
+            }
+            that.setData({
+                isDown: true
             })
+        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -166,35 +158,30 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**

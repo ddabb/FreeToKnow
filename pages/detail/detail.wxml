@@ -40,11 +40,6 @@
   </view>
 </view>
 
-
-
-
-
-
 <view class='no-list' wx:if="{{!isExist}}" style='text-align:center;font-size:24rpx;padding:30rpx;'>
   <text style='color:#666;'>--- 未找到 ---</text>
 </view>

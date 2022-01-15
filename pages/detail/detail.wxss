@@ -92,7 +92,6 @@
   display: block;
 }
 
-
 .collect {
   height: 120rpx;
   width: 120rpx;
@@ -123,9 +122,3 @@
   width: 100%;
   opacity: 0.1;
 }
-
-
-
-
-
-

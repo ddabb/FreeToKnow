@@ -1,14 +1,14 @@
 Component({
-  properties: {
-    msg: Object
-  },
-  data: {
-  },
+    properties: {
+        msg: Object
+    },
+    data: {
+    },
 
-  lifetimes: {
-    ready: function() {
+    lifetimes: {
+        ready: function () {
+        }
+    },
+    methods: {
     }
-  },
-  methods: {
-  }
 });
