@@ -68,8 +68,6 @@
 
 /* =========================== game ====================  */
 .game {
-  margin-top: 15vh;
-  position: absolute;
   padding-top: 5vw;
   padding-left: 1vw;
   background: #bbada0;
@@ -170,6 +168,42 @@
   color: #f9f6f2;
   font-size: 25px;
   background: #edc22e;
+}
+
+.cell-con-4096 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #298034;
+}
+
+.cell-con-8192 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #1f4e75;
+}
+
+.cell-con-16384 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #e20623;
+}
+
+.cell-con-32768 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #02f30e;
+}
+
+.cell-con-65536 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #02f30e;
+}
+
+.cell-con-131072 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #02f30e;
 }
 
 .game-over {

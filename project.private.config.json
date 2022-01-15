@@ -29,6 +29,12 @@
           "pathName": "pages/log/log",
           "query": "",
           "scene": 1000
+        },
+        {
+          "name": "",
+          "pathName": "pages/game/2048/2048",
+          "query": "",
+          "scene": null
         }
       ]
     }

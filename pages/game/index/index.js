@@ -10,6 +10,12 @@ Page({
   onReady: function () {
     this.load();
   },
+
+  onShow: function () {
+    this.setData({
+      showArea: true
+    })
+  },
   load: function () {
     var n = 1;
     var timer = setInterval(() => {

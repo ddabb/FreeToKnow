@@ -21,8 +21,8 @@ Page({
   gameStart: function () { // 游戏开始
     var main = new Main(4);
     this.setData({
-      main: main,
-      bestScore: wx.getStorageSync('highScore')
+      endMsg: '',
+      main: main
     });
     this.data.main.__proto__ = main.__proto__;
 
@@ -45,7 +45,8 @@ Page({
       wx.setStorageSync('highScore', this.data.score);
     } else if (this.data.score > this.data.bestScore) {
       this.setData({
-        endMsg: '创造新纪录！'
+        endMsg: '创造新纪录！',
+        bestScore: this.data.score
       });
       wx.setStorageSync('highScore', this.data.score);
     } else {
@@ -79,7 +80,7 @@ Page({
     if (this.data.main.isOver()) { // 游戏是否结束
       this.gameOver();
     } else {
-      if (Math.max(absdisX, absdisY) > 10) { // 确定是否在滑动
+      if (Math.max(absdisX, absdisY) > 3) { // 减少触屏失效的错句
         this.setData({
           start: "重新开始",
         });
@@ -89,22 +90,60 @@ Page({
       }
     }
   },
+
+  /** 
+   * 更新最大分数 
+   * score 是页面上所有分数之和
+   */
   updateView(data) {
     var max = 0;
     for (var i = 0; i < 4; i++)
       for (var j = 0; j < 4; j++)
-        if (data[i][j] != "" && data[i][j] > max)
-          max = data[i][j];
+        if (data[i][j] != "")
+          max += data[i][j];
     this.setData({
       num: data,
       score: max
     });
+    if (max > this.data.bestScore) {
+      this.setData({
+        endMsg: '创造新纪录！',
+        bestScore: max
+      });
+    }
   },
   onShareAppMessage: function () {
+    this.setData({
+      showArea: false
+    })
     return {
-      title: '2048小游戏',
-      desc: '来试试你能达到多少分',
-      path: '/page/user?id=123'
+      title: `2048,我最好的成绩是${this.data.bestScore}分~`, //此处为标题,
+      path: `/pages/game/index/index`, //此处为路径,
+      // imageUrl: randomImg, //此处就是写的随机分享图片,
+      success: function (res) {
+        //这里为分享成功后的回调函数,
+      },
+      fail: function (res) {
+        //此处为转发失败后的回调函数
+      }
     }
-  }
+  },
+  onShow: function () {
+    this.setData({
+      showArea: true
+    })
+  },
+  onShareTimeline: function () {
+    util.ShareTimeline()
+  },
+  handlerGobackClick() {
+    util.handlerGobackClick(function (e) {
+      util.goSearch(e)
+    }, 1000)
+  },
+  handlerGohomeClick() {
+    util.handlerGohomeClick(function (e) {
+      util.goSearch(e)
+    }, 1000)
+  },
 })
