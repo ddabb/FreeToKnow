@@ -1,13 +1,8 @@
 <navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='2048排行榜' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" />
 <view class="cu-list menu">
-  <view class="cu-item" wx:for='{{list}}' wx:key='index' wx:if='{{item.p2028score>0}}'>
-    <view class="cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
-    <view class="content">
-      <text class="text-grey"></text>
-      <view class="cu-capsule round">
-        <view class='cu-tag bg-green '>{{item.nickName}}</view>
-        <view class="cu-tag line-green">{{item.p2028score}}</view>
-      </view>
-    </view>
+  <view class="cu-item " wx:for='{{list}}' wx:key='index' style="background-color:#faf8ee;">
+    <view class="padding-xxl cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+    <view class='padding-xs text-orange text-xl'>{{item.nickName}}</view>
+    <view class="text-red  text-xxl text-bold">{{item.p2028score}}</view>
   </view>
 </view>

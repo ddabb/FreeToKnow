@@ -32,7 +32,7 @@
   width: 25%;
   height: 100%;
   display: flex;
-  background-color: #DCDCDC;
+  background-color: #faf8ee;
   flex-direction: column;
   margin: 1px 0px 1px 1px;
 }
@@ -44,7 +44,7 @@
   text-align: center;
   display: table-cell;
   vertical-align: middle;
-  background-color: #DCDCDC
+  background-color: #faf8ee
 }
 
 .left .selectedClass {
