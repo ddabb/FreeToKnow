@@ -27,7 +27,8 @@
     "pages/log/log",
     "pages/poemlist/poemlist",
     "pages/poemdetail/poemdetail",
-    "pages/poetlist/poetlist"
+    "pages/poetlist/poetlist",
+    "pages/game/gameRank/gameRank"
   ],
   "window": {
     "backgroundTextStyle": "light",

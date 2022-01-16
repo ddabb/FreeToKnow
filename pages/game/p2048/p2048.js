@@ -154,6 +154,14 @@ Page({
       }
     }
   },
+
+  gameRank: function () {
+    this.updateDbScore();
+    wx.navigateTo({
+      url: `/pages/game/gameRank/gameRank`
+      //  url: '../logs/logs'
+    })
+  },
   onShow: function () {
     this.setData({
       showArea: true

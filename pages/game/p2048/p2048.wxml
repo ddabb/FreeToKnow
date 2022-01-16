@@ -31,5 +31,6 @@
     <!-- game over -->
     <view style="text-align:center;"><text class='nowScore'>历史最高分：{{bestScore}}</text> </view>
     <view style="text-align:center;"> <text class='pro'>{{endMsg}}</text></view>
+    <view style="text-align:center;"> <text class='nowScore' bindtap='gameRank'>排行榜</text></view>
   </view>
 </view>

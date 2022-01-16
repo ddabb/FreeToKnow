@@ -26,13 +26,13 @@
         },
         {
           "name": "",
-          "pathName": "pages/log/log",
+          "pathName": "pages/game/p2048/p2048",
           "query": "",
-          "scene": 1000
+          "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/game/p2048/p2048",
+          "pathName": "pages/game/gameRank/gameRank",
           "query": "",
           "scene": null
         }
