@@ -33,7 +33,14 @@ Board.prototype = {
     }
   },
   cellEmpty() { // 可用格子是否为空，为空返回true
-    return !this.usefulCell().length;
+    for (var i = 0; i < this.size; i++)
+      for (var j = 0; j < this.size; j++) {
+        if (this.grid[i][j] == "") { // 若可用则记录坐标
+          return false;
+        }
+      }
+
+    return true;
   }
 };
 

@@ -6,23 +6,32 @@ var util = require('../../../util.js')
 Page({
   data: {
     hidden: false,
-    start: "开始游戏",
-    num: [],
+    start: "开始",
+    num: [], //二维正方形
     score: 0,
     bestScore: 0, // 最高分
     endMsg: '',
+    cacheGrid: null, //缓存信息
     showArea: true,
     over: false // 游戏是否结束 
   },
   // 页面渲染完成
   onReady: function () {
-    if (app.globalData.userInfo && app.globalData.userInfo.p2028score) {
+    if (app.globalData.userInfo && app.globalData.userInfo.pscore) {
       this.setData({
-        bestScore: app.globalData.userInfo.p2028score
+        bestScore: app.globalData.userInfo.pscore
       });
     }
-
     this.gameStart();
+    if (app.globalData.userInfo && app.globalData.userInfo.psharp) {
+      this.setData({
+        start: "重玩",
+        hidden: true,
+        cacheGrid: app.globalData.userInfo.psharp
+      });
+      this.data.main.board.grid = app.globalData.userInfo.psharp;
+      this.updateView(app.globalData.userInfo.psharp)
+    }
   },
   gameStart: function () { // 游戏开始
     this.updateDbScore();
@@ -45,12 +54,7 @@ Page({
       over: true
     });
 
-    if (this.data.score >= 2048) {
-      this.setData({
-        endMsg: '恭喜达到2048！'
-      });
-      wx.setStorageSync('highScore', this.data.score);
-    } else if (this.data.score > this.data.bestScore) {
+    if (this.data.score > this.data.bestScore) {
       this.setData({
         endMsg: '创造新纪录！',
         bestScore: this.data.score
@@ -58,7 +62,9 @@ Page({
       wx.setStorageSync('highScore', this.data.score);
     } else {
       this.setData({
-        endMsg: '游戏结束！'
+        start: "开始",
+        endMsg: '游戏结束！',
+        cacheGrid: null
       });
     }
   },
@@ -68,53 +74,105 @@ Page({
   touchEndX: 0,
   touchEndY: 0,
   touchStart: function (ev) { // 触摸开始坐标
+
     var touch = ev.touches[0];
     this.touchStartX = touch.clientX;
+    console.log("  this.touchStartX" + this.touchStartX)
     this.touchStartY = touch.clientY;
+    console.log("  this.touchStartY" + this.touchStartY)
 
   },
+
+  touchEnd: function (ev) {
+    var touch = ev.changedTouches[0];
+
+
+    this.touchEndX = touch.clientX;
+    console.log("  this.touchEndX" + this.touchEndX)
+    this.touchEndY = touch.clientY;
+    console.log("  this.touchEndY" + this.touchEndY)
+    console.log("touchEnd")
+    var disX = this.touchStartX - this.touchEndX;
+    var absdisX = Math.abs(disX);
+    console.log(" disX" + disX)
+    var disY = this.touchStartY - this.touchEndY;
+    var absdisY = Math.abs(disY);
+    console.log(" disY" + disY)
+    if (this.data.main.isOver()) { // 游戏是否结束
+      this.gameOver();
+    } else {
+      let dis = Math.max(absdisX, absdisY);
+      console.log("dis" + dis)
+      if (dis > 3) { // 减少触屏失效的错句
+        var direction = absdisX > absdisY ? (disX < 0 ? 1 : 3) : (disY < 0 ? 2 : 0); // 确定移动方向
+        let cacheGrid = this.data.main.board.grid;
+        this.setData({
+          start: "重置",
+          cacheGrid: cacheGrid
+        });
+        var data = this.data.main.move(direction);
+        this.updateView(data);
+        app.globalData.userInfo.psharp = this.data.main.board.grid; //保存最新的棋盘信息
+      }
+    }
+  },
+
   updateDbScore: function (e) {
-    if (app.globalData.userInfo) {
-      let historyScore = app.globalData.userInfo.p2028score; //历史最高的2048的分数
+    let {
+      cacheGrid
+    } = this.data;
+    if (app.globalData.userInfo && cacheGrid != null) {
+      let historyScore = app.globalData.userInfo.pscore; //历史最高的2048的分数
       if (this.data.bestScore != 0 && (typeof historyScore == "undefined" || this.data.bestScore > historyScore)) {
         let bestScore = this.data.bestScore;
-        app.globalData.userInfo.p2028score = this.data.bestScore;
+        app.globalData.userInfo.pscore = this.data.bestScore;
         wx.cloud.callFunction({
           name: 'collection_update',
           data: {
             database: "user",
             id: app.globalData.userInfo._id,
             values: {
-              p2028score: bestScore
+              pscore: bestScore,
+              psharp: this.data.main.board.grid
             }
           }
         })
       }
     }
   },
-  touchMove: function (ev) { // 触摸最后移动时的坐标
-    var touch = ev.touches[0];
-    this.touchEndX = touch.clientX;
-    this.touchEndY = touch.clientY;
-  },
-  touchEnd: function () {
-    var disX = this.touchStartX - this.touchEndX;
-    var absdisX = Math.abs(disX);
-    var disY = this.touchStartY - this.touchEndY;
-    var absdisY = Math.abs(disY);
 
-    if (this.data.main.isOver()) { // 游戏是否结束
-      this.gameOver();
-    } else {
-      if (Math.max(absdisX, absdisY) > 3) { // 减少触屏失效的错句
-        this.setData({
-          start: "重新开始",
-        });
-        var direction = absdisX > absdisY ? (disX < 0 ? 1 : 3) : (disY < 0 ? 2 : 0); // 确定移动方向
-        var data = this.data.main.move(direction);
-        this.updateView(data);
-      }
+  redo() {
+    let {
+      cacheGrid
+    } = this.data;
+    if (cacheGrid != null) {
+      app.globalData.userInfo.psharp = cacheGrid;
+      this.updateView(cacheGrid)
     }
+  },
+  //将形状缓存起来
+  save() {
+    let {
+      cacheGrid
+    } = this.data;
+    if (cacheGrid != null) {
+      wx.cloud.callFunction({
+        name: 'collection_update',
+        data: {
+          database: "user",
+          id: app.globalData.userInfo._id,
+          values: {
+            psharp: this.data.main.board.grid
+          }
+        }
+      }).then(wx.showToast({
+        icon: 'success',
+        title: '保存成功',
+      }))
+
+
+    }
+
   },
 
   /** 
@@ -123,10 +181,13 @@ Page({
    */
   updateView(data) {
     var max = 0;
+
     for (var i = 0; i < 4; i++)
-      for (var j = 0; j < 4; j++)
-        if (data[i][j] != "")
+      for (var j = 0; j < 4; j++) {
+        if (data[i][j] != "") {
           max += data[i][j];
+        }
+      }
     this.setData({
       num: data,
       score: max
@@ -143,7 +204,7 @@ Page({
       showArea: false
     })
     return {
-      title: `2048,我最好的成绩是${this.data.bestScore}分~`, //此处为标题,
+      title: `数字消消乐,我最好的成绩是${this.data.bestScore}分~`, //此处为标题,
       path: `/pages/game/index/index`, //此处为路径,
       // imageUrl: randomImg, //此处就是写的随机分享图片,
       success: function (res) {

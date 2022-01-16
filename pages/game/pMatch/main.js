@@ -10,6 +10,7 @@ Main.prototype = {
   init() { // 填充数据
     this.board = new Board(this.size);
     this.bproto = this.board.__proto__;
+    this.emptyCount = 0;
     this.setDataRandom(); // 随机填充 
     this.startData = 1;
   },
@@ -93,11 +94,16 @@ Main.prototype = {
     for (var i = 0; i < list.length; i++) // 数字靠边
       list[i] = this.changeItem(list[i]);
 
+    this.emptyCount = 0;
     for (var i = 0; i < this.size; i++) {
       for (var j = 1; j < this.size; j++) {
-        if (list[i][j - 1] == list[i][j] && list[i][j] != "") {
-          list[i][j - 1] += list[i][j];
-          list[i][j] = "";
+        if (list[i][j - 1] == list[i][j]) {
+          if (list[i][j] != "") {
+            list[i][j - 1] += list[i][j];
+            list[i][j] = "";
+          } else {
+            this.emptyCount += 2;
+          }
         }
       }
     }
@@ -117,7 +123,7 @@ Main.prototype = {
   },
   isOver() { // 游戏是否结束，结束条件：可用格子为空且所有格子上下左右值不等
     this.board.__proto__ = this.bproto;
-    if (!this.board.cellEmpty()) {
+    if (this.emptyCount >= 4 || !this.board.cellEmpty()) {
       return false;
     } else {
       for (var i = 0; i < this.size; i++) // 左右不等

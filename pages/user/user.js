@@ -97,10 +97,18 @@ Page({
     },
 
 
-    go2048() {
-        wx.navigateTo({
-            url: `/pages/game/index/index`
-        })
+    goMatchGame() {
+        if (!app.globalData.isLogin) {
+            wx.showToast({
+                icon: 'warn',
+                title: '请您先登录',
+            })
+        } else {
+            wx.navigateTo({
+                url: `/pages/game/index/index`
+            })
+        }
+
     },
     goLog() {
         wx.navigateTo({

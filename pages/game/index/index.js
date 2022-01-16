@@ -22,7 +22,7 @@ Page({
       if (n == 6) {
         clearInterval(timer);
         wx.redirectTo({
-          url: '../p2048/p2048'
+          url: '../pMatch/pMatch'
         })
       }
       this.setData({

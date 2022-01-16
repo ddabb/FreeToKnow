@@ -18,7 +18,7 @@ Page({
     showArea: true,
     color: 'red',
     othercolor: 'gray',
-    field: 'p2028score',
+    field: 'pscore',
     order: 'desc'
   },
   /**
@@ -55,8 +55,8 @@ Page({
         let over = res.result.data.length < num
         let result = [];
         res_data.forEach(element => {
-          if (element.p2028score > 0) {
-            element.avatarUrl = element.avatarUrl > "" ? element.avatarUrl : '../img/logo.png'; //处理用于从来没有授权过头像
+          if (element.pscore > 0) {
+            element.avatarUrl = element.avatarUrl > "" ? element.avatarUrl : '../../../images/game.png'; //处理用于从来没有授权过头像
             var reg = /1(\d{2})\d{4}(\d{4})/g;
             element.nickName = element.nickName > "" ? element.nickName : '无名氏';
             element.nickName = element.nickName.replace(reg, "1$1****$2"); //屏蔽昵称中的手机号码
