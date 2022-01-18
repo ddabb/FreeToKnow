@@ -34,7 +34,7 @@ Main.prototype = {
     // 0:上, 1:右, 2:下, 3:左
     var curList = this.formList(dir);
 
-    var list = this.combine(curList);
+    var list = this.combine1(curList);
     var result = [
       [],
       [],
@@ -90,37 +90,128 @@ Main.prototype = {
       }
     return list;
   },
-  combine(list) { // 滑动时相同的合并
+  combine1(list) {
     for (var i = 0; i < list.length; i++) // 数字靠边
-      list[i] = this.changeItem(list[i]);
-
-    this.emptyCount = 0;
-    for (var i = 0; i < this.size; i++) {
-      for (var j = 1; j < this.size; j++) {
-        if (list[i][j - 1] == list[i][j]) {
-          if (list[i][j] != "") {
-            list[i][j - 1] += list[i][j];
-            list[i][j] = "";
-          } else {
-            this.emptyCount += 2;
-          }
-        }
-      }
-    }
-    for (var i = 0; i < list.length; i++) // 再次数字靠边
-      list[i] = this.changeItem(list[i]);
-
+      list[i] = this.changeItem1(list[i]);
     return list;
+
   },
-  changeItem(item) { // 将 ['', 2, '', 2] 改为 [2, 2, '', '']
-    var cnt = 0;
-    for (var i = 0; i < item.length; i++)
-      if (item[i] != '')
-        item[cnt++] = item[i];
-    for (var j = cnt; j < item.length; j++)
-      item[j] = "";
+
+
+
+
+  changeItem1(item) { // 将 ['', 2, '', 2] 改为 [2, 2, '', '']
+    let a = item[0];
+    let b = item[1];
+    let c = item[2];
+    let d = item[3];
+    if (a != "" && b != "" && c != "" && d != "" && a != b && b != c && c != d) {
+      console.log(" 3，6，12，!12👉3，6，12，!12");
+      return [a, b, c, d];
+    } else if (a == "" && b == "" && c == "" && d != "") {
+      console.log(" 0，0，0，3👉3，0，0，0");
+      return [d, "", "", ""];
+    } else if (a == "" && b == "" && c == d && d != "") {
+      console.log("0，0，3，3👉6，0，0，0");
+      return [c * 2, "", "", ""];
+    } else if (a == "" && b == c && c == d && d != "") {
+      console.log("0，3，3，3👉6，3，0，0");
+      return [d * 2, d, "", ""];
+    } else if (a == "" && a == c && b == d && d != "") {
+      console.log("0，3，0，3👉6，0，0，0");
+      return [d * 2, "", "", ""];
+    } else if (a == b && b == c && c == d && d != "") {
+      console.log(" 3， 3， 3， 3👉 6， 6， 0， 0");
+      return [d * 2, d * 2, "", ""];
+    } else if (a == b && b == c && a != "" && d == "") {
+      console.log(" 3， 3， 3， 0👉 6， 3， 0， 0");
+      return [a * 2, a, "", ""];
+    } else if (a == b && a != "" && c == "") {
+      console.log(" 3， 3， 0， 3👉 6， 3， 0， 0");
+      return [a * 2, d, "", ""];
+    } else if (a == b && c == d && a != "" && c == "") {
+      console.log(" 3， 3， 0， 0👉 6， 0， 0， 0");
+      return [a * 2, "", "", ""];
+    } else if (a == c && b == d && a != "" && b == "") {
+      console.log("3， 0， 3， 0👉 6， 0， 0， 0");
+      return [a * 2, "", "", ""];
+    } else if (a != c && b == d && a != "" && c != "" && b == "") {
+      console.log("3， 0， 6， 0👉 3， 6， 0， 0");
+      return [a, c, "", ""];
+    } else if (a != c && c == d && a != "" && c != "" && b == "") {
+      console.log("3， 0， 6， 6👉 3， 12， 0， 0");
+      return [a, c * 2, "", ""];
+    } else if (a != c && c != d && a != "" && c != "" && d != "" && b == "") {
+      console.log("3， 0， 6， 12👉 3， 6， 12， 0");
+      return [a, c, d, ""];
+    } else if (a == d && a == "" && b == c && b != "") {
+      console.log("0， 3， 3， 0👉 6， 0， 0， 0");
+      return [b * 2, "", "", ""];
+    } else if (a == "" && a != b && b != c && c != d) {
+      console.log("0， 3， 6， 12👉 3， 6， 12， 0");
+      return [b, c, d, ""];
+    } else if (a != b && b != d && c == "" && a != "" && b != "" && d != "") {
+      console.log("3， 6， 0， 12👉 3， 6， 12， 0");
+      return [a, b, d, ""];
+    } else if (a == d && a == "" && b != c && b != "" && c != "") {
+      console.log("0， 3， 6， 0👉 3， 6， 0， 0");
+      return [b, c, "", ""];
+    } else if (a == c && a == "" && b != d && b != "" && d != "") {
+      console.log(" 0， 3， 0， 6👉 3， 6， 0， 0");
+      return [b, d, "", ""];
+    } else if (a == b && a == "" && c != d && c != "" && d != "") {
+      console.log("0， 0， 3， 6👉 3， 6， 0， 0");
+      return [c, d, "", ""];
+    } else if (a == b && a == "" && a == d && c != "") {
+      console.log("0， 0， 3， 0👉 3， 0， 0， 0");
+      return [c, "", "", ""];
+    } else if (a == "" && b == c && b != a) {
+      console.log(" 0， 6， 6， 3👉 12， 3， 0， 0");
+      return [b * 2, d, "", ""];
+    } else if (a == b && b == c && a != d && a != "") {
+      console.log("6， 6， 6， 3👉 12， 6， 3， 0");
+      return [a * 2, c, d, ""];
+    } else if (a == b && c == d && a != "" && c != "") {
+      console.log("6， 6， 3， 3👉 12， 6， 0， 0");
+      return [a * 2, c * 2, "", ""];
+    } else if (a != "" && a != b && b == c && b != "") {
+      console.log("12， 3， 3， 6👉 12， 6， 6， 0");
+      return [a, b * 2, d, ""];
+    } else if (a != "" && b != "" && c != "" && a != b && b != c && c == d) {
+      console.log("12， 6， 3， 3👉 12， 6， 6， 0");
+      return [a, b, c * 2, ""];
+    } else if (a == c && c == d && a != b && a == "") {
+      console.log("0，3，0，0👉3，0，0，0");
+      return [b, "", "", ""];
+    } else if (a == b && b == d && a != c && a == "") {
+      console.log("0， 0， 3， 0👉 3， 0， 0， 0");
+      return [c, "", "", ""];
+    } else if (a == d && b == c && a != "" && c == "") {
+      console.log("3， 0， 0， 3👉 6， 0， 0， 0");
+      return [a * 2, "", "", ""];
+    } else if (a != "" && a != b && b == d && c == "" && b != "") {
+      console.log("6， 3， 0， 3👉 6， 6， 0， 0");
+      return [a, b * 2, "", ""];
+    } else if (a != "" && a != d && d != "" && b == "" && c == "") {
+      console.log("6， 0， 0， 3👉 6， 3， 0， 0");
+      return [a, d, "", ""];
+    } else if (a != "" && a == b && b != c && c != "" && c != d) {
+      console.log("6， 6， 3， 6👉 12， 3， 6， 0");
+      return [a * 2, c, d, ""];
+    } else if (a == c && a != "" && b == "") {
+      console.log("3， 0， 3， 3👉 6， 3， 0， 0");
+      return [a * 2, d, "", ""];
+    } else if (a == b && a != "" && c != "" && d == "") {
+      console.log("3， 3， 6， 0👉 6， 6， 0， 0");
+      return [a * 2, c, "", ""];
+    } else if (a == "" && b != "" && c != "" && c == d && b != c) {
+      console.log("0， 3， 6， 6👉 3， 12， 0， 0");
+      return [b, c * 2, "", ""];
+    }
     return item;
   },
+
+
   isOver() { // 游戏是否结束，结束条件：可用格子为空且所有格子上下左右值不等
     this.board.__proto__ = this.bproto;
     if (this.emptyCount >= 4 || !this.board.cellEmpty()) {
