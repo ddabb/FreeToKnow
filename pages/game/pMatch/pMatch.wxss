@@ -111,95 +111,95 @@
   border-radius: 5px;
 }
 
-.cell-con-2 {
+.cell-con-3 {
   background: #eee4da;
 }
 
-.cell-con-4 {
+.cell-con-6 {
   background: #ede0c8;
 }
 
-.cell-con-8 {
+.cell-con-12 {
   color: #f9f6f2;
   background: #f2b179;
 }
 
-.cell-con-16 {
+.cell-con-24 {
   color: #f9f6f2;
   background: #f59563;
 }
 
-.cell-con-32 {
+.cell-con-48 {
   color: #f9f6f2;
   background: #f67c5f;
 }
 
-.cell-con-64 {
+.cell-con-96 {
   color: #f9f6f2;
   background: #f65e3b;
 }
 
-.cell-con-128 {
+.cell-con-192 {
   color: #f9f6f2;
   background: #edcf72;
   font-size: 30px;
 }
 
-.cell-con-256 {
+.cell-con-384 {
   color: #f9f6f2;
   font-size: 30px;
   background: #edcc61;
 }
 
-.cell-con-512 {
+.cell-con-768 {
   color: #f9f6f2;
   font-size: 30px;
   background: #edc850;
 }
 
-.cell-con-1024 {
+.cell-con-1536 {
   color: #f9f6f2;
   font-size: 25px;
   background: #edc53f;
 }
 
-.cell-con-2048 {
+.cell-con-3072 {
   color: #f9f6f2;
   font-size: 25px;
   background: #edc22e;
 }
 
-.cell-con-4096 {
+.cell-con-6144 {
   color: #f9f6f2;
   font-size: 25px;
   background: #298034;
 }
 
-.cell-con-8192 {
+.cell-con-12288 {
   color: #f9f6f2;
   font-size: 25px;
   background: #1f4e75;
 }
 
-.cell-con-16384 {
+.cell-con-24576 {
   color: #f9f6f2;
   font-size: 25px;
   background: #e20623;
 }
 
-.cell-con-32768 {
+.cell-con-49152 {
   color: #f9f6f2;
   font-size: 25px;
   background: #02f30e;
 }
 
-.cell-con-65536 {
+.cell-con-98304 {
   color: #f9f6f2;
   font-size: 25px;
   background: #02f30e;
 }
 
-.cell-con-131072 {
+.cell-con-196608 {
   color: #f9f6f2;
   font-size: 25px;
   background: #02f30e;

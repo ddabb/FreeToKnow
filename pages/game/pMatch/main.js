@@ -21,7 +21,7 @@ Main.prototype = {
   },
   addRandomData() { //填充数据
     if (!this.board.cellEmpty()) {
-      var value = Math.random() < 0.9 ? 2 : 4;
+      var value = Math.random() < 0.9 ? 3 : 6;
       var cell = this.board.selectCell();
       cell.val = value;
       this.update(cell);
