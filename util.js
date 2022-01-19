@@ -1,3 +1,4 @@
+const app = getApp()
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -23,6 +24,59 @@ const goKnowledgeDetail = e => {
       })
     })
     .catch(console.error)
+}
+const getOrCreateUserInfo = e => {
+  wx.cloud.callFunction({
+    name: 'login',
+    data: {},
+    success: res => {
+      if (res.result) {
+        console.log('[云函数] [login] user openid: ', res.result.OPENID)
+        app.globalData.openid = res.result.OPENID
+        wx.cloud.callFunction({
+            name: 'collection_get',
+            data: {
+              database: 'user',
+              page: 1,
+              num: 1,
+              condition: {
+                openid: app.globalData.openid
+
+              }
+            },
+          }).then(res => {
+            if (!res.result.data.length) {
+              wx.cloud.callFunction({
+                name: 'collection_add',
+                data: {
+                  database: 'user',
+                  record: {
+                    openid: app.globalData.openid,
+                    avatarUrl: '../../images/game.png'
+                  }
+                },
+              }).then(res => {
+                app.globalData.userInfo._id = res.result._id; //给内存中的用户id赋值。
+                app.globalData.userInfo.openid = app.globalData.openid;
+                app.globalData.userInfo.avatarUrl = '../../images/game.png';
+                console.log("新增用户" + res)
+              })
+            } else {
+              let res_data = res.result.data[0]
+              app.globalData.userInfo = res_data
+              app.globalData.isLogin = true
+
+            }
+          })
+          .catch(console.error)
+
+      }
+
+    },
+    fail: err => {
+      console.error('[云函数] [login] 调用失败', err)
+    }
+  })
 }
 
 const goPostDetailByAddr = e => {
@@ -332,5 +386,6 @@ module.exports = {
   goPdfDetail: goPdfDetail,
   goBackHome: goBackHome,
   handlerGohomeClick: handlerGohomeClick,
-  handlerGobackClick: handlerGobackClick
+  handlerGobackClick: handlerGobackClick,
+  getOrCreateUserInfo: getOrCreateUserInfo
 }

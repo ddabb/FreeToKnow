@@ -6,10 +6,10 @@ Page({
      */
     data: {
         userInfo: {},
-        avatarUrl: "./user-unlogin.png",
+        avatarUrl: "./../../images/game.png",
         openid: "",
         logged: false,
-        nickname: "",
+        nickName: "",
         place: "",
     },
 
@@ -108,7 +108,7 @@ Page({
                             gender: userInfo.gender,
                             language: userInfo.language,
                             province: userInfo.province,
-                            nickname: userInfo.nickName,
+                            nickName: userInfo.nickName,
                         }
                     }
                 })

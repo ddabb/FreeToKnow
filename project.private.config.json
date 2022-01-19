@@ -26,9 +26,9 @@
         },
         {
           "name": "",
-          "pathName": "pages/game/pMatch/pMatch",
+          "pathName": "pages/pMatch/pMatch",
           "query": "",
-          "scene": null
+          "scene": 1007
         },
         {
           "name": "",

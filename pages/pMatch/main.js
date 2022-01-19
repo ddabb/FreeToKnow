@@ -105,7 +105,13 @@ Main.prototype = {
     let b = item[1];
     let c = item[2];
     let d = item[3];
-    if (a != "" && b != "" && c != "" && d != "" && a != b && b != c && c != d) {
+    if (b == "" && c == "" && d == "") {
+      console.log(" any，0，0，0👉any，0，0，0");
+      return [a, b, c, d];
+    } else if (a != "" && b != "" && a != b && c == "" && d == "") {
+      console.log(" 3，!3，0，0👉3，!3，0，0");
+      return [a, b, c, d];
+    } else if (a != "" && b != "" && c != "" && a != b && b != c && c != d) {
       console.log(" 3，6，12，!12👉3，6，12，!12");
       return [a, b, c, d];
     } else if (a == "" && b == "" && c == "" && d != "") {
@@ -114,20 +120,17 @@ Main.prototype = {
     } else if (a == "" && b == "" && c == d && d != "") {
       console.log("0，0，3，3👉6，0，0，0");
       return [c * 2, "", "", ""];
-    } else if (a == "" && b == c && c == d && d != "") {
-      console.log("0，3，3，3👉6，3，0，0");
-      return [d * 2, d, "", ""];
     } else if (a == "" && a == c && b == d && d != "") {
       console.log("0，3，0，3👉6，0，0，0");
-      return [d * 2, "", "", ""];
-    } else if (a == b && b == c && c == d && d != "") {
-      console.log(" 3， 3， 3， 3👉 6， 6， 0， 0");
-      return [d * 2, d * 2, "", ""];
-    } else if (a == b && b == c && a != "" && d == "") {
-      console.log(" 3， 3， 3， 0👉 6， 3， 0， 0");
-      return [a * 2, a, "", ""];
+      return [b * 2, "", "", ""];
+    } else if (a == b && a != "" && c != "" && c == d) {
+      console.log(" 3， 3， 6， 6👉 6， 12， 0， 0");
+      return [a * 2, c * 2, "", ""];
     } else if (a == b && a != "" && c == "") {
-      console.log(" 3， 3， 0， 3👉 6， 3， 0， 0");
+      console.log(" 3， 3， 0， any👉 6， any， 0， 0");
+      return [a * 2, d, "", ""];
+    } else if (a == c && a != "" && b == "") {
+      console.log("3， 0， 3， any👉 6， any， 0， 0");
       return [a * 2, d, "", ""];
     } else if (a == b && c == d && a != "" && c == "") {
       console.log(" 3， 3， 0， 0👉 6， 0， 0， 0");
@@ -144,18 +147,15 @@ Main.prototype = {
     } else if (a != c && c != d && a != "" && c != "" && d != "" && b == "") {
       console.log("3， 0， 6， 12👉 3， 6， 12， 0");
       return [a, c, d, ""];
-    } else if (a == d && a == "" && b == c && b != "") {
-      console.log("0， 3， 3， 0👉 6， 0， 0， 0");
-      return [b * 2, "", "", ""];
     } else if (a == "" && a != b && b != c && c != d) {
       console.log("0， 3， 6， 12👉 3， 6， 12， 0");
       return [b, c, d, ""];
     } else if (a != b && b != d && c == "" && a != "" && b != "" && d != "") {
       console.log("3， 6， 0， 12👉 3， 6， 12， 0");
       return [a, b, d, ""];
-    } else if (a == d && a == "" && b != c && b != "" && c != "") {
-      console.log("0， 3， 6， 0👉 3， 6， 0， 0");
-      return [b, c, "", ""];
+    } else if (a == "" && b != c && b != "" && c != "" && c != d) {
+      console.log("0， 3， 6， !6👉 3， 6，!6， 0");
+      return [b, c, d, ""];
     } else if (a == c && a == "" && b != d && b != "" && d != "") {
       console.log(" 0， 3， 0， 6👉 3， 6， 0， 0");
       return [b, d, "", ""];
@@ -166,16 +166,16 @@ Main.prototype = {
       console.log("0， 0， 3， 0👉 3， 0， 0， 0");
       return [c, "", "", ""];
     } else if (a == "" && b == c && b != a) {
-      console.log(" 0， 6， 6， 3👉 12， 3， 0， 0");
+      console.log(" 0， 6， 6， any👉 12， any， 0， 0");
       return [b * 2, d, "", ""];
-    } else if (a == b && b == c && a != d && a != "") {
-      console.log("6， 6， 6， 3👉 12， 6， 3， 0");
+    } else if (a != "" && a == b && c != "" && c != d) {
+      console.log("6， 6， 6， !6👉 12， 6， !6， 0");
       return [a * 2, c, d, ""];
     } else if (a == b && c == d && a != "" && c != "") {
       console.log("6， 6， 3， 3👉 12， 6， 0， 0");
       return [a * 2, c * 2, "", ""];
     } else if (a != "" && a != b && b == c && b != "") {
-      console.log("12， 3， 3， 6👉 12， 6， 6， 0");
+      console.log("12， 3， 3， any👉 12， 6， any， 0");
       return [a, b * 2, d, ""];
     } else if (a != "" && b != "" && c != "" && a != b && b != c && c == d) {
       console.log("12， 6， 3， 3👉 12， 6， 6， 0");
@@ -195,18 +195,11 @@ Main.prototype = {
     } else if (a != "" && a != d && d != "" && b == "" && c == "") {
       console.log("6， 0， 0， 3👉 6， 3， 0， 0");
       return [a, d, "", ""];
-    } else if (a != "" && a == b && b != c && c != "" && c != d) {
-      console.log("6， 6， 3， 6👉 12， 3， 6， 0");
-      return [a * 2, c, d, ""];
-    } else if (a == c && a != "" && b == "") {
-      console.log("3， 0， 3， 3👉 6， 3， 0， 0");
-      return [a * 2, d, "", ""];
-    } else if (a == b && a != "" && c != "" && d == "") {
-      console.log("3， 3， 6， 0👉 6， 6， 0， 0");
-      return [a * 2, c, "", ""];
     } else if (a == "" && b != "" && c != "" && c == d && b != c) {
       console.log("0， 3， 6， 6👉 3， 12， 0， 0");
       return [b, c * 2, "", ""];
+    } else {
+      console.log("没有处理的情况" + "a" + a + "b" + b + "c" + c + "d" + d)
     }
     return item;
   },

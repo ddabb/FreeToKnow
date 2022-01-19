@@ -7,7 +7,7 @@ Page({
      */
     data: {
         userInfo: {},
-        avatarUrl: "./user-unlogin.png",
+        avatarUrl: "./../../images/game.png",
         openid: "",
         logged: false,
         hasImg: false, //是否有头像信息
@@ -32,7 +32,7 @@ Page({
         });
 
         if (app.globalData.isLogin) {
-            let imgurl = app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : './user-unlogin.png'
+            let imgurl = app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : '../../images/game.png'
             this.setData({
                 logged: true,
                 avatarUrl: imgurl,
@@ -78,7 +78,6 @@ Page({
 
             console.log("this.data.avatarUrl" + this.data.avatarUrl)
             console.log("this.data.username" + this.data.username)
-
             wx.setStorageSync("isLogin", this.data.logged);
             wx.setStorageSync("avatarUrl", this.data.avatarUrl);
             wx.setStorageSync("username", this.data.username);
@@ -105,7 +104,7 @@ Page({
             })
         } else {
             wx.navigateTo({
-                url: `/pages/game/index/index`
+                url: `/pages/pMatch/pMatch`
             })
         }
 
@@ -187,7 +186,7 @@ Page({
                 imgurl = app.globalData.userInfo.avatarUrl;
                 needReset = false;
             } else {
-                imgurl = './user-unlogin.png'
+                imgurl = '../../images/game.png'
                 needReset = true;
             }
             this.setData({

@@ -3,11 +3,11 @@
 <view class='user'>
   <view class='name'>
     <image src='{{avatarUrl}}'></image>
-    <button id="userinfo-nickname" wx:if="{{!logged}}" bindtap="onGetUserInfo" size="mini">
+    <button id="userinfo-nickName" wx:if="{{!logged}}" bindtap="onGetUserInfo" size="mini">
       点此登录
     </button>
     <text>{{username}}</text>
-    <button id="userinfo-nickname" wx:if="{{logged&&showArea}}" bindtap="ResetImg" size="mini">
+    <button id="userinfo-nickName" wx:if="{{logged&&showArea}}" bindtap="ResetImg" size="mini">
       更新昵称和头像
     </button>
   </view>

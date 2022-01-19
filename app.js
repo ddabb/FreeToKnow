@@ -6,7 +6,7 @@ var plugin = requirePlugin("myPlugin");
 App({
     towxml: require('/towxml/index'),
     globalData: {
-        userInfo: null,
+        userInfo: {},
         navBarHeight: 0,
         menuRight: 0,
         menuBotton: 0,
@@ -16,13 +16,13 @@ App({
         height: 0,
         isLogin: false,
         menuPlaceholder: "内容",
-        CloudPathRoot: '',//云空间存储的地址
-        hexosite:'', //hexosite的地址
+        CloudPathRoot: '', //云空间存储的地址
+        hexosite: '', //hexosite的地址
     },
     onLaunch: async function (options) {
         Page = page;
         // 判断是否由分享进入小程序
-        if (options.scene == 1007 || options.scene == 1008) {
+        if (options.scene == 1007 || options.scene == 1008 || options.scene == 1037) {
             this.globalData.share = true
         } else {
             this.globalData.share = false

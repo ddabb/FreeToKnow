@@ -2,7 +2,7 @@ var Board = require("./grid.js");
 var Main = require("./main.js");
 //获取应用实例
 const app = getApp()
-var util = require('../../../util.js')
+var util = require('../../util.js')
 Page({
   data: {
     hidden: false,
@@ -13,10 +13,26 @@ Page({
     endMsg: '',
     cacheGrid: null, //缓存信息
     showArea: true,
+    scene: "",
     over: false // 游戏是否结束 
   },
+
+  onLoad: function (e) {
+    if (app.globalData.share) {
+      this.setData({
+        scene: "分享进入"
+      })
+      util.getOrCreateUserInfo();
+    } else {
+      let scenne = wx.getLaunchOptionsSync().scene;
+      this.setData({
+        scene: scenne
+      })
+    }
+  },
   // 页面渲染完成
-  onReady: function () {
+  onReady: function (e) {
+
     if (app.globalData.userInfo && app.globalData.userInfo.pscore) {
       this.setData({
         bestScore: app.globalData.userInfo.pscore
@@ -61,6 +77,7 @@ Page({
       });
       wx.setStorageSync('highScore', this.data.score);
     } else {
+      this.updateDbScore(); //游戏结束，保存历史最高分
       this.setData({
         start: "开始",
         endMsg: '游戏结束！',
@@ -85,8 +102,6 @@ Page({
 
   touchEnd: function (ev) {
     var touch = ev.changedTouches[0];
-
-
     this.touchEndX = touch.clientX;
     console.log("  this.touchEndX" + this.touchEndX)
     this.touchEndY = touch.clientY;
@@ -205,7 +220,7 @@ Page({
     })
     return {
       title: `数字消消乐,我最好的成绩是${this.data.bestScore}分~`, //此处为标题,
-      path: `/pages/game/index/index`, //此处为路径,
+      path: `/pages/pMatch/pMatch`, //此处为路径,
       // imageUrl: randomImg, //此处就是写的随机分享图片,
       success: function (res) {
         //这里为分享成功后的回调函数,
@@ -219,7 +234,7 @@ Page({
   gameRank: function () {
     this.updateDbScore();
     wx.navigateTo({
-      url: `/pages/game/gameRank/gameRank`
+      url: `/pages/gameRank/gameRank`
       //  url: '../logs/logs'
     })
   },

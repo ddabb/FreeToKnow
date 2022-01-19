@@ -22,7 +22,7 @@
   animation: avator linear 16s infinite normal;
 }
 
-#userinfo-nickname {
+#userinfo-nickName {
   margin-top: 40rpx;
   font-size: 28rpx;
   background: #f38787;

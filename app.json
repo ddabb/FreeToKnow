@@ -28,7 +28,8 @@
     "pages/poemlist/poemlist",
     "pages/poemdetail/poemdetail",
     "pages/poetlist/poetlist",
-    "pages/game/gameRank/gameRank"
+    "pages/gameRank/gameRank",
+    "pages/pMatch/pMatch"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -74,7 +75,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.2.26",
+      "version": "1.2.28",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {
