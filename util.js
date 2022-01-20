@@ -25,7 +25,8 @@ const goKnowledgeDetail = e => {
     })
     .catch(console.error)
 }
-const getOrCreateUserInfo = e => {
+
+function getOrCreateUserInfo(callback) {
   wx.cloud.callFunction({
     name: 'login',
     data: {},
@@ -60,12 +61,13 @@ const getOrCreateUserInfo = e => {
                 app.globalData.userInfo.openid = app.globalData.openid;
                 app.globalData.userInfo.avatarUrl = '../../images/game.png';
                 console.log("新增用户" + res)
+                callback();
               })
             } else {
               let res_data = res.result.data[0]
               app.globalData.userInfo = res_data
               app.globalData.isLogin = true
-
+              callback();
             }
           })
           .catch(console.error)

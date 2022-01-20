@@ -17,22 +17,21 @@ Page({
     over: false // 游戏是否结束 
   },
 
-  onLoad: function (e) {
+
+  // 页面渲染完成
+  onReady: function (e) {
     if (app.globalData.share) {
       this.setData({
         scene: "分享进入"
       })
-      util.getOrCreateUserInfo();
+      util.getOrCreateUserInfo(this.InitMethod);
     } else {
-      let scenne = wx.getLaunchOptionsSync().scene;
-      this.setData({
-        scene: scenne
-      })
+      this.InitMethod();
     }
-  },
-  // 页面渲染完成
-  onReady: function (e) {
 
+  },
+
+  InitMethod: function () {
     if (app.globalData.userInfo && app.globalData.userInfo.pscore) {
       this.setData({
         bestScore: app.globalData.userInfo.pscore
@@ -46,9 +45,10 @@ Page({
         cacheGrid: app.globalData.userInfo.psharp
       });
       this.data.main.board.grid = app.globalData.userInfo.psharp;
-      this.updateView(app.globalData.userInfo.psharp)
+      this.updateView(app.globalData.userInfo.psharp);
     }
   },
+
   gameStart: function () { // 游戏开始
     this.updateDbScore();
     var main = new Main(4);
