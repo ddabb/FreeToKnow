@@ -37,7 +37,6 @@
   margin: 1px 0px 1px 1px;
 }
 
-
 .left .item {
   padding: 8rpx 29rpx;
   height: 80rpx;

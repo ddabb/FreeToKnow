@@ -1,8 +1,6 @@
 /* pages/artical/artical.wxss */
 @import "../../app.wxss";
 
-
-
 .container {
   line-height: 64rpx;
   letter-spacing: 1px;

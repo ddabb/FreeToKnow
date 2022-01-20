@@ -6,7 +6,7 @@
 <view class="articaltitle" wx:if="{{showArea}}">
   <view class="padding">{{articaleTitle}}</view>
 </view>
-<!-- 
+<!--
 作者 -->
 <scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
   <view class="artical-author">

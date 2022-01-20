@@ -65,7 +65,6 @@
     <view>
       <text class="cu-btn round margin-left-xs margin-right-xs margin-top-xs bg-green" wx:for='{{detail.sequence}}' wx:key='index' data-name='{{item}}' bindtap='goOtherIdiom'>{{item}}</text>
     </view>
-
   </view>
   <view wx:if='{{detail.sequence.length==0}}' class="left15rpx"> 无 </view>
   <view class='line20rpx'></view>

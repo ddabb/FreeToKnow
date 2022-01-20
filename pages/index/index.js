@@ -33,44 +33,43 @@ Page({
         })
 
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'menu',
-                    page: 1,
-                    num: 1,
-                    condition: {}
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    wx.showToast({
-                        icon: 'warn',
-                        title: '加载失败',
-                    })
-                } else {
-                    let result = res.result.data[0];
-                    console.log('result.items', result.items)
-                    let array = result.items;
-                    let visibelSection = {
-                        indexTags: []
-                    };
-                    var firstid = '';
-                    array.indexTags.forEach(element => {
-                        console.log("element.visible" + element.visible);
-                        if (element.visible) {
-                            visibelSection.indexTags.push(element);
-                            if (firstid == '') {
-                                firstid = element.id
-                            }
+            name: 'collection_get',
+            data: {
+                database: 'menu',
+                page: 1,
+                num: 1,
+                condition: {}
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                wx.showToast({
+                    icon: 'warn',
+                    title: '加载失败',
+                })
+            } else {
+                let result = res.result.data[0];
+                console.log('result.items', result.items)
+                let array = result.items;
+                let visibelSection = {
+                    indexTags: []
+                };
+                var firstid = '';
+                array.indexTags.forEach(element => {
+                    console.log("element.visible" + element.visible);
+                    if (element.visible) {
+                        visibelSection.indexTags.push(element);
+                        if (firstid == '') {
+                            firstid = element.id
                         }
-                    });
-                    this.setData({
-                        list: visibelSection,
-                        selectedid: firstid
-                    })
-                    wx.hideLoading()
-                }
-
-            })
+                    }
+                });
+                this.setData({
+                    list: visibelSection,
+                    selectedid: firstid
+                })
+                wx.hideLoading()
+            }
+        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -78,7 +77,6 @@ Page({
                 })
             })
     },
-
 
     SwitchMain(e) {
         console.log("e.target.dataset.cellid:", e.target.dataset.cellid);
@@ -110,7 +108,6 @@ Page({
     },
 
     goidiomTags(e) {
-
         var obj = {
             tags: e.currentTarget.dataset.tags
         };
@@ -120,9 +117,7 @@ Page({
         })
     },
 
-    
     gopoetTags(e) {
-
         var obj = {
             tags: e.currentTarget.dataset.tags
         };
@@ -182,7 +177,6 @@ Page({
         console.log("city" + c);
 
         var obj = {
-
             province: p,
             city: c
         };

@@ -26,7 +26,7 @@ const goKnowledgeDetail = e => {
     .catch(console.error)
 }
 
-function getOrCreateUserInfo(callback) {
+function getOrCreateUserInfo(callback,e) {
   wx.cloud.callFunction({
     name: 'login',
     data: {},
@@ -42,7 +42,6 @@ function getOrCreateUserInfo(callback) {
               num: 1,
               condition: {
                 openid: app.globalData.openid
-
               }
             },
           }).then(res => {
@@ -61,19 +60,17 @@ function getOrCreateUserInfo(callback) {
                 app.globalData.userInfo.openid = app.globalData.openid;
                 app.globalData.userInfo.avatarUrl = '../../images/game.png';
                 console.log("新增用户" + res)
-                callback();
+                callback(e);
               })
             } else {
               let res_data = res.result.data[0]
               app.globalData.userInfo = res_data
               app.globalData.isLogin = true
-              callback();
+              callback(e);
             }
           })
           .catch(console.error)
-
       }
-
     },
     fail: err => {
       console.error('[云函数] [login] 调用失败', err)
@@ -115,16 +112,11 @@ const goPostDetailByAddr = e => {
           url: `/pages/postdetail/postdetail?obj=${input}`
         })
       }
-
     })
     .catch(err => {
       console.log('失败' + err)
     })
-
 }
-
-
-
 
 const goPostDetail = e => {
   let _id = e.currentTarget.dataset.id
@@ -140,7 +132,6 @@ const goPostDetail = e => {
         id: _id
       },
     }).then(res => {
-
       var obj = {
         id: _id,
         list: infos,
@@ -155,7 +146,6 @@ const goPostDetail = e => {
     })
     .catch(console.error)
 }
-
 
 const goSearch = e => {
   let type = e.currentTarget.dataset.type
@@ -192,10 +182,10 @@ const isEmpty = obj => {
 
 /**
  * 生成路径下面的二维码
- * @param {当前图片分类} type 
- * @param {小程序二维码的路径信息} url 
- * @param {记录id，唯一标识} recordid 
- * @param {小程序码尺寸大小} size 
+ * @param {当前图片分类} type
+ * @param {小程序二维码的路径信息} url
+ * @param {记录id，唯一标识} recordid
+ * @param {小程序码尺寸大小} size
  */
 const GenQrCode = async (type, url, recordid, size) => {
   let path = '';
@@ -252,9 +242,6 @@ const handlerGobackClick = e => {
   }
 }
 
-
-
-
 const goIdiomDetail = e => {
   let _id = e.currentTarget.dataset.id
   wx.cloud.callFunction({
@@ -287,10 +274,6 @@ const goPoemDetail = e => {
     .catch(console.error)
 }
 
-
-
-
-
 const goPdfDetail = e => {
   let _id = e.currentTarget.dataset.id;
   let fileurl = e.currentTarget.dataset.fileurl;
@@ -319,7 +302,6 @@ const goPdfDetail = e => {
     .catch(console.error)
 }
 
-
 const goCoupletDetail = e => {
   let _id = e.currentTarget.dataset.id
   wx.cloud.callFunction({
@@ -341,11 +323,11 @@ function throttle(fn, gapTime) {
   if (gapTime == null || gapTime == undefined) {
     gapTime = 1500
   }
-  let _lastTime = null // 返回新的函数 
+  let _lastTime = null // 返回新的函数
   return function () {
     let _nowTime = +new Date()
     if (_nowTime - _lastTime > gapTime || !_lastTime) {
-      fn.apply(this, arguments) //将this和参数传给原函数 
+      fn.apply(this, arguments) //将this和参数传给原函数
       _lastTime = _nowTime
     }
   }
@@ -361,7 +343,6 @@ function ShareAppMessage() {
     path: 'pages/index/index'
   }
 }
-
 
 function ShareTimeline() {
   return {

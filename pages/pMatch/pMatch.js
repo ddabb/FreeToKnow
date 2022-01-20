@@ -64,6 +64,7 @@ Page({
       score: 0,
       num: this.data.main.board.grid
     });
+
   },
   gameOver: function () { // 游戏结束
     this.setData({
@@ -132,7 +133,7 @@ Page({
     }
   },
 
-  updateDbScore: function (e) {
+  updateDbScore: function (callback, e) {
     let {
       cacheGrid
     } = this.data;
@@ -151,7 +152,11 @@ Page({
               psharp: this.data.main.board.grid
             }
           }
+        }).then(() => {
+          callback(e);
         })
+      } else {
+        callback(e);
       }
     }
   },
@@ -232,11 +237,13 @@ Page({
   },
 
   gameRank: function () {
-    this.updateDbScore();
-    wx.navigateTo({
-      url: `/pages/gameRank/gameRank`
-      //  url: '../logs/logs'
-    })
+    this.updateDbScore(() => {
+      wx.navigateTo({
+        url: `/pages/gameRank/gameRank`
+        //  url: '../logs/logs'
+      })
+    });
+
   },
   onShow: function () {
     this.setData({
@@ -247,15 +254,19 @@ Page({
     util.ShareTimeline()
   },
   handlerGobackClick() {
-    this.updateDbScore();
-    util.handlerGobackClick(function (e) {
-      util.goSearch(e)
-    }, 1000)
+    this.updateDbScore(() => {
+      util.handlerGobackClick(function (e) {
+        util.goSearch(e)
+      }, 1000)
+    });
+
   },
   handlerGohomeClick() {
-    this.updateDbScore();
-    util.handlerGohomeClick(function (e) {
-      util.goSearch(e)
-    }, 1000)
+    this.updateDbScore(() => {
+      util.handlerGohomeClick(function (e) {
+        util.goSearch(e)
+      }, 1000)
+    });
+
   },
 })

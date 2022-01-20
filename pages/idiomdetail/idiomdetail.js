@@ -2,7 +2,6 @@
 var util = require('../../util.js')
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -30,7 +29,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (app.globalData.share) {
+            this.setData({
+                scene: "分享进入"
+            })
+            util.getOrCreateUserInfo(this.init, options);
+        } else {
+            this.init(options);
+        }
+    },
+    init: function (options) {
         let isLogin = app.globalData.isLogin
 
         console.log('用户是否授权：', app.globalData.isLogin)
@@ -62,9 +70,7 @@ Page({
             wx.setStorageSync('shareId', options.id)
             this.loadDetail(options.id, options.name)
         }
-
     },
-
 
     loadDetail(id, name) {
         let {
@@ -78,35 +84,34 @@ Page({
         })
 
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'idiom',
-                    page,
-                    num,
-                    condition: {
-                        _id: id
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    wx.showToast({
-                        icon: 'warn',
-                        title: '加载失败',
-                    })
-                } else {
-
-                    let length1 = res.result.data[0].tags.length;
-                    console.log('标签长度', length1)
-                    this.setData({
-                        detail: res.result.data[0]
-                    })
-
-                    wx.hideLoading()
+            name: 'collection_get',
+            data: {
+                database: 'idiom',
+                page,
+                num,
+                condition: {
+                    _id: id
                 }
-                that.setData({
-                    isDown: true
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                wx.showToast({
+                    icon: 'warn',
+                    title: '加载失败',
                 })
+            } else {
+                let length1 = res.result.data[0].tags.length;
+                console.log('标签长度', length1)
+                this.setData({
+                    detail: res.result.data[0]
+                })
+
+                wx.hideLoading()
+            }
+            that.setData({
+                isDown: true
             })
+        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -115,10 +120,9 @@ Page({
             })
     },
 
-
-    goList: util.throttle(function (e) {      
+    goList: util.throttle(function (e) {
         var obj = {
-            tags: e.currentTarget.dataset.tags          
+            tags: e.currentTarget.dataset.tags
         };
         var input = encodeURIComponent(JSON.stringify(obj))
         wx.navigateTo({
@@ -127,14 +131,12 @@ Page({
     }, 1000),
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
-
 
     onBackhome(e) {
         util.goBackHome(e)
@@ -196,89 +198,80 @@ Page({
         let page1 = this.data.page
         let num1 = this.data.num
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'idiom',
-                    page: page1,
-                    num: num1,
-                    condition: {
-                        t: name
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    that.setData({
-                        loading: false,
-                        isOver: true
-                    })
-                } else {
-                    let res_data = res.result.data
-                    let gotoid = res_data[0]._id;
-
-                    wx.cloud.callFunction({
-                            name: 'collection_count_opened',
-                            data: {
-                                database: 'idiom',
-                                id: gotoid
-                            },
-                        }).then(res => {
-                            wx.navigateTo({
-                                url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
-                            })
-                        })
-                        .catch(console.error)
+            name: 'collection_get',
+            data: {
+                database: 'idiom',
+                page: page1,
+                num: num1,
+                condition: {
+                    t: name
                 }
-            })
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                that.setData({
+                    loading: false,
+                    isOver: true
+                })
+            } else {
+                let res_data = res.result.data
+                let gotoid = res_data[0]._id;
+
+                wx.cloud.callFunction({
+                    name: 'collection_count_opened',
+                    data: {
+                        database: 'idiom',
+                        id: gotoid
+                    },
+                }).then(res => {
+                    wx.navigateTo({
+                        url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
+                    })
+                })
+                    .catch(console.error)
+            }
+        })
             .catch(console.error)
     }, 1000),
-
-
-
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
     /**
-     * 
-     * @param {当前页面二维码地址} qrcodeurl 
+     *
+     * @param {当前页面二维码地址} qrcodeurl
      */
     savecodetofile: function () {
         let qrcodeurl = app.globalData.CloudPathRoot + `/idiomdetail/${this.data.id}.png`
@@ -445,14 +438,12 @@ Page({
                             },
                         })
                     },
-
                 })
             });
         });
-
     },
     /**
-     * 
+     *
      * @param {*} ctx 画布上下文环境
      * @param {string} str 描述的字符串
      * @param {number} leftWidth 距离左边的大小
@@ -463,21 +454,21 @@ Page({
     drawText(ctx, str, leftWidth, initHeight, titleHeight, canvasWidth) {
         var lineWidth = 0;
         var linespace = this.data.linespace; //设置成30
-        var lastSubStrIndex = 0; //每次开始截取的字符串的索引 
+        var lastSubStrIndex = 0; //每次开始截取的字符串的索引
         for (let i = 0; i < str.length; i++) {
             lineWidth += ctx.measureText(str[i]).width;
             if (lineWidth > canvasWidth) {
-                ctx.fillText(str.substring(lastSubStrIndex, i), leftWidth, initHeight); //绘制截取部分                
-                initHeight += 25; //字体的高度                
+                ctx.fillText(str.substring(lastSubStrIndex, i), leftWidth, initHeight); //绘制截取部分
+                initHeight += 25; //字体的高度
                 lineWidth = 0;
                 lastSubStrIndex = i;
                 titleHeight += linespace;
             }
-            if (i == str.length - 1) { //绘制剩余部分                
+            if (i == str.length - 1) { //绘制剩余部分
                 ctx.fillText(str.substring(lastSubStrIndex, i + 1), leftWidth, initHeight);
             }
         }
-        // 标题border-bottom 线距顶部距离        
+        // 标题border-bottom 线距顶部距离
         titleHeight = titleHeight + linespace;
         return titleHeight
     },
@@ -498,25 +489,21 @@ Page({
                 let size = this.data.qrcodesize;
                 //生成一个大小为55的小程序码
                 util.GenQrCode('idiomdetail', url, this.data.id, size).then(res => {
-
                     wx.cloud.callFunction({
-                            name: 'collection_update',
-                            data: {
-                                database: "idiomdetail",
-                                id: this.data.id,
-                                values: {
-                                    madeposter: true
-                                }
+                        name: 'collection_update',
+                        data: {
+                            database: "idiomdetail",
+                            id: this.data.id,
+                            values: {
+                                madeposter: true
                             }
-                        }).then(res => {
-
-                            setTimeout(function () {
-                                that.savecodetofile()
-                            }, 4000);
-
-                        })
+                        }
+                    }).then(res => {
+                        setTimeout(function () {
+                            that.savecodetofile()
+                        }, 4000);
+                    })
                         .catch(console.error)
-
                 })
             } else {
                 wx.showToast({

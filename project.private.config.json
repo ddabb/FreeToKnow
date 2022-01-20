@@ -29,12 +29,6 @@
           "pathName": "pages/pMatch/pMatch",
           "query": "",
           "scene": 1007
-        },
-        {
-          "name": "",
-          "pathName": "pages/game/gameRank/gameRank",
-          "query": "",
-          "scene": null
         }
       ]
     }

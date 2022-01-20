@@ -33,9 +33,18 @@ Page({
    * @param {*} options 包含记录id信息
    */
   onLoad: function (options) {
+    if (app.globalData.share) {
+      this.setData({
+        scene: "分享进入"
+      })
+      util.getOrCreateUserInfo(this.init, options);
+    } else {
+      this.init(options);
+    }
+  },
 
+  init(options) {
     let isLogin = app.globalData.isLogin
-    let noteState = this.data.noteState
 
     console.log('用户是否授权：', app.globalData.isLogin)
     console.log('是否已有用户openId：', app.globalData.openid)
@@ -59,8 +68,8 @@ Page({
       wx.setStorageSync('shareId', options.id)
       this.loadDetail(options.id, options.classify)
     }
-
   },
+
   onShow: function () {
 
     this.setData({
@@ -73,11 +82,9 @@ Page({
    * @param {string} id 记录id
    * @param {*} classify 分类
    */
-  loadDetail(id, classify) {
+  loadDetail(id) {
     let {
-      detail,
-      page,
-      num
+      detail
     } = this.data
     let that = this
     wx.showLoading({
@@ -167,7 +174,7 @@ Page({
           isDown: true
         })
       })
-      .catch(err => {
+      .catch(() => {
         console.log('加载详情失败')
         that.setData({
           isExist: false
@@ -216,9 +223,6 @@ Page({
         console.log(this.data.noteState == 2 ? '现状是存在收藏' : '现状是不存在收藏')
         let boolValue = this.data.noteState == 2 ? false : true
         let noteid = e.currentTarget.dataset.noteid
-        let values = {
-          noted: boolValue
-        }
 
         wx.cloud.callFunction({
             name: 'collection_update',
@@ -230,7 +234,7 @@ Page({
               }
             }
 
-          }).then(res => {
+          }).then(() => {
 
 
             this.setData({
@@ -288,7 +292,7 @@ Page({
     wx.setClipboardData({
       //准备复制的数据内容
       data: str,
-      success: function (res) {
+      success: function () {
         wx.showToast({
           icon: 'success',
           title: '复制成功',
@@ -352,10 +356,10 @@ Page({
       title: this.data.title, //此处为标题,
       path: `/pages/knowledgedetail/knowledgedetail?id=${this.data.id}`, //此处为路径,
       // imageUrl: randomImg, //此处就是写的随机分享图片,
-      success: function (res) {
+      success: function () {
         //这里为分享成功后的回调函数,
       },
-      fail: function (res) {
+      fail: function () {
         //此处为转发失败后的回调函数
       }
     }
