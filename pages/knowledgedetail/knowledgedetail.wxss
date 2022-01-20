@@ -67,12 +67,9 @@
 
 }
 
-
 .more {
   margin-top: 50rpx;
 }
-
-
 
 .topTabSwiper {
   border-bottom: 1px solid #ccc;
@@ -110,10 +107,6 @@
 .showItem {
   display: block;
 }
-
-
-
-
 
 .share {
   height: 120rpx;

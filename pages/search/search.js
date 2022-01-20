@@ -1,7 +1,6 @@
 // pages/search/search.js
 var util = require('../../util.js')
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -41,7 +40,6 @@ Page({
     },
 
     bindKeyInput(e) {
-
         this.setData({
             inputValue: e.detail.value,
             isOver: false,
@@ -55,18 +53,16 @@ Page({
         }
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     /**
      * 根据不同的searchType 返回不同的所搜结果，并在页面上展示不同的结果效果。
      */
     getList() {
-
         let {
             list,
             inputValue,
@@ -79,7 +75,6 @@ Page({
 
         let that = this
         if (searchType == "邮编或地址") {
-
             var isNum = new RegExp(/[0-9]\d{0,5}(?!\d)/).test(inputValue)
             var isCode = new RegExp(/[1-9]\d{5}(?!\d)/).test(inputValue)
 
@@ -201,7 +196,6 @@ Page({
                 break;
         }
 
-
         if (!this.data.isOver) {
             let {
                 list,
@@ -213,33 +207,33 @@ Page({
                 loading: true
             })
             wx.cloud.callFunction({
-                    name: methodName,
-                    data: {
-                        database,
-                        page,
-                        num,
-                        condition,
-                        inputValue,
-                        classify
-                    },
-                }).then(res => {
-                    if (!res.result.data.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.data
-                        let over = res.result.data.length < num
-                        list.push(...res_data)
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-                            isOver: over
-                        })
-                    }
-                })
+                name: methodName,
+                data: {
+                    database,
+                    page,
+                    num,
+                    condition,
+                    inputValue,
+                    classify
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.data
+                    let over = res.result.data.length < num
+                    list.push(...res_data)
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                        isOver: over
+                    })
+                }
+            })
                 .catch(console.error)
         }
     },
@@ -307,7 +301,6 @@ Page({
                 url: `/pages/${database}/${database}?id=${_id}`,
             })
         } else if (searchType == '学习资料') {
-
             var obj = {
                 id: _id,
                 title: item.title,
@@ -321,9 +314,7 @@ Page({
             wx.navigateTo({
                 url: `/pages/pdfpreview/pdfpreview?obj=${input}`
             })
-
         } else if (searchType == '公众号文章') {
-
             var obj = {
                 articleurl: item.articleurl,
                 articletitle: item.title,
@@ -335,8 +326,6 @@ Page({
                 url: `/pages/weixinlink/weixinlink?obj=${input}`
                 //  url: '../logs/logs'
             })
-
-
         } else if (searchType == '邮编或地址') {
             var temp = '[0-9]\d{0,5}(?!\d)'
             if (new RegExp(temp).test(inputValue)) {
@@ -367,7 +356,6 @@ Page({
                 wx.navigateTo({
                     url: `/pages/${database}/${database}?obj=${input}`
                 })
-
             } else {
                 var lists = []
                 var addrPre = item.province + item.city + item.city + item.district
@@ -398,7 +386,6 @@ Page({
                     url: `/pages/${database}/${database}?obj=${input}`
                 })
             }
-
         } else {
             wx.navigateTo({
                 url: `/pages/${database}/${database}?id=${_id}&subject=${subject}`,
@@ -411,42 +398,36 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**

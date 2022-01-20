@@ -2,7 +2,7 @@
   "disableScroll": true,
   "usingComponents": {
     "navBar": "/components/navBar/navBar"
-  }  ,
+  },
   "navigationBarTitleText": "数字消消乐",
   "navigationBarBackgroundColor": "#faf8ee"
 }

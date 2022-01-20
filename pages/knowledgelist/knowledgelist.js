@@ -2,7 +2,6 @@
 var util = require('../../util.js')
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -18,7 +17,7 @@ Page({
         scrollHeight: 0,
         color: 'red',
         othercolor: 'gray',
-        showArea:true,
+        showArea: true,
         field: 'opened',
         order: 'desc'
     },
@@ -45,11 +44,10 @@ Page({
         this.loadList(options.tags)
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     lower() {
@@ -95,51 +93,50 @@ Page({
                 loading: true
             })
             wx.cloud.callFunction({
-                    name: 'collection_get_orderby',
-                    data: {
-                        database: 'knowledge',
-                        page,
-                        num,
-                        field,
-                        order,
-                        condition
-                    },
-                }).then(res => {
-                    if (!res.result.data.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.data
-                        let over = res.result.data.length < num
-                        list.push(...res_data)
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-                            isOver: over
-                        })
-                    }
-                })
+                name: 'collection_get_orderby',
+                data: {
+                    database: 'knowledge',
+                    page,
+                    num,
+                    field,
+                    order,
+                    condition
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.data
+                    let over = res.result.data.length < num
+                    list.push(...res_data)
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                        isOver: over
+                    })
+                }
+            })
                 .catch(console.error)
         }
-
     },
 
     goDetail(e) {
         let _id = e.currentTarget.dataset.id
         wx.cloud.callFunction({
-                name: 'collection_count_opened',
-                data: {
-                    database: 'knowledge',
-                    id: _id
-                },
-            }).then(res => {
-                wx.navigateTo({
-                    url: `/pages/knowledgedetail/knowledgedetail?id=${e.currentTarget.dataset.id}`,
-                })
+            name: 'collection_count_opened',
+            data: {
+                database: 'knowledge',
+                id: _id
+            },
+        }).then(res => {
+            wx.navigateTo({
+                url: `/pages/knowledgedetail/knowledgedetail?id=${e.currentTarget.dataset.id}`,
             })
+        })
             .catch(console.error)
     },
 
@@ -150,7 +147,6 @@ Page({
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     confirmSearch(e) {
@@ -161,7 +157,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
@@ -169,7 +164,6 @@ Page({
      */
 
     onShow: function () {
-        
         this.setData({
             showArea: true
         })
@@ -178,21 +172,18 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
@@ -206,7 +197,6 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
         this.setData({
             showArea: false
         })

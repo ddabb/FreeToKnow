@@ -2,7 +2,6 @@
 const app = getApp();
 var util = require('../../util.js')
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -49,52 +48,50 @@ Page({
             })
 
             wx.cloud.callFunction({
-                    name: 'collection_leftjoin_replaceroot',
-                    data: {
-                        database: 'knowledgenote',
-                        fromdb: 'knowledge',
-                        condition: {
-                            noted: true,
-                            openid: app.globalData.openid
-                        },
-                        localField: 'knowledgeid',
-                        foreignField: '_id',
-                        asfield: 'know',
-                        root: {
-                            newRoot: {
-                                know: '$know'
-                            }
+                name: 'collection_leftjoin_replaceroot',
+                data: {
+                    database: 'knowledgenote',
+                    fromdb: 'knowledge',
+                    condition: {
+                        noted: true,
+                        openid: app.globalData.openid
+                    },
+                    localField: 'knowledgeid',
+                    foreignField: '_id',
+                    asfield: 'know',
+                    root: {
+                        newRoot: {
+                            know: '$know'
                         }
                     }
-                }).then(res => {
-                    if (!res.result.list.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.list
+                }
+            }).then(res => {
+                if (!res.result.list.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.list
 
-                        for (let index = 0; index < res_data.length; index++) {
-                            const knows = res_data[index];
-                            var arr = knows["know"];
-                            for (let index = 0; index < arr.length; index++) {
-                                const element = arr[index];
-                                list.push(element);
-                            }
+                    for (let index = 0; index < res_data.length; index++) {
+                        const knows = res_data[index];
+                        var arr = knows["know"];
+                        for (let index = 0; index < arr.length; index++) {
+                            const element = arr[index];
+                            list.push(element);
                         }
-
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-
-                        })
                     }
-                })
+
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                    })
+                }
+            })
                 .catch(console.error)
         }
-
     },
 
     goClassify: util.throttle(function (e) {
@@ -103,50 +100,44 @@ Page({
         })
     }, 1000),
 
-
     goDetail: util.throttle(function (e) {
         let _id = e.currentTarget.dataset.id
         wx.cloud.callFunction({
-                name: 'collection_count_opened',
-                data: {
-                    database: 'knowledge',
-                    id: _id
-                },
-            }).then(res => {
-                wx.navigateTo({
-                    url: `/pages/knowledgedetail/knowledgedetail?id=${e.currentTarget.dataset.id}`,
-                })
+            name: 'collection_count_opened',
+            data: {
+                database: 'knowledge',
+                id: _id
+            },
+        }).then(res => {
+            wx.navigateTo({
+                url: `/pages/knowledgedetail/knowledgedetail?id=${e.currentTarget.dataset.id}`,
             })
+        })
             .catch(console.error)
     }, 1000),
-
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
@@ -160,7 +151,6 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**

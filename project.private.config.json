@@ -19,15 +19,15 @@
           "query": ""
         },
         {
-          "name": "pages/rewritePluginPage/rewritePluginPage",
-          "pathName": "pages/rewritePluginPage/rewritePluginPage",
+          "name": "",
+          "pathName": "pages/pMatch/pMatch",
           "query": "",
           "scene": 1007
         },
         {
           "name": "",
-          "pathName": "pages/pMatch/pMatch",
-          "query": "",
+          "pathName": "pages/idiomdetail/idiomdetail",
+          "query": "id=9d4b128a52b64b9e8931009bb47f21af",
           "scene": 1007
         }
       ]

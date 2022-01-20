@@ -1,7 +1,6 @@
 var util = require('../../util.js')
 const app = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -53,11 +52,10 @@ Page({
     },
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
 
@@ -87,40 +85,36 @@ Page({
             })
 
             wx.cloud.callFunction({
-                    name: 'collection_get_orderby',
-                    data: {
-                        database: 'poem',
-                        page,
-                        num,
-                        field,
-                        order,
-                        condition: filter
-
-                    },
-                }).then(res => {
-                    if (!res.result.data.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.data
-                        let over = res.result.data.length < num
-                        list.push(...res_data)
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-                            isOver: over
-                        })
-                    }
-                })
+                name: 'collection_get_orderby',
+                data: {
+                    database: 'poem',
+                    page,
+                    num,
+                    field,
+                    order,
+                    condition: filter
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.data
+                    let over = res.result.data.length < num
+                    list.push(...res_data)
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                        isOver: over
+                    })
+                }
+            })
                 .catch(console.error)
         }
     },
-
-
-
 
     goDetail: util.throttle(function (e) {
         util.goPoemDetail(e)
@@ -130,7 +124,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
     resort: function () {
         if (!this.data.loading) {
@@ -150,7 +143,6 @@ Page({
         }
     },
 
-
     /**
      * 生命周期函数--监听页面显示
      */
@@ -164,21 +156,18 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**

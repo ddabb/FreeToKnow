@@ -25,7 +25,6 @@ Page({
         console.log("是否已授权：", wx.getStorageSync("isLogin"));
         console.log("是否已有用户openId：", app.globalData.openid);
 
-
         wx.showLoading({
             title: "正在加载...",
             mask: true,
@@ -59,14 +58,11 @@ Page({
         })
     },
 
-
-
     handleContact(e) {
         console.log(e.detail.path)
         console.log(e.detail.query)
     },
     onGetUserInfo: async function (e) {
-
         if (await app.hasUserInfo()) {
             var temp = app.globalData.userInfo;
             this.setData({
@@ -84,9 +80,7 @@ Page({
             app.globalData.isLogin = wx.getStorageSync("isLogin");
             app.globalData.avatarUrl = wx.getStorageSync("avatarUrl");
             app.globalData.username = wx.getStorageSync("username");
-
         } else return
-
     },
 
     goAbout() {
@@ -94,7 +88,6 @@ Page({
             url: `/pages/aboutme/aboutme`
         })
     },
-
 
     goMatchGame() {
         if (!app.globalData.isLogin) {
@@ -107,14 +100,12 @@ Page({
                 url: `/pages/pMatch/pMatch`
             })
         }
-
     },
     goLog() {
         wx.navigateTo({
             url: `/pages/log/log`
         })
     },
-
 
     goWeXin() {
         wx.navigateTo({
@@ -138,7 +129,6 @@ Page({
             wx.navigateTo({
                 url: `/pages/suggest/suggest`
             })
-
         }
     },
     goAddSuggest() {
@@ -153,7 +143,6 @@ Page({
             })
         }
     },
-
 
     gohexotag() {
         wx.navigateTo({
@@ -170,7 +159,7 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
@@ -206,13 +195,12 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {},
+    onHide: function () { },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {},
-
+    onUnload: function () { },
 
     /**
      * 用户点击右上角分享
@@ -226,7 +214,6 @@ Page({
             path: `/pages/index/index`, //此处为路径,
             // imageUrl: randomImg, //此处就是写的随机分享图片,
         }
-
     },
     onShareTimeline: function () {
         util.ShareTimeline()

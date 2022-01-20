@@ -1,6 +1,5 @@
 var util = require('../../util.js')
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -20,10 +19,9 @@ Page({
     onLoad: function (options) {
         wx.setNavigationBarTitle({
             title: '信息技术' //页面标题为路由参数
-          })
+        })
         this.getList()
     },
-
 
     lower(e) {
         if (!this.data.loading) {
@@ -36,7 +34,6 @@ Page({
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     confirmSearch(e) {
@@ -91,35 +88,30 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**

@@ -27,10 +27,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        if (app.globalData.share) {
+            this.setData({
+                scene: "分享进入"
+            })
+            util.getOrCreateUserInfo(this.init, options);
+        } else {
+            this.init(options);
+        }
+    },
+
+    init: function (options) {
         console.log("acticlepath" + options.path);
         let path = options.path;
         let that = this;
-        let url = app.globalData.hexosite + encodeURIComponent(path)
+        let url = app.globalData.hexosite + encodeURIComponent(path);
         console.log("url" + url);
         wx.cloud.callFunction({
             name: 'hexohttp',
@@ -39,16 +50,16 @@ Page({
             },
         }).then(res => {
             if (res.result != '失败') {
-                let obj = JSON.parse(res.result)
+                let obj = JSON.parse(res.result);
                 let result = app.towxml(obj.content, "html", {
                     base: "https://www.60points.com",
-                    events: { //图片放大效果
+                    events: {
                         tap: bindtap => {
-                            var current = bindtap.currentTarget.dataset.data.attr.src
+                            var current = bindtap.currentTarget.dataset.data.attr.src;
                             wx.previewImage({
                                 current,
                                 urls: [current]
-                            })
+                            });
                         }
                     }
                 });
@@ -61,24 +72,21 @@ Page({
                 });
                 wx.setNavigationBarTitle({
                     title: obj.title //页面标题为路由参数
-                })
+                });
             }
         })
-            .catch(console.error)
+            .catch(console.error);
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-    },
+    onReady: function () { },
 
     handlerGobackClick() {
         util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) {
-        }, 1000)
+        util.handlerGohomeClick(function (e) { }, 1000)
     },
     /**
      * 生命周期函数--监听页面显示
@@ -92,26 +100,22 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
-    },
+    onHide: function () { },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-    },
+    onUnload: function () { },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-    },
+    onPullDownRefresh: function () { },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
-    },
+    onReachBottom: function () { },
 
     /**
      * 用户点击右上角分享
@@ -122,7 +126,7 @@ Page({
         })
         console.log('this.data.articaleTitle' + this.data.articaleTitle);
         return {
-            title: this.data.articaleTitle,//此处为标题,
+            title: this.data.articaleTitle, //此处为标题,
             path: `/pages/hexoacticle/hexoacticle?path=${this.data.path}`, //此处为路径,
 
             success: function (res) {

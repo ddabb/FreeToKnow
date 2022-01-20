@@ -53,7 +53,6 @@
   justify-content: space-around;
 }
 
-
 .box .item-inner text {
   overflow: hidden;
   white-space: nowrap;
@@ -62,5 +61,3 @@
   display: block;
   text-align: right;
 }
-
-

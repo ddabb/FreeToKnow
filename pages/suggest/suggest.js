@@ -1,6 +1,5 @@
 var util = require('../../util.js')
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -20,11 +19,10 @@ Page({
         this.getList()
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
         util.handlerGohomeClick(function (e) {
-
         }, 1000)
     },
     getList() {
@@ -41,34 +39,33 @@ Page({
                 loading: true
             })
             wx.cloud.callFunction({
-                    name: 'collection_get_orderby',
-                    data: {
-                        database: 'suggestion',
-                        page,
-                        num,
-                        field,
-                        order,
-                        condition: {}
-
-                    },
-                }).then(res => {
-                    if (!res.result.data.length) {
-                        that.setData({
-                            loading: false,
-                            isOver: true
-                        })
-                    } else {
-                        let res_data = res.result.data
-                        let over = res.result.data.length < num
-                        list.push(...res_data)
-                        that.setData({
-                            list,
-                            page: page + 1,
-                            loading: false,
-                            isOver: over
-                        })
-                    }
-                })
+                name: 'collection_get_orderby',
+                data: {
+                    database: 'suggestion',
+                    page,
+                    num,
+                    field,
+                    order,
+                    condition: {}
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
+                    })
+                } else {
+                    let res_data = res.result.data
+                    let over = res.result.data.length < num
+                    list.push(...res_data)
+                    that.setData({
+                        list,
+                        page: page + 1,
+                        loading: false,
+                        isOver: over
+                    })
+                }
+            })
                 .catch(console.error)
         }
     },
@@ -89,44 +86,36 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
     },
-
-
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
     },
 
     /**
@@ -143,5 +132,4 @@ Page({
             url: `/pages/index/index`,
         })
     },
-
 })

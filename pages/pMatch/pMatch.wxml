@@ -11,7 +11,6 @@
     <text class='play margin-top-xl margin-left-xl' bindtap='redo' style="position: absolute; left: 337rpx; top: 174rpx; width: 150rpx">撤销</text>
     <text class='play margin-top-xl margin-left-xl' bindtap='save' style="position: absolute; left: 149rpx; top: 174rpx; width: 150rpx">保存</text>
     <text class='play margin-top-xl margin-left-xl' bindtap='gameRank' style="position: absolute; left: 528rpx; top: 174rpx; width: 150rpx">排行榜</text>
-
   </view>
   <view class="game" style="position: absolute; left: 25rpx; top: {{showArea?387:0}}rpx">
 
