@@ -19,9 +19,9 @@ Main.prototype = {
       this.addRandomData();
     }
   },
-  addRandomData() { //填充数据
+  addRandomData() { //填充数据,70%的概率生成3
     if (!this.board.cellEmpty()) {
-      var value = Math.random() < 0.9 ? 3 : 6;
+      var value = Math.random() < 0.7 ? 3 : 6;
       var cell = this.board.selectCell();
       cell.val = value;
       this.update(cell);
