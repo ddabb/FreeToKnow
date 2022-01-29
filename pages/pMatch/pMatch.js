@@ -40,7 +40,6 @@ Page({
       this.setData({
         start: "重玩",
         hidden: true,
-        cacheGrid: app.globalData.userInfo.psharp
       });
       this.data.main.board.grid = app.globalData.userInfo.psharp;
       this.updateView(app.globalData.userInfo.psharp);
@@ -78,8 +77,7 @@ Page({
       this.updateDbScore(); //游戏结束，保存历史最高分
       this.setData({
         start: "开始",
-        endMsg: '游戏结束！',
-        cacheGrid: null
+        endMsg: '游戏结束！'
       });
     }
   },
@@ -88,7 +86,39 @@ Page({
   touchStartY: 0,
   touchEndX: 0,
   touchEndY: 0,
+  //点击撤销按钮
+  clickReDoOnce: false,
+  /*
+  撤销功能
+  */
+  redo() {
+    let {
+      cacheGrid
+    } = this.data;
+    if (cacheGrid != null) {
+      app.globalData.userInfo.psharp = cacheGrid;
+      this.data.main.board.grid = cacheGrid;
+      this.updateView(cacheGrid)
+
+      this.clickReDoOnce = true;
+    }
+  },
   touchStart: function (ev) { // 触摸开始坐标
+    if (this.clickReDoOnce) {
+
+      this.setData({
+        start: "重置"
+      });
+      this.clickReDoOnce = false;
+    } {
+      let cacheGrid = this.data.main.board.grid;
+      this.setData({
+        start: "重置",
+        cacheGrid: cacheGrid
+      });
+
+    }
+
     var touch = ev.touches[0];
     this.touchStartX = touch.clientX;
     console.log("  this.touchStartX" + this.touchStartX)
@@ -116,11 +146,7 @@ Page({
       console.log("dis" + dis)
       if (dis > 3) { // 减少触屏失效的错句
         var direction = absdisX > absdisY ? (disX < 0 ? 1 : 3) : (disY < 0 ? 2 : 0); // 确定移动方向
-        let cacheGrid = this.data.main.board.grid;
-        this.setData({
-          start: "重置",
-          cacheGrid: cacheGrid
-        });
+
         var data = this.data.main.move(direction);
         this.updateView(data);
         app.globalData.userInfo.psharp = this.data.main.board.grid; //保存最新的棋盘信息
@@ -160,22 +186,16 @@ Page({
         }
 
       }
+    } else {
+
+      if (callback != undefined) {
+        callback(e);
+      }
+
     }
   },
 
-  /*
-  撤销功能
-  */
-  redo() {
-    let {
-      cacheGrid
-    } = this.data;
-    if (cacheGrid != null) {
-      app.globalData.userInfo.psharp = cacheGrid;
-      this.updateView(cacheGrid)
-      cacheGrid = null;
-    }
-  },
+
   //将形状缓存起来
   save() {
     let {
@@ -272,17 +292,20 @@ Page({
     util.ShareTimeline()
   },
   handlerGobackClick() {
-    this.updateDbScore(() => {
-      util.handlerGobackClick(function (e) {
-        util.goSearch(e)
-      }, 1000)
-    });
+    this.updateDbScore(this.callbackGobackClick);
   },
+  callbackGobackClick: function () {
+    util.handlerGobackClick(function (e) {
+      util.goSearch(e)
+    }, 1000)
+  },
+  callbacGohomeClick: function () {
+    util.handlerGohomeClick(function (e) {
+      util.goSearch(e)
+    }, 1000)
+  },
+
   handlerGohomeClick() {
-    this.updateDbScore(() => {
-      util.handlerGohomeClick(function (e) {
-        util.goSearch(e)
-      }, 1000)
-    });
+    this.updateDbScore(this.callbacGohomeClick);
   },
 })

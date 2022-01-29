@@ -6,7 +6,7 @@ Page({
      */
     data: {
         userInfo: {},
-        avatarUrl: "./../../images/game.png",
+        avatarUrl: "./game.png",
         openid: "",
         logged: false,
         nickName: "",

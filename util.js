@@ -52,13 +52,13 @@ function getOrCreateUserInfo(callback,e) {
                   database: 'user',
                   record: {
                     openid: app.globalData.openid,
-                    avatarUrl: '../../images/game.png'
+                    avatarUrl: 'game.png'
                   }
                 },
               }).then(res => {
                 app.globalData.userInfo._id = res.result._id; //给内存中的用户id赋值。
                 app.globalData.userInfo.openid = app.globalData.openid;
-                app.globalData.userInfo.avatarUrl = '../../images/game.png';
+                app.globalData.userInfo.avatarUrl = 'game.png';
                 console.log("新增用户" + res)
                 callback(e);
               })
