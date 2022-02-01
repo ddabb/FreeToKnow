@@ -492,7 +492,7 @@ Page({
                     wx.cloud.callFunction({
                         name: 'collection_update',
                         data: {
-                            database: "idiomdetail",
+                            database: "idiom",
                             id: this.data.id,
                             values: {
                                 madeposter: true
