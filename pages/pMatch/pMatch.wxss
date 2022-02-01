@@ -67,12 +67,12 @@
 /* =========================== game ====================  */
 .game {
   margin-top: -10rpx;
-  padding-top: 5vw;
-  padding-left: 1vw;
-  background: #88d8ba;
+  padding-top: 1vw;
+  padding-left: 2vw;
+  background: #faf8ee;
   border-radius: 6px;
   width: 93vw;
-  height: 93vw;
+  height: 89vw;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -89,21 +89,22 @@
 }
 
 .cell {
-  width: 19vw;
-  height: 19vw;
-  margin-left: 3vw;
-  margin-bottom: 3vw;
+  width: 21vw;
+  height: 21vw;
+  margin-left: 1vw;
+  margin-bottom: 1vw;
   float: left;
   border-radius: 50%;
   box-sizing: border-box;
-  background: rgba(238, 228, 218, 0.35);
+
+  background: #b5e4d3;
   overflow: hidden;
 }
 
 .cell-con {
-  width: 19vw;
-  height: 19vw;
-  line-height: 19vw;
+  width: 21vw;
+  height: 21vw;
+  line-height: 21vw;
   position: absolute;
   font-size: 35px;
   font-weight: bold;
@@ -112,43 +113,46 @@
 }
 
 .cell-con-A {
-  background: #dfdcd9;
+  color: #f9f6f2;
+  background: #e2d87f;
 }
 
 .cell-con-B {
-  background: #d8c8ab;
+  color: #f9f6f2;
+  background: #c7bd66;
 }
 
 .cell-con-C {
   color: #f9f6f2;
-  background: #e2a36b;
+  background: #aca352;
 }
 
 .cell-con-D {
   color: #f9f6f2;
-  background: #e48a59;
+  background: #c0b446;
 }
 
 .cell-con-E {
   color: #f9f6f2;
-  background: #dd694c;
+  background: #cec579;
 }
 
 .cell-con-F {
   color: #f9f6f2;
-  background: #f65e3b;
+  background: #beb34b;
 }
 
 .cell-con-G {
   color: #f9f6f2;
-  background: #c98c47;
+  background: #d3b349;
   font-size: 30px;
 }
 
 .cell-con-H {
   color: #f9f6f2;
   font-size: 30px;
-  background: #d3b349;
+  background: #a3972d;
+
 }
 
 .cell-con-I {

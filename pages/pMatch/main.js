@@ -2,7 +2,7 @@ var Board = require("./grid.js");
 
 function Main(size) {
   this.size = size;
-  this.startData = 4; // 初始填充4个数据
+  this.startData = 14; // 初始填充14个数据
   this.init();
 }
 
@@ -19,9 +19,21 @@ Main.prototype = {
       this.addRandomData();
     }
   },
-  addRandomData() { //填充数据,70%的概率生成3
+  addRandomData() { //65%  20%  10%  5%
     if (!this.board.cellEmpty()) {
-      var value = Math.random() < 0.7 ? 'A' : 'B';
+      let rand = Math.random();
+      console.log("rand" + rand)
+      let value = "";
+      if (rand < 0.65) {
+        value = "A"
+      } else if (rand >= 0.65 && rand < 0.85) {
+        value = "B"
+      } else if (rand >= 0.85 && rand < 0.95) {
+        value = "C"
+      } else {
+        value = "D"
+      }
+
       var cell = this.board.selectCell();
       cell.val = value;
       this.update(cell);
@@ -143,7 +155,7 @@ Main.prototype = {
     } else if (a != c && c != d && a != "" && c != "" && d != "" && b == "") {
       console.log("3， 0， 6， 12👉 3， 6， 12， 0");
       return [a, c, d, ""];
-    } else if (a == "" && a != b && b != c && c != d) {
+    } else if (a == "" && a != b && b != c && c != d && c != "") {
       console.log("0， 3， 6， 12👉 3， 6， 12， 0");
       return [b, c, d, ""];
     } else if (a != b && b != d && c == "" && a != "" && b != "" && d != "") {
