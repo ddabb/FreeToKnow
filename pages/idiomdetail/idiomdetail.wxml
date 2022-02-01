@@ -1,6 +1,7 @@
 <!-- pages/detail/detail.wxml -->
 <navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='成语：{{detail.t}}' />
-<canvas style="width: {{canvaswidth}}px; height:  {{canvasheight}}px; background-color:#ddd;position:absolute;left:-1000px;" canvas-id="myCanvas"></canvas>
+<canvas id="cvs1" type="2d" style="width: {{canvaswidth}}px; height:  {{canvasheight}}px; background-color:#ddd;position:absolute;left:-1000px;" canvas-id="myCanvas"></canvas>
+
 <view class='detail' wx:if='{{isExist && isDown}}'>
   <view class='title left15rpx'>{{detail.t}}</view>
 
@@ -75,6 +76,7 @@
     <button class="btnCopyData" bindtap="MakePosters" style="background:SteelBlue;margin-left: 40rpx;" size="mini">
       分享海报
     </button>
+
   </view>
 
   <view class='bottom' style='text-align:center;font-size:24rpx;padding:30rpx;'>

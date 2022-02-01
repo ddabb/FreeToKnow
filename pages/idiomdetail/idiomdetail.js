@@ -84,34 +84,34 @@ Page({
         })
 
         wx.cloud.callFunction({
-            name: 'collection_get',
-            data: {
-                database: 'idiom',
-                page,
-                num,
-                condition: {
-                    _id: id
-                }
-            },
-        }).then(res => {
-            if (!res.result.data.length) {
-                wx.showToast({
-                    icon: 'warn',
-                    title: '加载失败',
-                })
-            } else {
-                let length1 = res.result.data[0].tags.length;
-                console.log('标签长度', length1)
-                this.setData({
-                    detail: res.result.data[0]
-                })
+                name: 'collection_get',
+                data: {
+                    database: 'idiom',
+                    page,
+                    num,
+                    condition: {
+                        _id: id
+                    }
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    wx.showToast({
+                        icon: 'warn',
+                        title: '加载失败',
+                    })
+                } else {
+                    let length1 = res.result.data[0].tags.length;
+                    console.log('标签长度', length1)
+                    this.setData({
+                        detail: res.result.data[0]
+                    })
 
-                wx.hideLoading()
-            }
-            that.setData({
-                isDown: true
+                    wx.hideLoading()
+                }
+                that.setData({
+                    isDown: true
+                })
             })
-        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -131,11 +131,10 @@ Page({
     }, 1000),
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) { }, 1000)
+        util.handlerGobackClick(function (e) {}, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) {
-        }, 1000)
+        util.handlerGohomeClick(function (e) {}, 1000)
     },
 
     onBackhome(e) {
@@ -198,103 +197,121 @@ Page({
         let page1 = this.data.page
         let num1 = this.data.num
         wx.cloud.callFunction({
-            name: 'collection_get',
-            data: {
-                database: 'idiom',
-                page: page1,
-                num: num1,
-                condition: {
-                    t: name
-                }
-            },
-        }).then(res => {
-            if (!res.result.data.length) {
-                that.setData({
-                    loading: false,
-                    isOver: true
-                })
-            } else {
-                let res_data = res.result.data
-                let gotoid = res_data[0]._id;
-
-                wx.cloud.callFunction({
-                    name: 'collection_count_opened',
-                    data: {
-                        database: 'idiom',
-                        id: gotoid
-                    },
-                }).then(res => {
-                    wx.navigateTo({
-                        url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
+                name: 'collection_get',
+                data: {
+                    database: 'idiom',
+                    page: page1,
+                    num: num1,
+                    condition: {
+                        t: name
+                    }
+                },
+            }).then(res => {
+                if (!res.result.data.length) {
+                    that.setData({
+                        loading: false,
+                        isOver: true
                     })
-                })
-                    .catch(console.error)
-            }
-        })
+                } else {
+                    let res_data = res.result.data
+                    let gotoid = res_data[0]._id;
+
+                    wx.cloud.callFunction({
+                            name: 'collection_count_opened',
+                            data: {
+                                database: 'idiom',
+                                id: gotoid
+                            },
+                        }).then(res => {
+                            wx.navigateTo({
+                                url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
+                            })
+                        })
+                        .catch(console.error)
+                }
+            })
             .catch(console.error)
     }, 1000),
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-    },
+    onReady: function () {},
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-    },
+    onShow: function () {},
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
-    },
+    onHide: function () {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-    },
+    onUnload: function () {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-    },
+    onPullDownRefresh: function () {},
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
-    },
+    onReachBottom: function () {},
     /**
      *
      * @param {当前页面二维码地址} qrcodeurl
      */
     savecodetofile: function () {
+
+        wx.createSelectorQuery()
+            .select('#cvs1')
+            .fields({
+                node: true,
+                size: true,
+            })
+            .exec(this.MergeImage.bind(this))
+
+    },
+    MergeImage: function (res) {
         let qrcodeurl = app.globalData.CloudPathRoot + `/idiomdetail/${this.data.id}.png`
-        var ctx = wx.createCanvasContext('myCanvas');
+        console.log('select canvas', res);
+        let that = this;
+        const canvasObj = res[0].node
+        const ctx = canvasObj.getContext('2d')
+
+        const dpr = wx.getSystemInfoSync().pixelRatio
+        canvasObj.width = res[0].width * dpr
+        canvasObj.height = res[0].height * dpr
+        ctx.scale(dpr, dpr) //适配分辨率
+
         let qrcodesize = this.data.qrcodesize;
         let width = this.data.canvaswidth;
         let height = this.data.canvasheight;
         let space = 10; //距离底部和右侧的距离
         let padding = 30; //左侧和右侧编剧
-        let qrX = width - qrcodesize - space; //二维码的起始X坐标
-        let qrY = height - qrcodesize - space; //二维码的起始Y坐标
+        let qrX = (width - qrcodesize - space); //二维码的起始X坐标
+        let qrY = (height - qrcodesize - space); //二维码的起始Y坐标
         let texrwidth = width - 2 * padding;
-        let qrpath = ''
-        let fontpx = 16
-        let normalFont = `normal ${fontpx}px 楷体`
-        let boldFont = `bold ${fontpx}px 楷体`
+        let qrpath = '';
+        let fontpx = 16;
+        let normalFont = `normal ${fontpx}px 楷体`;
+        let boldFont = `bold ${fontpx}px 楷体`;
         wx.cloud.downloadFile({
             fileID: qrcodeurl
         }).then(res => {
+            qrpath = res.tempFilePath;
+            that.setData({
+                qrpath: qrpath
+            })
             //背景色
             let result = this.data.detail;
             ctx.fillStyle = '#D3C4A3';
-            ctx.fillRect(0, 0, width, height)
+            ctx.fillRect(0, 0, width, height);
             //字体
             ctx.font = boldFont;
             ctx.fillStyle = 'black';
@@ -307,7 +324,7 @@ Page({
             if (result.q != undefined && result.q.length > 0) {
                 nameAndPinyin += " " + result.q;
             }
-            let titleFont = `normal ${fontpx}px Times New Roman`
+            let titleFont = `normal ${fontpx}px Times New Roman`;
             ctx.font = titleFont;
             ctx.fillStyle = "SteelBlue";
             tempHeight = this.drawText(ctx, nameAndPinyin, padding, tempHeight, tempHeight, texrwidth);
@@ -380,25 +397,33 @@ Page({
             ctx.font = boldFont;
             ctx.fillStyle = "SteelBlue";
             this.drawText(ctx, "扫一扫获取更多成语知识→→", padding, qrcodesize + qrY - 10, qrcodesize + qrY - 10, texrwidth);
-            //绘制分享的二维码
-            qrpath = res.tempFilePath;
-            ctx.drawImage(qrpath, qrX, qrY, qrcodesize, qrcodesize);
-            ctx.draw(false, function () {
-                wx.canvasToTempFilePath({ //生成图片
+
+            let img = canvasObj.createImage(); //创建img对象
+            //如果需要向canvas里载入多张图片，则需要分别创建多个img对象
+            //let img2=this.data.canvas.createImage()；
+            //    img2.οnlοad=()=>{};
+            //    img2.src="";
+            img.onload = () => {
+                //img.complete表示图片是否加载完成，结果返回true和false;
+                console.log("img.complete" + img.complete); //true
+                ctx.drawImage(img, qrX, qrY, qrcodesize, qrcodesize);
+                wx.canvasToTempFilePath({
                     x: 0,
                     y: 0,
                     quality: 1,
-                    canvasId: 'myCanvas',
+                    canvas: canvasObj, //现在的写法
+                    destWidth: width * (wx.getSystemInfoSync().pixelRatio / 2), //设备像素比修正
+                    destHeight: height * (wx.getSystemInfoSync().pixelRatio / 2), //设备像素比修正
                     success: (res) => {
                         wx.hideLoading();
                         var drawurl = res.tempFilePath;
-                        wx.saveImageToPhotosAlbum({ //保存生成的图片到手机相册里
+                        wx.saveImageToPhotosAlbum({
                             filePath: drawurl,
                             success(res) {
                                 console.log("保存相册成功" + res);
                                 wx.showToast({
                                     'title': '保存相册成功'
-                                })
+                                });
                             },
                             fail: function (err) {
                                 if (err.errMsg === "saveImageToPhotosAlbum:fail:auth denied" || err.errMsg === "saveImageToPhotosAlbum:fail auth deny" || err.errMsg === "saveImageToPhotosAlbum:fail authorize no response") {
@@ -410,36 +435,47 @@ Page({
                                         success: modalSuccess => {
                                             wx.openSetting({
                                                 success(settingdata) {
-                                                    console.log("settingdata", settingdata)
+                                                    console.log("settingdata", settingdata);
                                                     if (settingdata.authSetting['scope.writePhotosAlbum']) {
                                                         wx.showModal({
                                                             title: '提示',
                                                             content: '获取权限成功,再次点击图片即可保存',
                                                             showCancel: false,
-                                                        })
+                                                        });
                                                     } else {
                                                         wx.showModal({
                                                             title: '提示',
                                                             content: '获取权限失败，将无法保存到相册哦~',
                                                             showCancel: false,
-                                                        })
+                                                        });
                                                     }
                                                 },
                                                 fail(failData) {
-                                                    console.log("failData", failData)
+                                                    console.log("failData", failData);
                                                 },
                                                 complete(finishData) {
-                                                    console.log("finishData", finishData)
+                                                    console.log("finishData", finishData);
                                                 }
-                                            })
+                                            });
                                         }
-                                    })
+                                    });
+                                } else {
+                                    console.log("保存到相册失败" + res);
+
                                 }
                             },
-                        })
+                        });
                     },
-                })
-            });
+                    fail: function (error) {
+                        console.log("canvasToTempFilePath" + error)
+                    }
+                }, that);
+
+            };
+            img.src = res.tempFilePath;
+
+
+
         });
     },
     /**
@@ -490,19 +526,19 @@ Page({
                 //生成一个大小为55的小程序码
                 util.GenQrCode('idiomdetail', url, this.data.id, size).then(res => {
                     wx.cloud.callFunction({
-                        name: 'collection_update',
-                        data: {
-                            database: "idiom",
-                            id: this.data.id,
-                            values: {
-                                madeposter: true
+                            name: 'collection_update',
+                            data: {
+                                database: "idiom",
+                                id: this.data.id,
+                                values: {
+                                    madeposter: true
+                                }
                             }
-                        }
-                    }).then(res => {
-                        setTimeout(function () {
-                            that.savecodetofile()
-                        }, 4000);
-                    })
+                        }).then(res => {
+                            setTimeout(function () {
+                                that.savecodetofile()
+                            }, 4000);
+                        })
                         .catch(console.error)
                 })
             } else {
@@ -514,6 +550,7 @@ Page({
                 this.savecodetofile()
             }
         } catch (ex) {
+            console.log("绘图出现了错误" + ex)
             wx.showToast({
                 'title': '请重试'
             })
