@@ -69,7 +69,7 @@
   margin-top: -10rpx;
   padding-top: 5vw;
   padding-left: 1vw;
-  background: #bbada0;
+  background: #4a7c60;
   border-radius: 6px;
   width: 93vw;
   height: 93vw;
@@ -94,7 +94,7 @@
   margin-left: 3vw;
   margin-bottom: 3vw;
   float: left;
-  border-radius: 5px;
+  border-radius: 50%;
   box-sizing: border-box;
   background: rgba(238, 228, 218, 0.35);
   overflow: hidden;
@@ -108,30 +108,30 @@
   font-size: 35px;
   font-weight: bold;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .cell-con-A {
-  background: #eee4da;
+  background: #dfdcd9;
 }
 
 .cell-con-B {
-  background: #ede0c8;
+  background: #d8c8ab;
 }
 
 .cell-con-C {
   color: #f9f6f2;
-  background: #f2b179;
+  background: #e2a36b;
 }
 
 .cell-con-D {
   color: #f9f6f2;
-  background: #f59563;
+  background: #e48a59;
 }
 
 .cell-con-E {
   color: #f9f6f2;
-  background: #f67c5f;
+  background: #dd694c;
 }
 
 .cell-con-F {
@@ -141,68 +141,68 @@
 
 .cell-con-G {
   color: #f9f6f2;
-  background: #edcf72;
+  background: #c98c47;
   font-size: 30px;
 }
 
 .cell-con-H {
   color: #f9f6f2;
   font-size: 30px;
-  background: #edcc61;
+  background: #d3b349;
 }
 
 .cell-con-I {
   color: #f9f6f2;
   font-size: 30px;
-  background: #edc850;
+  background: #bd9a29;
 }
 
 .cell-con-J {
   color: #f9f6f2;
   font-size: 25px;
-  background: #edc53f;
+  background: #886b0b;
 }
 
 .cell-con-K {
   color: #f9f6f2;
   font-size: 25px;
-  background: #edc22e;
+  background: #4f8888;
 }
 
 .cell-con-L {
   color: #f9f6f2;
   font-size: 25px;
-  background: #298034;
+  background: #397777;
 }
 
 .cell-con-M {
   color: #f9f6f2;
   font-size: 25px;
-  background: #1f4e75;
+  background: #0f4e4e;
 }
 
 .cell-con-N {
   color: #f9f6f2;
   font-size: 25px;
-  background: #e20623;
+  background: #063838;
 }
 
 .cell-con-O {
   color: #f9f6f2;
   font-size: 25px;
-  background: #02f30e;
+  background: #49c97e;
 }
 
 .cell-con-P {
   color: #f9f6f2;
   font-size: 25px;
-  background: #02f30e;
+  background: #2c6945;
 }
 
 .cell-con-Q {
   color: #f9f6f2;
   font-size: 25px;
-  background: #02f30e;
+  background: #04f769;
 }
 
 .game-over {
