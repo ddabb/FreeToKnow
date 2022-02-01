@@ -243,7 +243,7 @@ Page({
     }
   },
   GetCellScore: function (value) {
-    let letters = 'ABCDEFGHIJKLMNOPQRST'
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     var index = letters.indexOf(value);
     return 3 * (2 ** index);

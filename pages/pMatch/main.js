@@ -198,7 +198,7 @@ Main.prototype = {
   },
 
   GetNext(value) {
-    let letters = 'ABCDEFGHIJKLMNOPQRST'
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     var a = letters.indexOf(value);
     return letters.charAt(a + 1);

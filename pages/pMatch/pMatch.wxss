@@ -69,7 +69,7 @@
   margin-top: -10rpx;
   padding-top: 5vw;
   padding-left: 1vw;
-  background: #4a7c60;
+  background: #88d8ba;
   border-radius: 6px;
   width: 93vw;
   height: 93vw;
@@ -200,6 +200,60 @@
 }
 
 .cell-con-Q {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-R {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-S {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-T {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-U {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-V {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-W {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-X {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-Y {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #04f769;
+}
+
+.cell-con-Z {
   color: #f9f6f2;
   font-size: 25px;
   background: #04f769;
