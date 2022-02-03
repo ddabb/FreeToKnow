@@ -17,13 +17,14 @@ App({
         isLogin: false,
         menuPlaceholder: "内容",
         CloudPathRoot: '', //云空间存储的地址
-        defaultAvatarUrl:'',
+        defaultAvatarUrl: '',
         hexosite: '', //hexosite的地址
     },
     onLaunch: async function (options) {
         Page = page;
+        var specialWay = [1007, 1008,1010, 1037, 1035];
         // 判断是否由分享进入小程序
-        if (options.scene == 1007 || options.scene == 1008 || options.scene == 1037) {
+        if (specialWay.indexOf(options.scene) > -1) {
             this.globalData.share = true
         } else {
             this.globalData.share = false
@@ -63,7 +64,7 @@ App({
                 let res_data = res.result.data[0]
                 this.globalData.CloudPathRoot = res_data.CloudPathRoot;
                 this.globalData.hexosite = res_data.hexosite;
-                this.globalData.defaultAvatarUrl=this.globalData.CloudPathRoot+"/game.png"
+                this.globalData.defaultAvatarUrl = this.globalData.CloudPathRoot + "/game.png"
             }
 
 

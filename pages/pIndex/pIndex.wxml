@@ -5,11 +5,9 @@
   <text class='play margin-top-xl margin-left-xl' bindtap='save' style="position: absolute; left: 149rpx; top: 174rpx; width: 150rpx">保存</text>
   <text class='play margin-top-xl margin-left-xl' bindtap='gameRank' style="position: absolute; left: 528rpx; top: 174rpx; width: 150rpx">排行榜</text>
 </view>
-<view bindtouchstart="touchStart" bindtouchend="touchEnd">
+<view wx:if="{{showForm}}" bindtouchstart="touchStart" bindtouchend="touchEnd">
   <!-- loading -->
-  <loading hidden="{{hidden}}">
-    加载中...
-  </loading>
+
 
   <view class="game" style="position: absolute; left: 26rpx; top: {{showArea?332:0}}rpx">
 

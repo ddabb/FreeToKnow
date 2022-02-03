@@ -29,7 +29,7 @@
     "pages/poemdetail/poemdetail",
     "pages/poetlist/poetlist",
     "pages/gameRank/gameRank",
-    "pages/pMatch/pMatch"
+    "pages/pIndex/pIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",

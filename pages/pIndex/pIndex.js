@@ -13,19 +13,23 @@ Page({
         endMsg: '',
         cacheGrid: null, //缓存信息
         showArea: true,
+        showForm: false,
         scene: "",
         over: false // 游戏是否结束
     },
 
     // 页面渲染完成
-    onReady: function (e) {
+    onLoad: function (e) {
         if (app.globalData.share) {
             this.setData({
-                scene: "分享进入"
+                scene: "分享进入",
+                showForm: true
             })
             util.getOrCreateUserInfo(this.InitMethod);
         } else {
-            this.InitMethod();
+            wx.switchTab({
+                url: `/pages/index/index`,
+            })
         }
     },
 
@@ -143,7 +147,7 @@ Page({
             let dis = Math.max(absdisX, absdisY);
             console.log("dis" + dis)
             if (dis > 3) { // 减少触屏失效的错句
-                var direction = absdisX > absdisY ? (disX < 0 ? 3 : 1) : (disY < 0 ? 0 : 2); // 确定移动方向
+                var direction = absdisX > absdisY ? (disX < 0 ? 1 : 3) : (disY < 0 ? 2 : 0); // 确定移动方向
 
                 var data = this.data.main.move(direction);
                 this.updateView(data);
@@ -250,7 +254,7 @@ Page({
         })
         return {
             title: title, //此处为标题,
-            path: `/pages/pMatch/pMatch`, //此处为路径,
+            path: `/pages/pIndex/pIndex`, //此处为路径,
             // imageUrl: randomImg, //此处就是写的随机分享图片,
             success: function (res) {
                 //这里为分享成功后的回调函数,
