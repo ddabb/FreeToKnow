@@ -19,16 +19,16 @@ Main.prototype = {
       this.addRandomData();
     }
   },
-  addRandomData() { //65%  20%  10%  5%
+  addRandomData() { //A  B C D 概率分别是 70% 10% 10% 10%
     if (!this.board.cellEmpty()) {
       let rand = Math.random();
       console.log("rand" + rand)
       let value = "";
-      if (rand < 0.65) {
+      if (rand < 0.7) {
         value = "A"
-      } else if (rand >= 0.65 && rand < 0.85) {
+      } else if (rand >= 0.7 && rand < 0.8) {
         value = "B"
-      } else if (rand >= 0.85 && rand < 0.95) {
+      } else if (rand >= 0.8 && rand < 0.9) {
         value = "C"
       } else {
         value = "D"

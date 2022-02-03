@@ -7,7 +7,7 @@ Page({
      */
     data: {
         userInfo: {},
-        avatarUrl: "./game.png",
+
         openid: "",
         logged: false,
         hasImg: false, //是否有头像信息
@@ -31,7 +31,7 @@ Page({
         });
 
         if (app.globalData.isLogin) {
-            let imgurl = app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : 'game.png'
+            let imgurl =app.globalData.userInfo.avatarUrl!=null&& app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : app.globalData.defaultAvatarUrl
             this.setData({
                 logged: true,
                 avatarUrl: imgurl,
@@ -171,11 +171,11 @@ Page({
         if (app.globalData.isLogin) {
             let imgurl = '';
             let needReset = false;
-            if (app.globalData.userInfo.avatarUrl.length > 0) {
+            if (app.globalData.userInfo.avatarUrl!=null&&app.globalData.userInfo.avatarUrl.length > 0) {
                 imgurl = app.globalData.userInfo.avatarUrl;
                 needReset = false;
             } else {
-                imgurl = 'game.png'
+                imgurl = app.globalData.defaultAvatarUrl;
                 needReset = true;
             }
             this.setData({

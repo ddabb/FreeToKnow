@@ -17,6 +17,7 @@ App({
         isLogin: false,
         menuPlaceholder: "内容",
         CloudPathRoot: '', //云空间存储的地址
+        defaultAvatarUrl:'',
         hexosite: '', //hexosite的地址
     },
     onLaunch: async function (options) {
@@ -62,6 +63,7 @@ App({
                 let res_data = res.result.data[0]
                 this.globalData.CloudPathRoot = res_data.CloudPathRoot;
                 this.globalData.hexosite = res_data.hexosite;
+                this.globalData.defaultAvatarUrl=this.globalData.CloudPathRoot+"/game.png"
             }
 
 

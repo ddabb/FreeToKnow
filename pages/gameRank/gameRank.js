@@ -56,7 +56,7 @@ Page({
                 let result = [];
                 res_data.forEach(element => {
                     if (element.pscore > 0) {
-                        element.avatarUrl = element.avatarUrl > "" ? element.avatarUrl : 'game.png'; //处理用于从来没有授权过头像
+                        element.avatarUrl = element.avatarUrl > "" ? element.avatarUrl :app.globalData.defaultAvatarUrl; //处理用于从来没有授权过头像
                         var reg = /1(\d{2})\d{4}(\d{4})/g;
                         element.nickName = element.nickName > "" ? element.nickName : '无名氏';
                         element.nickName = element.nickName.replace(reg, "1$1****$2"); //屏蔽昵称中的手机号码

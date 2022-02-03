@@ -1,7 +1,7 @@
 <navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='积分排行榜' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" />
 <view class="cu-list menu">
   <view class="cu-item " wx:for='{{list}}' wx:key='index' style="background-color:#faf8ee;">
-    <view class="padding-xxl cu-avatar round lg" style="background-image:url({{item.avatarUrl}});"></view>
+    <image class="padding-xxl cu-avatar round lg" src="{{item.avatarUrl}}"></image>
     <view class='padding-xs text-orange text-xl'>{{item.nickName}}</view>
     <view class="text-red  text-xxl text-bold">{{item.pscore}}</view>
   </view>

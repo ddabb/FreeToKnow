@@ -6,7 +6,6 @@ const regeneratorRuntime = require('../../lib/regenerator-runtime/runtime.js')
 Page({
     data: {
         isClose: true, //判断当前页面是打开还是返回页
-        avatarUrl: 'game.png',
         userInfo: {},
         logged: false,
         list: [],
