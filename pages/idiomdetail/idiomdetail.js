@@ -84,34 +84,34 @@ Page({
         })
 
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'idiom',
-                    page,
-                    num,
-                    condition: {
-                        _id: id
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    wx.showToast({
-                        icon: 'warn',
-                        title: '加载失败',
-                    })
-                } else {
-                    let length1 = res.result.data[0].tags.length;
-                    console.log('标签长度', length1)
-                    this.setData({
-                        detail: res.result.data[0]
-                    })
-
-                    wx.hideLoading()
+            name: 'collection_get',
+            data: {
+                database: 'idiom',
+                page,
+                num,
+                condition: {
+                    _id: id
                 }
-                that.setData({
-                    isDown: true
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                wx.showToast({
+                    icon: 'warn',
+                    title: '加载失败',
                 })
+            } else {
+                let length1 = res.result.data[0].tags.length;
+                console.log('标签长度', length1)
+                this.setData({
+                    detail: res.result.data[0]
+                })
+
+                wx.hideLoading()
+            }
+            that.setData({
+                isDown: true
             })
+        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -131,10 +131,10 @@ Page({
     }, 1000),
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) {}, 1000)
+        util.handlerGohomeClick(function (e) { }, 1000)
     },
 
     onBackhome(e) {
@@ -197,77 +197,76 @@ Page({
         let page1 = this.data.page
         let num1 = this.data.num
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'idiom',
-                    page: page1,
-                    num: num1,
-                    condition: {
-                        t: name
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    that.setData({
-                        loading: false,
-                        isOver: true
-                    })
-                } else {
-                    let res_data = res.result.data
-                    let gotoid = res_data[0]._id;
-
-                    wx.cloud.callFunction({
-                            name: 'collection_count_opened',
-                            data: {
-                                database: 'idiom',
-                                id: gotoid
-                            },
-                        }).then(res => {
-                            wx.navigateTo({
-                                url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
-                            })
-                        })
-                        .catch(console.error)
+            name: 'collection_get',
+            data: {
+                database: 'idiom',
+                page: page1,
+                num: num1,
+                condition: {
+                    t: name
                 }
-            })
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                that.setData({
+                    loading: false,
+                    isOver: true
+                })
+            } else {
+                let res_data = res.result.data
+                let gotoid = res_data[0]._id;
+
+                wx.cloud.callFunction({
+                    name: 'collection_count_opened',
+                    data: {
+                        database: 'idiom',
+                        id: gotoid
+                    },
+                }).then(res => {
+                    wx.navigateTo({
+                        url: `/pages/idiomdetail/idiomdetail?id=${gotoid}&name=${name}`
+                    })
+                })
+                    .catch(console.error)
+            }
+        })
             .catch(console.error)
     }, 1000),
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
+    onShow: function () { },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {},
+    onHide: function () { },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {},
+    onUnload: function () { },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {},
+    onPullDownRefresh: function () { },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {},
+    onReachBottom: function () { },
     /**
      *
      * @param {当前页面二维码地址} qrcodeurl
      */
     savecodetofile: function () {
-
         wx.createSelectorQuery()
             .select('#cvs1')
             .fields({
@@ -275,7 +274,6 @@ Page({
                 size: true,
             })
             .exec(this.MergeImage.bind(this))
-
     },
     MergeImage: function (res) {
         let qrcodeurl = app.globalData.CloudPathRoot + `/idiomdetail/${this.data.id}.png`
@@ -461,7 +459,6 @@ Page({
                                     });
                                 } else {
                                     console.log("保存到相册失败" + res);
-
                                 }
                             },
                         });
@@ -470,12 +467,8 @@ Page({
                         console.log("canvasToTempFilePath" + error)
                     }
                 }, that);
-
             };
             img.src = res.tempFilePath;
-
-
-
         });
     },
     /**
@@ -526,19 +519,19 @@ Page({
                 //生成一个大小为55的小程序码
                 util.GenQrCode('idiomdetail', url, this.data.id, size).then(res => {
                     wx.cloud.callFunction({
-                            name: 'collection_update',
-                            data: {
-                                database: "idiom",
-                                id: this.data.id,
-                                values: {
-                                    madeposter: true
-                                }
+                        name: 'collection_update',
+                        data: {
+                            database: "idiom",
+                            id: this.data.id,
+                            values: {
+                                madeposter: true
                             }
-                        }).then(res => {
-                            setTimeout(function () {
-                                that.savecodetofile()
-                            }, 4000);
-                        })
+                        }
+                    }).then(res => {
+                        setTimeout(function () {
+                            that.savecodetofile()
+                        }, 4000);
+                    })
                         .catch(console.error)
                 })
             } else {

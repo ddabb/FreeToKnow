@@ -40,7 +40,6 @@ Page({
         } else {
             this.init(options);
         }
-
     },
     init: function (options) {
         let isLogin = app.globalData.isLogin
@@ -79,39 +78,39 @@ Page({
         })
 
         wx.cloud.callFunction({
-                name: 'collection_get',
-                data: {
-                    database: 'poem',
-                    page,
-                    num,
-                    condition: {
-                        _id: id
-                    }
-                },
-            }).then(res => {
-                if (!res.result.data.length) {
-                    wx.showToast({
-                        icon: 'warn',
-                        title: '加载失败',
-                    })
-                } else {
-                    let length1 = res.result.data[0].tags.length;
-                    console.log('标签长度', length1)
-                    that.setData({
-                        detail: res.result.data[0]
-                    })
-                    wx.setNavigationBarTitle({
-                        title: res.result.data[0].name //页面标题为路由参数
-                    })
-                    that.setData({
-                        name: res.result.data[0].name
-                    })
-                    wx.hideLoading()
+            name: 'collection_get',
+            data: {
+                database: 'poem',
+                page,
+                num,
+                condition: {
+                    _id: id
                 }
-                that.setData({
-                    isDown: true
+            },
+        }).then(res => {
+            if (!res.result.data.length) {
+                wx.showToast({
+                    icon: 'warn',
+                    title: '加载失败',
                 })
+            } else {
+                let length1 = res.result.data[0].tags.length;
+                console.log('标签长度', length1)
+                that.setData({
+                    detail: res.result.data[0]
+                })
+                wx.setNavigationBarTitle({
+                    title: res.result.data[0].name //页面标题为路由参数
+                })
+                that.setData({
+                    name: res.result.data[0].name
+                })
+                wx.hideLoading()
+            }
+            that.setData({
+                isDown: true
             })
+        })
             .catch(err => {
                 console.log('失败' + err)
                 that.setData({
@@ -146,7 +145,7 @@ Page({
                     })
                 }
                 wx.hideLoading({
-                    success: (res) => {},
+                    success: (res) => { },
                 })
                 console.log(that.data.poet)
             })
@@ -164,10 +163,10 @@ Page({
     }, 1000),
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) {}, 1000)
+        util.handlerGobackClick(function (e) { }, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) {}, 1000)
+        util.handlerGohomeClick(function (e) { }, 1000)
     },
 
     onBackhome(e) {
@@ -201,7 +200,7 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
@@ -215,22 +214,22 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {},
+    onHide: function () { },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {},
+    onUnload: function () { },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {},
+    onPullDownRefresh: function () { },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {},
+    onReachBottom: function () { },
     /**
      *
      * @param {当前页面二维码地址} qrcodeurl
@@ -452,19 +451,19 @@ Page({
                 //生成一个大小为55的小程序码
                 util.GenQrCode('idiomdetail', url, this.data.id, size).then(res => {
                     wx.cloud.callFunction({
-                            name: 'collection_update',
-                            data: {
-                                database: "idiomdetail",
-                                id: this.data.id,
-                                values: {
-                                    madeposter: true
-                                }
+                        name: 'collection_update',
+                        data: {
+                            database: "idiomdetail",
+                            id: this.data.id,
+                            values: {
+                                madeposter: true
                             }
-                        }).then(res => {
-                            setTimeout(function () {
-                                that.savecodetofile()
-                            }, 4000);
-                        })
+                        }
+                    }).then(res => {
+                        setTimeout(function () {
+                            that.savecodetofile()
+                        }, 4000);
+                    })
                         .catch(console.error)
                 })
             } else {

@@ -11,7 +11,6 @@
     加载中...
   </loading>
 
-
   <view class="game" style="position: absolute; left: 26rpx; top: {{showArea?332:0}}rpx">
 
     <!-- 矩阵 -->
@@ -30,7 +29,6 @@
     <view style="text-align:center;"> <text class='pro'>{{endMsg}}</text></view>
   </view>
 </view>
-
 
 <!-- https://www.jb51.net/article/149632.htm
   https://blog.csdn.net/jiaodamanong/article/details/109751829

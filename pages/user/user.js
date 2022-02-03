@@ -31,7 +31,7 @@ Page({
         });
 
         if (app.globalData.isLogin) {
-            let imgurl =app.globalData.userInfo.avatarUrl!=null&& app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : app.globalData.defaultAvatarUrl
+            let imgurl = app.globalData.userInfo.avatarUrl != null && app.globalData.userInfo.avatarUrl.length > 0 ? app.globalData.userInfo.avatarUrl : app.globalData.defaultAvatarUrl
             this.setData({
                 logged: true,
                 avatarUrl: imgurl,
@@ -171,7 +171,7 @@ Page({
         if (app.globalData.isLogin) {
             let imgurl = '';
             let needReset = false;
-            if (app.globalData.userInfo.avatarUrl!=null&&app.globalData.userInfo.avatarUrl.length > 0) {
+            if (app.globalData.userInfo.avatarUrl != null && app.globalData.userInfo.avatarUrl.length > 0) {
                 imgurl = app.globalData.userInfo.avatarUrl;
                 needReset = false;
             } else {

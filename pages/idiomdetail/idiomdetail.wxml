@@ -76,7 +76,6 @@
     <button class="btnCopyData" bindtap="MakePosters" style="background:SteelBlue;margin-left: 40rpx;" size="mini">
       分享海报
     </button>
-
   </view>
 
   <view class='bottom' style='text-align:center;font-size:24rpx;padding:30rpx;'>

@@ -97,7 +97,7 @@
   border-radius: 50%;
   box-sizing: border-box;
 
-  background: #b5e4d3;
+  background: orange;
   overflow: hidden;
 }
 
@@ -170,7 +170,8 @@
 .cell-con-K {
   color: #f9f6f2;
   font-size: 25px;
-  background: #4f8888;
+  background: #49c97e;
+
 }
 
 .cell-con-L {
@@ -182,25 +183,27 @@
 .cell-con-M {
   color: #f9f6f2;
   font-size: 25px;
-  background: #0f4e4e;
+  background: #4f8888;
+
 }
 
 .cell-con-N {
   color: #f9f6f2;
   font-size: 25px;
-  background: #063838;
+  background: #2c6945;
+
 }
 
 .cell-con-O {
   color: #f9f6f2;
   font-size: 25px;
-  background: #49c97e;
+  background: #0f4e4e;
 }
 
 .cell-con-P {
   color: #f9f6f2;
   font-size: 25px;
-  background: #2c6945;
+  background: #063838;
 }
 
 .cell-con-Q {
