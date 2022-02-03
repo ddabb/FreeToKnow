@@ -14,7 +14,12 @@ Page({
         cacheGrid: null, //缓存信息
         showArea: true,
         showForm: false,
+        letters1: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+        letters2: ['I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', ],
+        letters3: ['Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'],
         scene: "",
+        empty: '\t',
+        newLine: '\n',
         over: false // 游戏是否结束
     },
 
@@ -27,9 +32,11 @@ Page({
             })
             util.getOrCreateUserInfo(this.InitMethod);
         } else {
-            wx.switchTab({
-                url: `/pages/index/index`,
+            this.setData({
+       
+                showForm: true
             })
+            this.InitMethod();
         }
     },
 
@@ -245,7 +252,7 @@ Page({
         return 3 * (2 ** index);
     },
     onShareAppMessage: function () {
-        let title = `ABC合成记,我最好的成绩是${this.data.bestScore}分~`;
+        let title = `颜色合成大作战,我最好的成绩是${this.data.bestScore}分~`;
         wx.setNavigationBarTitle({
             title: title //页面标题为路由参数
         });
@@ -280,7 +287,7 @@ Page({
         })
     },
     onShareTimeline: function () {
-        let title = `ABC合成记,我最好的成绩是${this.data.bestScore}分~`;
+        let title = `颜色合成大作战,我最好的成绩是${this.data.bestScore}分~`;
         wx.setNavigationBarTitle({
             title: title //页面标题为路由参数
         });

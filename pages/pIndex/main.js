@@ -2,7 +2,7 @@ var Board = require("./grid.js");
 
 function Main(size) {
     this.size = size;
-    this.startData = 14; // 初始填充14个数据
+    this.startData = 2; // 初始填充14个数据
     this.init();
 }
 

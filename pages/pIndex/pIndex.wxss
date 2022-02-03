@@ -56,7 +56,7 @@
 .rside text {
   display: block;
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -97,9 +97,9 @@
   border-radius: 50%;
   box-sizing: border-box;
 
-  background: rgb(46, 165, 180);
+  background: white;
   overflow: hidden;
-  
+
 }
 
 .cell-con {
@@ -115,156 +115,162 @@
 
 .cell-con-A {
   color: #f9f6f2;
-  background: #e2d87f;
+  font-size: 20px;
+  background: red
 }
 
 .cell-con-B {
   color: #f9f6f2;
-  background: #c7bd66;
+  font-size: 20px;
+  background: linear-gradient(red, orange);
 }
 
 .cell-con-C {
   color: #f9f6f2;
-  background: #aca352;
+  font-size: 20px;
+  background: orange;
 }
 
 .cell-con-D {
   color: #f9f6f2;
-  background: #c0b446;
+  font-size: 20px;
+  background: linear-gradient(orange, yellow);
 }
 
 .cell-con-E {
   color: #f9f6f2;
-  background: #cec579;
+  font-size: 20px;
+  background: yellow;
 }
 
 .cell-con-F {
   color: #f9f6f2;
-  background: #beb34b;
+  font-size: 20px;
+  background: linear-gradient(yellow, green);
 }
 
 .cell-con-G {
   color: #f9f6f2;
-  background: #d3b349;
-  font-size: 30px;
+  background: green;
+  font-size: 20px;
 }
 
 .cell-con-H {
   color: #f9f6f2;
-  font-size: 30px;
-  background: #a3972d;
+  font-size: 20px;
+  background: linear-gradient(green, cyan);
 
 }
 
 .cell-con-I {
   color: #f9f6f2;
-  font-size: 30px;
-  background: #bd9a29;
+  font-size: 20px;
+  background: cyan;
 }
 
 .cell-con-J {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #886b0b;
+  font-size: 20px;
+  background: linear-gradient(cyan, blue);
 }
 
 .cell-con-K {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #49c97e;
+  font-size: 20px;
+  background: blue;
 
 }
 
 .cell-con-L {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #397777;
+  font-size: 20px;
+  background: linear-gradient(blue, purple);
 }
 
 .cell-con-M {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #4f8888;
+  font-size: 20px;
+  background: purple;
 
 }
 
 .cell-con-N {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #2c6945;
+  font-size: 20px;
+  background: linear-gradient(yellow, red);
 
 }
 
 .cell-con-O {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #0f4e4e;
+  font-size: 20px;
+  background: linear-gradient(green, orange);
 }
 
 .cell-con-P {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #063838;
+  font-size: 20px;
+  background: linear-gradient(cyan, yellow);
 }
 
 .cell-con-Q {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(blue, green);
 }
 
 .cell-con-R {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(purple, cyan);
 }
 
 .cell-con-S {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(green, red);
 }
 
 .cell-con-T {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(cyan, orange);
 }
 
 .cell-con-U {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(blue, yellow);
 }
 
 .cell-con-V {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(purple, green);
 }
 
 .cell-con-W {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(red, black);
 }
 
 .cell-con-X {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(yellow, black);
 }
 
 .cell-con-Y {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(blue, black);
 }
 
 .cell-con-Z {
   color: #f9f6f2;
-  font-size: 25px;
-  background: #04f769;
+  font-size: 20px;
+  background: linear-gradient(purple, black);
 }
 
 .game-over {
@@ -294,6 +300,6 @@
 
 .pro {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
   color: maroon;
 }
