@@ -9,7 +9,7 @@
       <image class='' mode="{{imagemode}}" src='/images/home/reflectiveknowledge.png'></image>
     </navigator>
     <navigator url="/pages/procedureknowledge/procedureknowledge" open-type='navigate'>
-      <image class='' mode="{{imagemode}}" src='/images/home/procedureknowledge.png' mode="aspectFit"></image>
+      <image class='' mode="{{imagemode}}" src='/images/home/procedureknowledge.png'></image>
     </navigator>
     <navigator url="/pages/conceptualknowledge/conceptualknowledge" open-type='navigate'>
       <image class='' mode="{{imagemode}}" src='/images/home/conceptualknowledge.png'></image>
