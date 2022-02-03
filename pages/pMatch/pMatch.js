@@ -143,7 +143,7 @@ Page({
             let dis = Math.max(absdisX, absdisY);
             console.log("dis" + dis)
             if (dis > 3) { // 减少触屏失效的错句
-                var direction = absdisX > absdisY ? (disX < 0 ? 1 : 3) : (disY < 0 ? 2 : 0); // 确定移动方向
+                var direction = absdisX > absdisY ? (disX < 0 ? 3 : 1) : (disY < 0 ? 0 : 2); // 确定移动方向
 
                 var data = this.data.main.move(direction);
                 this.updateView(data);

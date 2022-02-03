@@ -24,6 +24,7 @@
       </view>
     </view>
     <!-- game over -->
+
     <view style="text-align:center;"><text class='nowScore'>当前得分：{{score}}</text> </view>
     <view style="text-align:center;"><text class='nowScore'>我的最高分：{{bestScore}}</text> </view>
     <view style="text-align:center;"> <text class='pro'>{{endMsg}}</text></view>
