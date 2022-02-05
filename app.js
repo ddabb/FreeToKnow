@@ -63,6 +63,9 @@ App({
             if (res.result.data.length) {
                 let res_data = res.result.data[0]
                 this.globalData.CloudPathRoot = res_data.CloudPathRoot;
+                this.globalData.levelA = res_data.levelA;
+                this.globalData.levelB = res_data.levelB;
+                this.globalData.levelC = res_data.levelC;
                 this.globalData.hexosite = res_data.hexosite;
                 this.globalData.defaultAvatarUrl = this.globalData.CloudPathRoot + "/game.png"
             }

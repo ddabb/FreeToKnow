@@ -37,6 +37,10 @@ Page({
                 avatarUrl: imgurl,
                 username: app.globalData.userInfo.nickName,
             });
+        } else {
+            this.setData({
+                avatarUrl: app.globalData.defaultAvatarUrl,
+            });
         }
 
         wx.hideLoading();

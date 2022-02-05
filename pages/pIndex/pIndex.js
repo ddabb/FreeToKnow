@@ -20,6 +20,7 @@ Page({
         scene: "",
         empty: '\t',
         newLine: '\n',
+        showFont: false,
         over: false // 游戏是否结束
     },
 
@@ -33,7 +34,6 @@ Page({
             util.getOrCreateUserInfo(this.InitMethod);
         } else {
             this.setData({
-       
                 showForm: true
             })
             this.InitMethod();
@@ -43,7 +43,8 @@ Page({
     InitMethod: function () {
         if (app.globalData.userInfo && app.globalData.userInfo.pscore) {
             this.setData({
-                bestScore: app.globalData.userInfo.pscore
+                bestScore: app.globalData.userInfo.pscore,
+                showFont: app.globalData.userInfo.pscore > 1000
             });
         }
         this.gameStart();
@@ -241,7 +242,8 @@ Page({
         if (max > this.data.bestScore) {
             this.setData({
                 endMsg: '创造新纪录！',
-                bestScore: max
+                bestScore: max,
+                showFont: max > 1000
             });
         }
     },

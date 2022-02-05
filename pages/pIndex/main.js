@@ -1,4 +1,5 @@
 var Board = require("./grid.js");
+const app = getApp()
 
 function Main(size) {
     this.size = size;
@@ -24,11 +25,11 @@ Main.prototype = {
             let rand = Math.random();
             console.log("rand" + rand)
             let value = "";
-            if (rand < 0.7) {
+            if (rand < app.globalData.levelA) {
                 value = "A"
-            } else if (rand >= 0.7 && rand < 0.8) {
+            } else if (rand >= app.globalData.levelA && rand < app.globalData.levelB) {
                 value = "B"
-            } else if (rand >= 0.8 && rand < 0.9) {
+            } else if (rand >= app.globalData.levelB && rand < app.globalData.levelC) {
                 value = "C"
             } else {
                 value = "D"
