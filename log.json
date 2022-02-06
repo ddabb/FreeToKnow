@@ -2,6 +2,27 @@
   "_id": "54ad1eea61cfed5b023480d52eed620d",
   "logs": [
     {
+      "version": "v2.0.23",
+      "date": "2022/2/5",
+      "desc": [
+        "新增颜色合成大作战"
+      ]
+    },
+    {
+      "version": "v2.0.19",
+      "date": "2022/1/21",
+      "desc": [
+        "使用CanvasRenderingContext2D绘制图像"
+      ]
+    },
+    {
+      "version": "v2.0.17",
+      "date": "2022/1/17",
+      "desc": [
+        "记录用户访问的openid"
+      ]
+    },
+    {
       "version": "v2.0.12",
       "date": "2022/1/9",
       "desc": [
