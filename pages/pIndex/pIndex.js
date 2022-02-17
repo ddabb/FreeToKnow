@@ -42,7 +42,9 @@ Page({
             }
             else
             {
-         //do something
+         wx.switchTab({
+      url: '/pages/index/index'
+    });
             }
 
         }
