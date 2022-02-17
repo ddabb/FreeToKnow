@@ -33,10 +33,18 @@ Page({
             })
             util.getOrCreateUserInfo(this.InitMethod);
         } else {
-            this.setData({
+            if(app.globalData.showView)
+            {
+                        this.setData({
                 showForm: true
             })
             this.InitMethod();
+            }
+            else
+            {
+         //do something
+            }
+
         }
     },
 
