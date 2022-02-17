@@ -66,6 +66,7 @@ App({
                 this.globalData.levelA = res_data.levelA;
                 this.globalData.levelB = res_data.levelB;
                 this.globalData.levelC = res_data.levelC;
+                this.globalData.showView = res_data.showView;
                 this.globalData.hexosite = res_data.hexosite;
                 this.globalData.defaultAvatarUrl = this.globalData.CloudPathRoot + "/game.png"
             }
