@@ -14,6 +14,7 @@ Page({
         username: "",
         place: "",
         showArea: true,
+        showView:false,
         showImg: false,
     },
 
@@ -49,6 +50,9 @@ Page({
                 openid: app.globalData.openid,
             });
         }
+               this.setData({
+                showView: app.globalData.showView,
+            });
     },
 
     ResetImg(e) {
