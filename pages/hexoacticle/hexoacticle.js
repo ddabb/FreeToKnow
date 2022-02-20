@@ -41,52 +41,52 @@ Page({
         console.log("acticlepath" + options.path);
         let path = options.path;
         let that = this;
-        let url = app.globalData.hexosite + encodeURIComponent(path);
+        let url = app.globalData.hexosite + "/" + encodeURIComponent(path);
         console.log("url" + url);
         wx.cloud.callFunction({
-            name: 'hexohttp',
-            data: {
-                url
-            },
-        }).then(res => {
-            if (res.result != '失败') {
-                let obj = JSON.parse(res.result);
-                let result = app.towxml(obj.content, "html", {
-                    base: "https://www.60points.com",
-                    events: {
-                        tap: bindtap => {
-                            var current = bindtap.currentTarget.dataset.data.attr.src;
-                            wx.previewImage({
-                                current,
-                                urls: [current]
-                            });
+                name: 'hexohttp',
+                data: {
+                    url
+                },
+            }).then(res => {
+                if (res.result != '失败') {
+                    let obj = JSON.parse(res.result);
+                    let result = app.towxml(obj.content, "html", {
+                        base: app.globalData.hexosite,
+                        events: {
+                            tap: bindtap => {
+                                var current = bindtap.currentTarget.dataset.data.attr.src;
+                                wx.previewImage({
+                                    current,
+                                    urls: [current]
+                                });
+                            }
                         }
-                    }
-                });
-                // 更新解析数据
-                that.setData({
-                    article: result,
-                    showLoading: false,
-                    articaleTitle: obj.title,
-                    path: path
-                });
-                wx.setNavigationBarTitle({
-                    title: obj.title //页面标题为路由参数
-                });
-            }
-        })
+                    });
+                    // 更新解析数据
+                    that.setData({
+                        article: result,
+                        showLoading: false,
+                        articaleTitle: obj.title,
+                        path: path
+                    });
+                    wx.setNavigationBarTitle({
+                        title: obj.title //页面标题为路由参数
+                    });
+                }
+            })
             .catch(console.error);
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () { },
+    onReady: function () {},
 
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) { }, 1000)
+        util.handlerGobackClick(function (e) {}, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) { }, 1000)
+        util.handlerGohomeClick(function (e) {}, 1000)
     },
     /**
      * 生命周期函数--监听页面显示
@@ -100,22 +100,22 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () { },
+    onHide: function () {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () { },
+    onUnload: function () {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () { },
+    onPullDownRefresh: function () {},
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () { },
+    onReachBottom: function () {},
 
     /**
      * 用户点击右上角分享
