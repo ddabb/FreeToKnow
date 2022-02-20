@@ -26,35 +26,34 @@ Page({
 
     // 页面渲染完成
     onLoad: function (e) {
-        if (app.globalData.share) {
-            this.setData({
-                scene: "分享进入",
-                showForm: true
-            })
-            util.getOrCreateUserInfo(this.InitMethod);
-        } else {
-            if(app.globalData.showView)
-            {
-                        this.setData({
-                showForm: true
-            })
-            this.InitMethod();
-            }
-            else
-            {
-         wx.switchTab({
-      url: '/pages/index/index'
-    });
-            }
 
+        if (app.globalData.showView) {
+            if (app.globalData.share) {
+                this.setData({
+                    scene: "分享进入",
+                    showForm: true
+                })
+                util.getOrCreateUserInfo(this.InitMethod);
+            } else {
+                this.setData({
+                    showForm: true
+                })
+                this.InitMethod();
+            }
+        } else {
+            wx.switchTab({
+                url: '/pages/index/index'
+            });
         }
+
+
     },
 
     InitMethod: function () {
         if (app.globalData.userInfo && app.globalData.userInfo.pscore) {
             this.setData({
                 bestScore: app.globalData.userInfo.pscore,
-                showFont: app.globalData.userInfo.pscore > 1000
+                showFont: app.globalData.userInfo.pscore > 0
             });
         }
         this.gameStart();

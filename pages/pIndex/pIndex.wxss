@@ -89,12 +89,12 @@
 }
 
 .cell {
-  width: 21vw;
-  height: 21vw;
-  margin-left: 1vw;
-  margin-bottom: 1vw;
+  width: 20vw;
+  height: 20vw;
+  margin-left: 2vw;
+  margin-bottom: 2vw;
   float: left;
-  border-radius: 50%;
+  border-radius: 6px;
   box-sizing: border-box;
 
   background: white;
@@ -103,174 +103,162 @@
 }
 
 .cell-con {
-  width: 21vw;
-  height: 21vw;
-  line-height: 21vw;
+  width: 20vw;
+  height: 20vw;
+  line-height: 20vw;
   position: absolute;
   font-size: 35px;
   font-weight: bold;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 6px;
 }
 
 .cell-con-A {
-  color: #f9f6f2;
-  font-size: 20px;
-  background: red
+  background: #eee4da;
 }
 
 .cell-con-B {
-  color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(red, orange);
+  background: #ede0c8;
 }
 
 .cell-con-C {
   color: #f9f6f2;
-  font-size: 20px;
-  background: orange;
+  background: #f2b179;
 }
 
 .cell-con-D {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(orange, yellow);
+  background: #f59563;
 }
 
 .cell-con-E {
   color: #f9f6f2;
-  font-size: 20px;
-  background: yellow;
+  background: #f67c5f;
 }
 
 .cell-con-F {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(yellow, green);
+  background: #f65e3b;
 }
 
 .cell-con-G {
   color: #f9f6f2;
-  background: green;
-  font-size: 20px;
+  background: #edcf72;
+  font-size: 30px;
 }
 
 .cell-con-H {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(green, cyan);
-
+  font-size: 30px;
+  background: #edcc61;
 }
 
 .cell-con-I {
   color: #f9f6f2;
-  font-size: 20px;
-  background: cyan;
+  font-size: 30px;
+  background: #edc850;
 }
 
 .cell-con-J {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(cyan, blue);
+  font-size: 25px;
+  background: #edc53f;
 }
 
 .cell-con-K {
   color: #f9f6f2;
-  font-size: 20px;
-  background: blue;
-
+  font-size: 25px;
+  background: #edc22e;
 }
 
 .cell-con-L {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(blue, purple);
+  font-size: 25px;
+  background: #298034;
 }
 
 .cell-con-M {
   color: #f9f6f2;
-  font-size: 20px;
-  background: purple;
-
+  font-size: 25px;
+  background: #1f4e75;
 }
 
 .cell-con-N {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(yellow, red);
-
+  font-size: 25px;
+  background: #e20623;
 }
 
 .cell-con-O {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(green, orange);
+  font-size: 25px;
+  background: #02f30e;
 }
 
 .cell-con-P {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(cyan, yellow);
+  font-size: 25px;
+  background: #02f30e;
 }
 
 .cell-con-Q {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(blue, green);
+  font-size: 25px;
+  background: #02f30e;
 }
 
 .cell-con-R {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(purple, cyan);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-S {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(green, red);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-T {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(cyan, orange);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-U {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(blue, yellow);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-V {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(purple, green);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-W {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(red, black);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-X {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(yellow, black);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-Y {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(blue, black);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .cell-con-Z {
   color: #f9f6f2;
-  font-size: 20px;
-  background: linear-gradient(purple, black);
+  font-size: 25px;
+  background: #04f769;
 }
 
 .game-over {
