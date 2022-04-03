@@ -26,7 +26,7 @@ const goKnowledgeDetail = e => {
     .catch(console.error)
 }
 
-function getOrCreateUserInfo(callback,e) {
+function getOrCreateUserInfo(callback, e) {
   wx.cloud.callFunction({
     name: 'login',
     data: {},
@@ -58,7 +58,7 @@ function getOrCreateUserInfo(callback,e) {
               }).then(res => {
                 app.globalData.userInfo._id = res.result._id; //给内存中的用户id赋值。
                 app.globalData.userInfo.openid = app.globalData.openid;
-                app.globalData.userInfo.avatarUrl =  app.globalData.defaultAvatarUrl;
+                app.globalData.userInfo.avatarUrl = app.globalData.defaultAvatarUrl;
                 console.log("新增用户" + res)
                 callback(e);
               })
@@ -352,6 +352,25 @@ function ShareTimeline() {
   }
 }
 
+const getTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+//生成随机 GUID 数
+const genguid=e=> {
+  function S4() {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  }
+  return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+
 module.exports = {
   ShareAppMessage: ShareAppMessage,
   ShareTimeline: ShareTimeline,
@@ -361,6 +380,8 @@ module.exports = {
   goSearch: goSearch,
   goIdiomDetail: goIdiomDetail,
   goPoemDetail: goPoemDetail,
+  getTime: getTime,
+  genguid:genguid,
   goCoupletDetail: goCoupletDetail,
   goPostDetail: goPostDetail,
   goPostDetailByAddr: goPostDetailByAddr,

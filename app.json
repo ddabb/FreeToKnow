@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/home/index",
     "pages/find/find",
     "pages/user/user",
     "pages/detail/detail",
@@ -30,6 +31,7 @@
     "pages/poetlist/poetlist",
     "pages/gameRank/gameRank",
     "pages/pIndex/pIndex"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -51,10 +53,10 @@
         "text": "推荐"
       },
       {
-        "pagePath": "pages/classify/classify",
+        "pagePath": "pages/home/index",
         "iconPath": "/images/nav/find.png",
         "selectedIconPath": "/images/nav/find-active.png",
-        "text": "发现"
+        "text": "考试"
       },
       {
         "pagePath": "pages/note/note",
@@ -75,7 +77,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.2.29",
+      "version": "1.2.38",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {

@@ -1,0 +1,13 @@
+<navBar background='#299DFF' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='考试大全'/>
+<view class="page-home">
+  <view class="title">题库目前收录以下类型考试</view>
+  <view class="home">
+        <block wx:for="{{queryResult}}" wx:key="*this" wx:for-index="idx" wx:for-item="exam">
+            <view class="brand" bindtap="toSubjectsPage" data-id="{{exam._id}}" data-code="{{exam.code}}">
+                <view class="sortnum">{{idx+1}}</view>
+                <view class="name">{{exam.name}}</view>
+                <view class="arraw">></view>
+            </view>       
+        </block>
+    </view>
+</view>
