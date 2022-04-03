@@ -1,4 +1,4 @@
-<navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='颜色合成大作战' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" />
+<navBar background='#299DFF' wx:if="{{showArea}}" color='#fff' title='{{title}}' back="{{true}}" wx:if="{{showArea}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" />
 <view wx:if="{{showArea}}">
   <text class='play margin-top-xl margin-left-xl' bindtap='gameStart' style="position: absolute; left: -25rpx; top: 175rpx;width: 130rpx;">{{start}}</text>
   <text class='play margin-top-xl margin-left-xl' bindtap='redo' style="position: absolute; left: 337rpx; top: 174rpx; width: 150rpx">撤销</text>
@@ -26,7 +26,9 @@
     <view style="text-align:center;"><text class='nowScore'>当前得分：{{score}}</text> </view>
     <view style="text-align:center;"><text class='nowScore'>我的最高分：{{bestScore}}</text> </view>
     <view style="text-align:center;"> <text class='pro'>{{endMsg}}</text></view>
-
+    <view style="text-align:center;">
+      <image class="logo" src='/images/pIndex.png'></image>
+    </view>
   </view>
 </view>
 

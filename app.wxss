@@ -738,6 +738,12 @@ button::after {
   color: #5e5e5e;
 }
 
+.logo {
+  height: 180rpx;
+  width: 180rpx;
+  /*border-radius: 50%;*/
+}
+
 .angle_top {
   content: '';
   width: 0;

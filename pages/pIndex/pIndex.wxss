@@ -4,6 +4,11 @@
   height: 100vh;
   position: relative;
 }
+.logo {
+  height: 250rpx;
+  width: 250rpx;
+  /*border-radius: 50%;*/
+}
 
 .head {
   text-align: center;

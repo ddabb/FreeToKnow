@@ -15,7 +15,7 @@
     <view class="cu-item arrow" wx:if="{{showView}}" bindtap='goMatchGame'>
       <view class="content">
         <text class="cuIcon-hotfill text-grey"></text>
-        <text class="text-grey">颜色合成大作战</text>
+        <text class="text-grey">ABC合成记</text>
       </view>
     </view>
 

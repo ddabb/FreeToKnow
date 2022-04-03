@@ -3,6 +3,5 @@
   "usingComponents": {
     "navBar": "/components/navBar/navBar"
   },
-  "navigationBarTitleText": "颜色合成大作战",
   "navigationBarBackgroundColor": "#faf8ee"
 }

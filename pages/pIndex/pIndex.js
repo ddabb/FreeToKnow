@@ -263,12 +263,13 @@ Page({
         return 3 * (2 ** index);
     },
     onShareAppMessage: function () {
-        let title = `颜色合成大作战,我最好的成绩是${this.data.bestScore}分~`;
+        let title = `ABC合成记,我最好的成绩是${this.data.bestScore}分~`;
         wx.setNavigationBarTitle({
             title: title //页面标题为路由参数
         });
         this.setData({
-            showArea: false
+            showArea: false,
+            title: title
         })
         return {
             title: title, //此处为标题,
@@ -294,15 +295,25 @@ Page({
     },
     onShow: function () {
         this.setData({
-            showArea: true
+            showArea: true,
+            title: 'ABC合成记'
+
         })
     },
     onShareTimeline: function () {
-        let title = `颜色合成大作战,我最好的成绩是${this.data.bestScore}分~`;
+        let title = `ABC合成记,我最好的成绩是${this.data.bestScore}分~`;
+        this.setData({
+            showArea: false,
+            title: title
+        })
         wx.setNavigationBarTitle({
             title: title //页面标题为路由参数
         });
-        util.ShareTimeline()
+        return {
+            title,
+            query: {},
+            imageUrl: ''
+        }
     },
     handlerGobackClick() {
         this.updateDbScore(this.callbackGobackClick);

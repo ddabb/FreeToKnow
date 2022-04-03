@@ -17,11 +17,7 @@
   /*border-radius: 50%;*/
 }
 
-.logo {
-  height: 180rpx;
-  width: 180rpx;
-  /*border-radius: 50%;*/
-}
+
 
 .item view {
   padding-top: 30rpx;
