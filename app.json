@@ -30,8 +30,8 @@
     "pages/poemdetail/poemdetail",
     "pages/poetlist/poetlist",
     "pages/gameRank/gameRank",
-    "pages/pIndex/pIndex"
-   
+    "pages/pIndex/pIndex",
+    "pages/history/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,7 +50,7 @@
         "pagePath": "pages/index/index",
         "iconPath": "/images/nav/index.png",
         "selectedIconPath": "/images/nav/index-active.png",
-        "text": "推荐"
+        "text": "知识库"
       },
       {
         "pagePath": "pages/home/index",

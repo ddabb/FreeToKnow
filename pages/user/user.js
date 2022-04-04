@@ -14,7 +14,7 @@ Page({
         username: "",
         place: "",
         showArea: true,
-        showView:false,
+        showView: false,
         showImg: false,
     },
 
@@ -50,11 +50,36 @@ Page({
                 openid: app.globalData.openid,
             });
         }
-               this.setData({
-                showView: app.globalData.showView,
-            });
+        this.setData({
+            showView: app.globalData.showView,
+        });
     },
-
+    bindMyHistory: function () {
+        if (!app.globalData.isLogin) {
+            wx.showToast({
+                icon: 'warn',
+                title: '请您先登录',
+            })
+        } else {
+            let url = '/pages/history/index';
+            wx.navigateTo({
+                url: url
+            })
+        }
+    },
+    bindMyStudy: function () {
+        if (!app.globalData.isLogin) {
+            wx.showToast({
+                icon: 'warn',
+                title: '请您先登录',
+            })
+        } else {
+            let url = '/pages/study/index';
+            wx.navigateTo({
+                url: url
+            })
+        }
+    },
     ResetImg(e) {
         wx.navigateTo({
             url: '/pages/auth/auth',

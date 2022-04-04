@@ -1,11 +1,10 @@
-<wxs src="./../tools.wxs" module="JSON" />
 <navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
-    bindhome="handlerGohomeClick" color='#fff' title='错题记录' />
+    bindhome="handlerGohomeClick" color='#fff' title='答题记录' />
 <view class="page-history">
-    <view class="name">请选择考试科目：</view>
+    <view class="title">您参与的答题记录如下(展示最近5条)：</view>
     <view class="historys">
         <block wx:for="{{items}}" wx:key="id" wx:for-index="idx" wx:for-item="item">
-            <view class="history" bindtap="toNotePage" data-id="{{item._id}}">
+            <view class="history" bindtap="toReviewPage" data-id="{{item._id}}">
                 <view class="sortnum">{{idx+1}}</view>
                 <view class="name">({{item.createTime}}){{item.subject.name}}-{{item.rightNum}}分</view>
                 <view class="arraw">></view>
@@ -13,6 +12,6 @@
         </block>
     </view>
     <!-- <view class="adContainer">
-        <ad unit-id="adunit-73ddae762adc91bd" ad-type="video" ad-theme="white"></ad>
+        <ad unit-id="adunit-8f925e8e1afdc0f6" ad-type="video" ad-theme="white"></ad>
     </view> -->
 </view>

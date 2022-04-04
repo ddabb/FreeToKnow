@@ -1,5 +1,5 @@
 // miniprogram/pages/study/study.js
-const  util = require('../../util.js')
+const util = require('../../util.js')
 var app = getApp();
 Page({
 
@@ -233,11 +233,11 @@ Page({
     idx++;
 
     let options = this.data.options;
-    let isRight = true;
+    let isRight = false;
     for (const option of options) {
       console.log(option);
-      if (option.selected == true && option.value == 0) {
-        isRight = false;
+      if (option.selected == true && option.value == 1) {
+        isRight = true;
         break;
       }
     }

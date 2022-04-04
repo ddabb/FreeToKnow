@@ -16,7 +16,7 @@ Page({
   onLoad: function (options) {
     this.onGetOpenid();
   },
-  query: function (openid) {
+  query: function(openid){
     const db = wx.cloud.database()
     db.collection('historys').where({
       _openid: openid
@@ -25,11 +25,11 @@ Page({
         console.log('[数据库] [查询记录] 成功: ', res);
         let arrayObject = res.data;
         let items = [];
-        if (arrayObject && arrayObject.length > 0) {
-          items = arrayObject.slice(0, 5);
+        if(arrayObject && arrayObject.length>0){
+          items = arrayObject.slice(0,5);
         }
-        items.map((item) => {
-          item.createTime = item.createTime.substr(0, 10);
+        items.map((item)=>{
+          item.createTime = item.createTime.substr(0,10);
         })
         this.setData({
           items
@@ -44,28 +44,28 @@ Page({
       }
     })
   },
-  toNotePage: function (e) {
+  toReviewPage: function(e){
     console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
-    let url = '/pages/examnote/examnote?ordernum=' + id;
+    let url = '/pages/review/review?id='+id;
     wx.navigateTo({
       url: url
     })
   },
-  toModePage: function (e) {
+  toModePage: function(e){
     console.log(e.currentTarget.dataset.questions);
     wx.setStorageSync('arr', JSON.parse(e.currentTarget.dataset.questions));
     let url = '/pages/look/index';
     wx.redirectTo({
       url: url
     })
-  },
-  toAttendPage: function (e) {
+  },  
+  toAttendPage: function(e){
     console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
     let title = e.currentTarget.dataset.title;
     let url;
-    url = '/pages/question/index?id=' + id + '&title=' + title;
+    url = '/pages/question/index?id='+id +'&title=' +title;
     wx.navigateTo({
       url: url
     })
@@ -98,11 +98,7 @@ Page({
     util.handlerGobackClick(function (e) {}, 1000)
   },
   handlerGohomeClick() {
-    util.throttle(function (e) {
-      wx.switchTab({
-        url: '/pages/home/index'
-      });
-    }, 1000)
+    util.handlerGohomeClick(function (e) {}, 1000)
   },
 
   /**
@@ -139,7 +135,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onGetOpenid: function () {
+  onGetOpenid: function() {
     // 调用云函数
     wx.cloud.callFunction({
       name: 'login',

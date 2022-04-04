@@ -1,5 +1,5 @@
 // pages/mode/index.js
-const  util = require('../../util.js');
+const util = require('../../util.js');
 const app = getApp();
 Page({
 
@@ -9,9 +9,15 @@ Page({
   data: {
     openid: '',
     subjects: [],
-    items: [
-      { name: '0', value: '单题模式', checked: 'true' },
-      { name: '1', value: '列表模式' }
+    items: [{
+        name: '0',
+        value: '单题模式',
+        checked: 'true'
+      },
+      {
+        name: '1',
+        value: '列表模式'
+      }
     ],
     examcode: '',
     _id: '0000'
@@ -26,7 +32,7 @@ Page({
     let pid = options.id;
     this.setData({
       pid
-    });    
+    });
     this.onQuery(pid);
   },
 
@@ -44,15 +50,19 @@ Page({
     this.setData({
       showArea: true
     })
-   
+
   },
 
-  
+
   handlerGobackClick() {
     util.handlerGobackClick(function (e) {}, 1000)
   },
   handlerGohomeClick() {
-    util.handlerGohomeClick(function (e) {}, 1000)
+    util.throttle(function (e) {
+      wx.switchTab({
+        url: '/pages/home/index'
+      });
+    }, 1000)
   },
 
 
@@ -90,15 +100,15 @@ Page({
   onShareAppMessage: function () {
 
   },
-  examGo: function(e){
+  examGo: function (e) {
     console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
-    if(id == '0000'){
+    if (id == '0000') {
       wx.showModal({
         showCancel: false,
         title: '提示',
         content: '请先选择一个科目',
-        success (res) {
+        success(res) {
           if (res.confirm) {
             console.log('用户点击确定')
           } else if (res.cancel) {
@@ -108,20 +118,20 @@ Page({
       })
       return;
     }
-    let url = '/pages/exam/exam?id='+id;
+    let url = '/pages/exam/exam?id=' + id;
     wx.navigateTo({
       url: url
     })
-  },  
-  toEntryPage: function(e){
+  },
+  toEntryPage: function (e) {
     console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
-    if(id == '0000'){
+    if (id == '0000') {
       wx.showModal({
         showCancel: false,
         title: '提示',
         content: '请先选择一个科目',
-        success (res) {
+        success(res) {
           if (res.confirm) {
             console.log('用户点击确定')
           } else if (res.cancel) {
@@ -131,11 +141,11 @@ Page({
       })
       return;
     }
-    let url = '/pages/entry/index?id='+id;
+    let url = '/pages/entry/index?id=' + id;
     wx.navigateTo({
       url: url
     })
-  },  
+  },
   onQuery: function (pid) {
 
     const db = wx.cloud.database()
@@ -147,14 +157,14 @@ Page({
         let subjects = res.data;
         let _id;
         let code;
-        if(subjects.length == 1){
-          subjects.map(function(obj) { 
+        if (subjects.length == 1) {
+          subjects.map(function (obj) {
             wx.setStorageSync('subject', obj);
             _id = obj['_id'];
-            code  = obj['code'];
+            code = obj['code'];
             obj.checked = 'true';
             return obj;
-         });
+          });
         }
         this.setData({
           subjects,
