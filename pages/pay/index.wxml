@@ -1,0 +1,10 @@
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick" color='#fff' title='赞助打赏' />
+<view class="page-wrapper">
+  <view class='imgList-li' wx:for='{{imgArr}}'>
+    <image class='paycode' src='{{item}}' data-index='{{index}}' bindtap='previewImg'></image>
+  </view>
+  <view>
+    从屏幕左测向右滑动即可退出
+  </view>
+
+</view>

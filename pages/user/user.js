@@ -67,6 +67,12 @@ Page({
             })
         }
     },
+    bindgopay: function () {
+        let url = '/pages/pay/index';
+        wx.navigateTo({
+            url: url
+        })
+    },
     bindMyStudy: function () {
         if (!app.globalData.isLogin) {
             wx.showToast({
@@ -192,7 +198,7 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {},
+    onReady: function () { },
 
     /**
      * 生命周期函数--监听页面显示
@@ -228,12 +234,12 @@ Page({
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {},
+    onHide: function () { },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {},
+    onUnload: function () { },
 
     /**
      * 用户点击右上角分享

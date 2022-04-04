@@ -15,7 +15,7 @@ Page({
         showArea: true,
         showForm: false,
         letters1: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
-        letters2: ['I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', ],
+        letters2: ['I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',],
         letters3: ['Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'],
         scene: "",
         empty: '\t',
@@ -26,7 +26,6 @@ Page({
 
     // 页面渲染完成
     onLoad: function (e) {
-
         if (app.globalData.showView) {
             if (app.globalData.share) {
                 this.setData({
@@ -45,8 +44,6 @@ Page({
                 url: '/pages/index/index'
             });
         }
-
-
     },
 
     InitMethod: function () {
@@ -297,7 +294,6 @@ Page({
         this.setData({
             showArea: true,
             title: 'ABC合成记'
-
         })
     },
     onShareTimeline: function () {

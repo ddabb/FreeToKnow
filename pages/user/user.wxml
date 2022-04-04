@@ -25,6 +25,13 @@
         <text class="text-grey">智能对话聊天助手</text>
       </view>
     </view>
+    <view class="cu-item arrow" bindtap='bindgopay'>
+      <view class="content">
+        <text class="cuIcon-moneybag text-grey"></text>
+        <text class="text-grey">赞助打赏</text>
+      </view>
+    </view>
+
     <view class="cu-item arrow" bindtap='bindMyHistory'>
       <view class="content">
         <text class="cuIcon-edit text-grey"></text>

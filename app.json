@@ -31,7 +31,8 @@
     "pages/poetlist/poetlist",
     "pages/gameRank/gameRank",
     "pages/pIndex/pIndex",
-    "pages/history/index"
+    "pages/history/index",
+    "pages/pay/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
