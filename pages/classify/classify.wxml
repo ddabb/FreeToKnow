@@ -1,5 +1,6 @@
 <!-- index.wxml -->
-<navBar background='#299DFF' color='#fff' title='知识精选' />
+<navBar background='#299DFF' back="{{true}}" home="{{true}}" bindback="handlerGobackClick"
+    bindhome="handlerGohomeClick" color='#fff' title='知识精选' />
 <scroll-view scroll-y="true" style='height:100%;' lower-threshold="50" bindscrolltolower="lower">
   <view class="command">
     <navigator url="/pages/factualknowledge/factualknowledge" open-type='navigate'>

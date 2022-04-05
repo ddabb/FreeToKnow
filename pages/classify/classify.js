@@ -113,7 +113,14 @@ Page({
             path: `pages/index/index`
         }
     },
-
+    handlerGobackClick() {
+        util.handlerGobackClick(function (e) {
+        }, 1000)
+    },
+    handlerGohomeClick() {
+        util.handlerGohomeClick(function (e) {
+        }, 1000)
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
@@ -133,4 +140,5 @@ Page({
     onShareTimeline: function () {
         util.ShareTimeline()
     },
+
 })
