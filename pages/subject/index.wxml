@@ -3,7 +3,7 @@
     <view class="header">请选择考试科目：</view>
     <view class="subjects">
         <block wx:for="{{subjects}}" wx:key="*this" wx:for-index="idx" wx:for-item="subject">
-            <view class="subject" bindtap="examGo" data-id="{{subject._id}}">
+            <view class="subject" bindtap="examGo" data-id="{{subject._id}}" data-counts="{{subject.counts}}">
                 <view class="sortnum">{{idx+1}}</view>
                 <view class="name">{{subject.name}}</view>
                 <view class="arraw">></view>

@@ -11,8 +11,7 @@ Page({
         rightNum: 0,
         idx: 0,
         length: 0,
-        question: {
-        },
+        question: {},
         selectedOption: {
             code: '',
             content: '',
@@ -20,7 +19,9 @@ Page({
         },
         errNum: 0,
         rightNum: 0,
+        undoNum: 0,
         score_arr: [],
+        do_arr: [],
         options_arr: []
     },
 
@@ -30,10 +31,21 @@ Page({
     onLoad: function (options) {
         console.log(options);
         let id = options.id;
+        let do_arr = this.data.do_arr;
+        let counts = parseInt(options.counts);
         this.setData({
             id: id
         })
-        this.onQuery(id);
+        let items = [];
+        for (var i = 1; i < 1 + counts; i++) {
+            items.push(this.formatNum(i))
+            do_arr.push(false);
+        }
+        this.setData({
+            items: items,
+            length: items.length
+        })
+
         this.queryQues('01');
         this.onGetOpenid();
         let ordernum = this.generate();
@@ -41,13 +53,11 @@ Page({
             ordernum
         })
     },
-    onQuery: function (id) {
-        let items = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
-        this.setData({
-            items: items,
-            length: items.length
-        })
+    formatNum: function (num) {
+        return (num >= 10) ? "" + num : '0' + num;
     },
+
+
     queryQues: function (id) {
         let that = this;
         const db = wx.cloud.database();
@@ -71,8 +81,7 @@ Page({
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-    },
+    onReady: function () {},
 
     /**
      * 生命周期函数--监听页面显示
@@ -83,41 +92,36 @@ Page({
         })
     },
     handlerGobackClick() {
-        util.handlerGobackClick(function (e) { }, 1000)
+        util.handlerGobackClick(function (e) {}, 1000)
     },
     handlerGohomeClick() {
-        util.handlerGohomeClick(function (e) { }, 1000)
+        util.handlerGohomeClick(function (e) {}, 1000)
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
-    },
+    onHide: function () {},
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
-    },
+    onUnload: function () {},
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
-    },
+    onPullDownRefresh: function () {},
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
-    },
+    onReachBottom: function () {},
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-    },
+    onShareAppMessage: function () {},
     generate: function () {
         return util.formatTime(new Date());
     },
@@ -138,7 +142,7 @@ Page({
         })
     },
     goResult: function () {
-        let url = '/pages/examresult/examresult?length=' + this.data.length + '&errNum=' + this.data.errNum + '&rightNum=' + this.data.rightNum + '&ordernum=' + this.data.ordernum;
+        let url = `/pages/examresult/examresult?length=${this.data.length}&errNum=${this.data.errNum}&rightNum=${this.data.rightNum} &ordernum=${this.data.ordernum}&undoNum=${this.data.undoNum}`;
         wx.navigateTo({
             url: url
         })
@@ -213,27 +217,36 @@ Page({
         }
     },
     doNext: function () {
-        console.log('doNext')
-
         let idx = this.data.idx;
         let length = this.data.length;
         idx++;
-
+        let do_arr = this.data.do_arr;
         let options = this.data.options;
         let isRight = false;
         for (const option of options) {
             console.log(option);
-            if (option.selected == true && option.value == 1) {
-                isRight = true;
-                break;
+            if (option.selected == true) {
+                do_arr[idx] = true;
+                if (option.value == 1) {
+                    isRight = true;
+                    break;
+                }
+
             }
         }
         let rightNum = this.data.rightNum;
         let errNum = this.data.errNum;
+        let undoNum = this.data.undoNum;
+        if (do_arr[idx] == false) {
+            undoNum++;
+        }
         if (isRight) {
             rightNum++;
         } else {
-            errNum++;
+            if (do_arr[idx]) //没有做不算错题
+            {
+                errNum++;
+            }
             this.addNote(options);
         }
         let score_arr = this.data.score_arr;
@@ -248,6 +261,8 @@ Page({
             this.setData({
                 rightNum,
                 errNum,
+                undoNum,
+                do_arr,
                 score_arr,
                 options_arr
             }, () => {
@@ -273,6 +288,8 @@ Page({
         this.setData({
             rightNum,
             errNum,
+            undoNum,
+            do_arr,
             score_arr,
             options_arr,
             idx,
@@ -282,8 +299,7 @@ Page({
                 content: '',
                 value: -1
             }
-        }, () => {
-        })
+        }, () => {})
     },
     onGetOpenid: function () {
         let that = this;

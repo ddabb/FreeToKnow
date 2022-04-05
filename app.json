@@ -60,10 +60,10 @@
         "text": "考试"
       },
       {
-        "pagePath": "pages/note/note",
+        "pagePath": "pages/classify/classify",
         "iconPath": "/images/nav/menu.png",
         "selectedIconPath": "/images/nav/menu-active.png",
-        "text": "收藏"
+        "text": "发现"
       },
       {
         "pagePath": "pages/user/user",

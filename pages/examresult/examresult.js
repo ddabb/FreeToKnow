@@ -8,7 +8,7 @@ Page({
             ordernum: e.ordernum,
             rightNum: e.rightNum,
             errNum: e.errNum,
-            unAnswerNum: parseInt(e.length) - (parseInt(e.rightNum) + parseInt(e.errNum))
+            unAnswerNum: parseInt(e.undoNum)
         })
     },
     onShow: function () {

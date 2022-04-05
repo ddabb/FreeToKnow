@@ -32,7 +32,12 @@ Page({
         console.log("this.lower in")
         this.loadList(this.data.tags)
     },
-
+    handlerGobackClick() {
+        util.handlerGobackClick(function (e) { }, 1000)
+    },
+    handlerGohomeClick() {
+        util.handlerGohomeClick(function (e) { }, 1000)
+    },
     loadList(tags) {
         if (!this.data.isOver) {
             let {

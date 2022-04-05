@@ -92,6 +92,7 @@ Page({
     examGo: function (e) {
         console.log(e.currentTarget.dataset.id);
         let id = e.currentTarget.dataset.id;
+        let counts=e.currentTarget.dataset.counts;
         if (id == '0000') {
             wx.showModal({
                 showCancel: false,
@@ -107,7 +108,7 @@ Page({
             })
             return;
         }
-        let url = '/pages/exam/exam?id=' + id;
+        let url = `/pages/exam/exam?id=${id}&counts=${counts}`;
         wx.navigateTo({
             url: url
         })
