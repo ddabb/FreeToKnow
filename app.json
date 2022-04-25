@@ -12,6 +12,12 @@
     "pages/rewritePluginPage/rewritePluginPage",
     "pages/knowledge/knowledge",
     "pages/suggest/suggest",
+    "pages/subject/index",
+    "pages/study/index",
+    "pages/examnote/examnote",
+    "pages/review/review",
+    "pages/exam/exam",
+    "pages/examresult/examresult",
     "pages/addsuggest/addsuggest",
     "pages/knowledgelist/knowledgelist",
     "pages/idiomdetail/idiomdetail",
@@ -78,7 +84,7 @@
   ],
   "plugins": {
     "myPlugin": {
-      "version": "1.2.38",
+      "version": "1.2.42",
       "provider": "wx8c631f7e9f2465e1"
     },
     "WechatSI": {
@@ -86,5 +92,6 @@
       "provider": "wx069ba97219f66d99"
     }
   },
+  "lazyCodeLoading": "requiredComponents",
   "sitemapLocation": "sitemap.json"
 }

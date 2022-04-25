@@ -140,5 +140,4 @@ Page({
     onShareTimeline: function () {
         util.ShareTimeline()
     },
-
 })
