@@ -8,5 +8,6 @@
       "name": "myTrigger",
       "type": "timer",
       "config": "0 0/30 * * * ?"
-    }]
+    }
+  ]
 }

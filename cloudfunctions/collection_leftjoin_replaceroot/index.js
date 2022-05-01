@@ -5,25 +5,22 @@ const db = cloud.database()
 const _ = db.command
 
 exports.main = async (event, context) => {
+    const { database, condition, fromdb, localField, foreignField, asfield, root } = event
+    console.log(event)
 
-  const { database,condition,fromdb,localField,foreignField,asfield,root} = event
-  console.log(event)
-
-  try {
-    return await db.collection(database)
-    .aggregate()
-    .match(condition)
-    .lookup({
-      from: fromdb,
-      localField: localField,
-      foreignField: foreignField,
-      as: asfield,
-    })
-    .replaceRoot(root)
-    .end()
-    
-  
-  } catch (e) {
-    console.error(e)
-  }
+    try {
+        return await db.collection(database)
+            .aggregate()
+            .match(condition)
+            .lookup({
+                from: fromdb,
+                localField: localField,
+                foreignField: foreignField,
+                as: asfield,
+            })
+            .replaceRoot(root)
+            .end()
+    } catch (e) {
+        console.error(e)
+    }
 }

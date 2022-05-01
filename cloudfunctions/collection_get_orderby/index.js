@@ -3,9 +3,7 @@ cloud.init()
 
 const db = cloud.database()
 
-exports.main = async(event, context) => {
-
-
+exports.main = async (event, context) => {
     const { database, page, num, field, order, condition } = event
     console.log(event)
 
