@@ -97,10 +97,6 @@
     "myPlugin": {
       "version": "1.2.42",
       "provider": "wx8c631f7e9f2465e1"
-    },
-    "WechatSI": {
-      "version": "0.3.5",
-      "provider": "wx069ba97219f66d99"
     }
   },
   "lazyCodeLoading": "requiredComponents",
