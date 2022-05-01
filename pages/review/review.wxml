@@ -21,7 +21,9 @@
                 <view class="content">{{item.code}}: {{item.content}}</view>
             </view>
         </view>
+        <view wx:if="{{question.comments.length}}" class="title">{{question.comments}}</view>
     </view>
+  
     <view class="btn-area" bindtap="doNext">
         <view class="button">{{btnText}}</view>
     </view>

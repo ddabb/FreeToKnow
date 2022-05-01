@@ -55,7 +55,7 @@ Page({
                     base: app.globalData.hexosite,
                     events: {
                         tap: bindtap => {
-                            var current = bindtap.currentTarget.dataset.data.attr.src;
+                            var current = bindtap.currentTarget.dataset.data.attrs.src;
                             wx.previewImage({
                                 current,
                                 urls: [current]

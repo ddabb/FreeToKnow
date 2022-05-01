@@ -26,7 +26,7 @@ Page({
     wx.cloud.callFunction({
         name: 'collection_get_orderby',
         data: {
-          database: 'historys',
+          database: 'history',
           page: 1,
           num: historyCount,
           field: 'createTime',

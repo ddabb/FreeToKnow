@@ -52,7 +52,7 @@ Page({
         let that = this;
         const db = wx.cloud.database();
 
-        db.collection('notes').where({
+        db.collection('note').where({
             ordernum: ordernum
         })
             .get()

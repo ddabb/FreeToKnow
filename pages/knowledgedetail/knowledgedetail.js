@@ -126,7 +126,7 @@ Page({
                         let result = app.towxml(result1, detail.isMarkDown ? 'markdown' : "html", {
                             events: { //图片放大效果
                                 tap: bindtap => {
-                                    var current = bindtap.currentTarget.dataset.data.attr.src
+                                    var current = bindtap.currentTarget.dataset.data.attrs.src
                                     wx.previewImage({
                                         current,
                                         urls: [current]

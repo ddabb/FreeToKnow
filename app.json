@@ -25,8 +25,15 @@
     "pages/postdetail/postdetail",
     "pages/coupletlist/coupletlist",
     "pages/coupletdetail/coupletdetail",
+    "pages/factualknowledge/factualknowledge",
+    "pages/conceptualknowledge/conceptualknowledge",
+    "pages/coldknowledge/coldknowledge",
     "pages/auth/auth",
     "pages/idiomlist/idiomlist",
+    "pages/knowledgedetail/knowledgedetail",
+    "pages/hexotag/hexotag",
+    "pages/postdetailaddrsview/postdetailaddrsview",
+    "pages/postdetailcodeview/postdetailcodeview",
     "pages/pdfpreview/pdfpreview",
     "pages/pdflist/pdflist",
     "pages/hexotags/hexotags",
@@ -38,7 +45,11 @@
     "pages/gameRank/gameRank",
     "pages/pIndex/pIndex",
     "pages/history/index",
-    "pages/pay/index"
+    "pages/pay/index",
+    "pages/aboutme/aboutme",
+    "pages/hexocategories/hexocategories",
+    "pages/hexocategory/hexocategory",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

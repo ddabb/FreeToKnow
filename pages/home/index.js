@@ -23,7 +23,7 @@ Page({
     },
     onQuery: function () {
         const db = wx.cloud.database()
-        db.collection('exams').get({
+        db.collection('exam').where({'enable':true}).get({
             success: res => {
                 this.setData({
                     queryResult: res.data

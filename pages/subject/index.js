@@ -27,11 +27,11 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    let pid = options.id;
+    let examid = options.id;
     this.setData({
-      pid
+      examid
     });
-    this.onQuery(pid);
+    this.onQuery(examid);
   },
 
   /**
@@ -86,6 +86,7 @@ Page({
   examGo: function (e) {
     console.log(e.currentTarget.dataset.id);
     let id = e.currentTarget.dataset.id;
+    let examid = e.currentTarget.dataset.examid;
     let counts = e.currentTarget.dataset.counts;
     let name = e.currentTarget.dataset.name;
     if (id == '0000') {
@@ -104,8 +105,9 @@ Page({
       return;
     }
     var obj = {
-      id: id,
+      subject: id,
       counts: counts,
+      examid: examid,
       name: name,
     };
     var input = encodeURIComponent(JSON.stringify(obj))
@@ -137,16 +139,17 @@ Page({
       url: url
     })
   },
-  onQuery: function (pid) {
+  onQuery: function (examid) {
     const db = wx.cloud.database()
-    db.collection('subjects').where({
-      pid: pid
+    db.collection('subject').where({
+      examid: examid
     }).get({
       success: res => {
         wx.setStorageSync('subjects', res.data);
         let subjects = res.data;
         let _id;
         let code;
+        console.log("subjects.length"+subjects.length);
         if (subjects.length == 1) {
           subjects.map(function (obj) {
             wx.setStorageSync('subject', obj);

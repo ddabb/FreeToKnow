@@ -17,7 +17,7 @@ Page({
       content: '',
       value: -1
     },
-    name:"",
+    name: "",
     errNum: 0,
     rightNum: 0,
     undoNum: 0,
@@ -34,12 +34,17 @@ Page({
       var str = decodeURIComponent(decodeURIComponent(input.obj));
       var options = JSON.parse(str)
       console.log(options);
-      let {id,name}  = options;
+      let {
+        subject: subject,
+        examid: examid,
+        name
+      } = options;
       let do_arr = this.data.do_arr;
       let counts = parseInt(options.counts);
       this.setData({
-        id: id,
-        name:name
+        subject: subject,
+        examid: examid,
+        name: name
       })
       let items = [];
       for (var i = 1; i < 1 + counts; i++) {
@@ -51,7 +56,7 @@ Page({
         length: items.length
       })
 
-      this.queryQues('01');
+      this.queryQues(examid, subject, '01');
       this.onGetOpenid();
       let ordernum = this.generate();
       this.setData({
@@ -63,15 +68,23 @@ Page({
     return (num >= 10) ? "" + num : '0' + num;
   },
 
-  queryQues: function (id) {
+  queryQues: function (examid, subjectid, id) {
     let that = this;
-    const db = wx.cloud.database();
-
-    db.collection('questions').doc(id)
-      .get()
-      .then(res => {
-        console.log('[数据库] [查询记录] 成功: ', res)
-        let question = res.data;
+    wx.cloud.callFunction({
+      name: 'collection_get',
+      data: {
+        database: 'question',
+        page: 1,
+        num: 1,
+        condition: {
+          examid: examid,
+          order: id, //问题序号
+          subjectid: subjectid
+        }
+      },
+    }).then(res => {
+      if (res.result.data.length) {
+        let question = res.result.data[0]
         let options = question.options;
         options.map((option) => {
           option.selected = false;
@@ -80,7 +93,8 @@ Page({
           question,
           options
         })
-      })
+      }
+    })
   },
 
   /**
@@ -159,7 +173,7 @@ Page({
     let that = this;
     let ordernum = this.data.ordernum;
     const db = wx.cloud.database()
-    db.collection('notes').add({
+    db.collection('note').add({
       data: {
         ordernum: ordernum,
         question: this.data.question,
@@ -182,18 +196,20 @@ Page({
     })
   },
   addHistory: function () {
-    let that = this;
-    let time = util.getTime(new Date(Date.now()));
-    let ordernum = this.data.ordernum;
 
+    let ordernum = this.data.ordernum;
+    console.log("addHistory in")
     try {
       var subject = wx.getStorageSync('subject')
+
+      console.log("addHistory"+subject)
       if (subject) {
         const db = wx.cloud.database()
-        db.collection('historys').add({
+        db.collection('history').add({
           data: {
             _id: ordernum,
             subject: subject,
+            examid: examid,
             items: this.data.items,
             question: this.data.question,
             options_arr: this.data.options_arr,
@@ -227,6 +243,9 @@ Page({
     idx++;
     let do_arr = this.data.do_arr;
     let options = this.data.options;
+    let examid = this.data.examid;
+    let subject = this.data.subject;
+
     let isRight = false;
     for (const option of options) {
       console.log(option);
@@ -269,10 +288,9 @@ Page({
         do_arr,
         score_arr,
         options_arr
-      }, () => {
-        this.addHistory();
-        this.goResult();
       })
+      this.addHistory();
+      this.goResult();
       return;
     }
 
@@ -287,7 +305,7 @@ Page({
     }
 
     let id = items[idx];
-    this.queryQues(id);
+    this.queryQues(examid, subject, id);
 
     this.setData({
       rightNum,
