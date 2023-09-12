@@ -2,7 +2,7 @@
 import page from './utils/page';
 
 
-var plugin = requirePlugin("myPlugin");
+// var plugin = requirePlugin("myPlugin");
 App({
     towxml: require('/towxml/index'),
     globalData: {
@@ -40,12 +40,12 @@ App({
                 this.globalData.windowWidth = res.windowWidth
             }
         })
-
+        console.log(wx.cloud.DYNAMIC_CURRENT_ENV)
         if (!wx.cloud) {
             console.error('请使用 2.2.3 或以上的基础库以使用云能力')
         } else {
             wx.cloud.init({
-                env: 'stonecloud-base',
+                env: wx.cloud.DYNAMIC_CURRENT_ENV,
                 traceUser: true,
             })
         }
@@ -60,7 +60,7 @@ App({
                 }
             },
         }).then(res => {
-            if (res.result.data.length) {
+            if (res.result !=null && res.result.data.length) {
                 let res_data = res.result.data[0]
                 this.globalData.CloudPathRoot = res_data.CloudPathRoot;
                 this.globalData.levelA = res_data.levelA;

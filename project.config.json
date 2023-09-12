@@ -1,5 +1,5 @@
 {
-  "cloudfunctionRoot": "cloudfunctions/",
+  "cloudfunctionRoot": "cloudfunctionRoot/",
   "setting": {
     "urlCheck": true,
     "es6": true,
