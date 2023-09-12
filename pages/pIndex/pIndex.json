@@ -1,7 +1,0 @@
-{
-  "disableScroll": true,
-  "usingComponents": {
-    "navBar": "/components/navBar/navBar"
-  },
-  "navigationBarBackgroundColor": "#faf8ee"
-}

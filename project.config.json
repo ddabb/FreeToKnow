@@ -38,14 +38,17 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": false,
-    "useStaticServer": true
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true,
+    "condition": true
   },
   "appid": "wx7f84c0cb91de3181",
   "projectname": "Free%20Knowledge",
   "libVersion": "2.19.2",
   "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
+  "simulatorPluginLibVersion": {
+    "wxext14566970e7e9f62": "2.27.3"
+  },
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
   "condition": {
     "search": {
@@ -79,5 +82,6 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectArchitecture": "multiPlatform"
 }

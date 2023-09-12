@@ -1,104 +1,118 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/home/index",
-    "pages/find/find",
-    "pages/user/user",
-    "pages/detail/detail",
-    "pages/classify/classify",
-    "pages/note/note",
-    "pages/procedureknowledge/procedureknowledge",
-    "pages/reflectiveknowledge/reflectiveknowledge",
-    "pages/rewritePluginPage/rewritePluginPage",
-    "pages/knowledge/knowledge",
-    "pages/suggest/suggest",
-    "pages/subject/index",
-    "pages/study/index",
-    "pages/examnote/examnote",
-    "pages/review/review",
-    "pages/exam/exam",
-    "pages/examresult/examresult",
-    "pages/addsuggest/addsuggest",
-    "pages/knowledgelist/knowledgelist",
-    "pages/idiomdetail/idiomdetail",
-    "pages/postlist/postlist",
-    "pages/postdetail/postdetail",
-    "pages/coupletlist/coupletlist",
-    "pages/coupletdetail/coupletdetail",
-    "pages/factualknowledge/factualknowledge",
-    "pages/conceptualknowledge/conceptualknowledge",
-    "pages/coldknowledge/coldknowledge",
-    "pages/auth/auth",
-    "pages/idiomlist/idiomlist",
-    "pages/knowledgedetail/knowledgedetail",
-    "pages/hexotag/hexotag",
-    "pages/postdetailaddrsview/postdetailaddrsview",
-    "pages/postdetailcodeview/postdetailcodeview",
-    "pages/pdfpreview/pdfpreview",
-    "pages/pdflist/pdflist",
-    "pages/hexotags/hexotags",
-    "pages/hexoacticle/hexoacticle",
-    "pages/log/log",
-    "pages/poemlist/poemlist",
-    "pages/poemdetail/poemdetail",
-    "pages/poetlist/poetlist",
-    "pages/gameRank/gameRank",
-    "pages/pIndex/pIndex",
-    "pages/history/index",
-    "pages/pay/index",
-    "pages/aboutme/aboutme",
-    "pages/hexocategories/hexocategories",
-    "pages/hexocategory/hexocategory",
-    "pages/search/search"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#299DFF",
-    "navigationBarTitleText": "Free Knowledge",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
-  },
-  "tabBar": {
-    "color": "#6e6d6b",
-    "selectedColor": "#299DFF",
-    "borderStyle": "white",
-    "backgroundColor": "#fff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "/images/nav/index.png",
-        "selectedIconPath": "/images/nav/index-active.png",
-        "text": "知识库"
-      },
-      {
-        "pagePath": "pages/home/index",
-        "iconPath": "/images/nav/find.png",
-        "selectedIconPath": "/images/nav/find-active.png",
-        "text": "考试"
-      },
-      {
-        "pagePath": "pages/classify/classify",
-        "iconPath": "/images/nav/menu.png",
-        "selectedIconPath": "/images/nav/menu-active.png",
-        "text": "发现"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "iconPath": "/images/nav/user.png",
-        "selectedIconPath": "/images/nav/user-active.png",
-        "text": "我的"
-      }
-    ]
-  },
-  "requiredBackgroundModes": [
-    "audio"
-  ],
-  "plugins": {
-    "myPlugin": {
-      "version": "1.2.42",
-      "provider": "wx8c631f7e9f2465e1"
-    }
-  },
-  "lazyCodeLoading": "requiredComponents",
-  "sitemapLocation": "sitemap.json"
+	"pages": [
+		"pages/index/index",
+		"pages/home/index",
+		"pages/classify/classify",
+		"pages/user/user"
+	],
+	"subpackages": [
+		{
+			"root": "packageA",
+			"pages": [
+				"pages/find/find",
+				"pages/detail/detail",
+				"pages/note/note",
+				"pages/procedureknowledge/procedureknowledge",
+				"pages/reflectiveknowledge/reflectiveknowledge",
+				"pages/rewritePluginPage/rewritePluginPage",
+				"pages/knowledge/knowledge",
+				"pages/suggest/suggest",
+				"pages/subject/index",
+				"pages/study/index",
+				"pages/examnote/examnote",
+				"pages/review/review"
+			]
+		},
+		{
+			"root": "packageB",
+			"pages": [
+				"pages/exam/exam",
+				"pages/examresult/examresult",
+				"pages/addsuggest/addsuggest",
+				"pages/knowledgelist/knowledgelist",
+				"pages/idiomdetail/idiomdetail",
+				"pages/postlist/postlist",
+				"pages/postdetail/postdetail",
+				"pages/coupletlist/coupletlist",
+				"pages/coupletdetail/coupletdetail",
+				"pages/factualknowledge/factualknowledge",
+				"pages/conceptualknowledge/conceptualknowledge",
+				"pages/coldknowledge/coldknowledge"
+			]
+		},
+		{
+			"root": "packageC",
+			"pages": [
+				"pages/auth/auth",
+				"pages/idiomlist/idiomlist",
+				"pages/knowledgedetail/knowledgedetail",
+				"pages/hexotag/hexotag",
+				"pages/postdetailaddrsview/postdetailaddrsview",
+				"pages/postdetailcodeview/postdetailcodeview",
+				"pages/pdfpreview/pdfpreview",
+				"pages/pdflist/pdflist",
+				"pages/hexotags/hexotags",
+				"pages/hexoacticle/hexoacticle",
+				"pages/log/log",
+				"pages/poemlist/poemlist",
+				"pages/poemdetail/poemdetail",
+				"pages/poetlist/poetlist",
+				"pages/gameRank/gameRank",
+				"pages/pIndex/pIndex",
+				"pages/history/index",
+				"pages/pay/index",
+				"pages/aboutme/aboutme",
+				"pages/hexocategories/hexocategories",
+				"pages/hexocategory/hexocategory",
+				"pages/search/search"
+			]
+		}
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#299DFF",
+		"navigationBarTitleText": "Free Knowledge",
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#6e6d6b",
+		"selectedColor": "#299DFF",
+		"borderStyle": "white",
+		"backgroundColor": "#fff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "/images/nav/index.png",
+				"selectedIconPath": "/images/nav/index-active.png",
+				"text": "知识库"
+			},
+			{
+				"pagePath": "pages/home/index",
+				"iconPath": "/images/nav/find.png",
+				"selectedIconPath": "/images/nav/find-active.png",
+				"text": "考试"
+			},
+			{
+				"pagePath": "pages/classify/classify",
+				"iconPath": "/images/nav/menu.png",
+				"selectedIconPath": "/images/nav/menu-active.png",
+				"text": "发现"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "/images/nav/user.png",
+				"selectedIconPath": "/images/nav/user-active.png",
+				"text": "我的"
+			}
+		]
+	},
+	"requiredBackgroundModes": [
+		"audio"
+	],
+	"lazyCodeLoading": "requiredComponents",
+	"sitemapLocation": "sitemap.json",
+	"miniApp": {
+		"useAuthorizePage": true
+	}
 }

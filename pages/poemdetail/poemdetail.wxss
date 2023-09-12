@@ -1,5 +1,0 @@
-/* pages/idiomdetail/idiomdetail.wxss */
-@import "../../app.wxss";
-page {
-  background: #D3C4A3;
-}

@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "navBar": "/components/navBar/navBar"
-  },
-  "navigationBarTitleText": "网站标签"
-}

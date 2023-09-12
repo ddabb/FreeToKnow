@@ -1,5 +1,0 @@
-{
-  "usingComponents": { "navBar": "/components/navBar/navBar" },
-  "navigationBarTitleText": "我的收藏",
-  "enablePullDownRefresh": true
-}
